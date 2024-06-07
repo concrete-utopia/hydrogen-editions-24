@@ -34,6 +34,21 @@ const PromiseCardAnnotation = {
       max: 100,
     },
   },
+  children: 'not-supported',
+  variants: [
+    {
+      imports:
+        "import { PromiseCard } from '/app/routes/_index/sections/our-promise'",
+      label: 'PromiseCard Gray',
+      code: `<PromiseCard heading="Our Promise" description="We are committed to providing you with the best experience possible." color="gray" icon="guarantee" borderRadius={0} />`,
+    },
+    {
+      imports:
+        "import { PromiseCard } from '/app/routes/_index/sections/our-promise'",
+      label: 'PromiseCard with Accent',
+      code: `<PromiseCard heading="Our Promise" description="We are committed to providing you with the best experience possible." color="accent" icon="guarantee" borderRadius={0} />`,
+    },
+  ],
 }
 
 /**
