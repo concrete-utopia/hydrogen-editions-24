@@ -106,9 +106,11 @@ export default function FeaturedProducts() {
                 skin.
               </Text>
             </Column>
-            <AddToCartButton color='accent'>
-              Add to cart
-            </AddToCartButton>
+            <Column style={{ height: 120 }}>
+              <AddToCartButton color='accent'>
+                Add to cart
+              </AddToCartButton>
+            </Column>
           </SaleCard>
         }
         right={
@@ -164,9 +166,11 @@ export default function FeaturedProducts() {
                 skin.
               </Text>
             </Column>
-            <AddToCartButton color='white'>
-              Add to cart
-            </AddToCartButton>
+            <Column style={{ height: 120 }}>
+              <AddToCartButton color='white'>
+                Add to cart
+              </AddToCartButton>
+            </Column>
           </SaleCard>
         }
       />
