@@ -61,6 +61,12 @@ const RowWithPlaceholdersVariant = {
 </Row>`,
 }
 
+const EmptyRowVariant = {
+  label: 'Row (empty)',
+  imports: `import { Row } from '@h2/new/Layout'`,
+  code: `<Row/>`,
+}
+
 const ColumnWithPlaceholdersVariant = {
   label: 'Column with placeholders',
   imports: `import { Column } from '@h2/new/Layout'
@@ -69,6 +75,12 @@ const ColumnWithPlaceholdersVariant = {
   <Placeholder />
   <Placeholder />
 </Column>`,
+}
+
+const EmptyColumnVariant = {
+  label: 'Column (empty)',
+  imports: `import { Column } from '@h2/new/Layout'`,
+  code: `<Column />`,
 }
 
 const DefaultLayoutContents = [
@@ -383,7 +395,7 @@ const annotations = {
     inspector: {
       display: 'collapsed',
     },
-    variants: [RowWithPlaceholdersVariant],
+    variants: [RowWithPlaceholdersVariant, EmptyRowVariant],
     children: {
       preferredContents: [
         PlaceholderContent,
@@ -454,7 +466,10 @@ const annotations = {
     inspector: {
       display: 'collapsed',
     },
-    variants: [ColumnWithPlaceholdersVariant],
+    variants: [
+      ColumnWithPlaceholdersVariant,
+      EmptyColumnVariant,
+    ],
     children: {
       preferredContents: [
         PlaceholderContent,
