@@ -2,7 +2,7 @@ import { ProductCard } from '@h2/ProductCard'
 import { Heading } from '@h2/new/Text'
 import {
   Container,
-  Flex,
+  Column,
   Grid,
   Section,
 } from '@h2/new/Layout'
@@ -20,7 +20,7 @@ export default function Recommended({
   return (
     <Section padding className='w-screen' {...props}>
       <Container as='header' className='-mb-10'>
-        <Flex gap='m' direction='down'>
+        <Column gap='m'>
           <Heading
             size={9}
             uppercase
@@ -30,7 +30,7 @@ export default function Recommended({
           >
             {title}
           </Heading>
-        </Flex>
+        </Column>
       </Container>
       <Grid gap='l' className='swimlane'>
         {relatedProducts.map((product) => (
