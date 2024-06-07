@@ -293,6 +293,7 @@ export const Column = forwardRef(
       resizeY,
       maxHeight,
       maxWidth,
+      padded,
       className,
       ...props
     },
@@ -315,6 +316,7 @@ export const Column = forwardRef(
         style={{
           ...props.style,
           flexDirection: 'column',
+          padding: padded ? 100 : undefined,
           maxWidth: maxWidth ?? props.style?.maxWidth,
           maxHeight: maxHeight ?? props.style?.maxHeight,
         }}
@@ -335,6 +337,7 @@ export const Row = forwardRef(
       resizeY,
       maxHeight,
       maxWidth,
+      padded,
       className,
       ...props
     },
@@ -357,6 +360,7 @@ export const Row = forwardRef(
         style={{
           ...props.style,
           flexDirection: 'row',
+          padding: padded ? 100 : undefined,
           maxWidth: maxWidth ?? props.style?.maxWidth,
           maxHeight: maxHeight ?? props.style?.maxHeight,
         }}

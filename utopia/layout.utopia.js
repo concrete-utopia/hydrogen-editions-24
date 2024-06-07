@@ -378,6 +378,7 @@ const annotations = {
       ]),
       gap: Utopia.sliderControl(0, 9, 1),
       wrap: BooleanSegmentControl,
+      padded: BooleanSegmentControl,
       maxHeight: {
         control: 'number-input',
         label: 'Max Height',
@@ -447,6 +448,7 @@ const annotations = {
       ]),
       gap: Utopia.sliderControl(0, 9, 1),
       wrap: BooleanSegmentControl,
+      padded: BooleanSegmentControl,
       maxHeight: {
         control: 'number-input',
         label: 'Max Height',
