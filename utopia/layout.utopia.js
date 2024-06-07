@@ -75,6 +75,25 @@ const DefaultLayoutContents = [
   },
 ]
 
+const ProductSections = [
+  {
+    component: 'Product Page Sections',
+    moduleName: '',
+    variants: [
+      {
+        label: 'Hero Section',
+        imports: `import Hero from '/app/routes/products.$handle/sections/hero'`,
+        code: `<Hero />`,
+      },
+      {
+        label: 'HighlightDetails Section',
+        imports: `import HighlightDetails from '/app/routes/products.$handle/sections/highlight-details'`,
+        code: `<HighlightDetails />`,
+      },
+    ],
+  },
+]
+
 const ContainerVariants = [
   {
     label: 'Container with placeholder',
@@ -266,6 +285,7 @@ const annotations = {
         PlaceholderContent,
         ...DefaultLayoutContents,
         ...DefaultTextContents,
+        ...ProductSections,
       ],
     },
     icon: 'layout',
@@ -340,6 +360,82 @@ const annotations = {
         PlaceholderContent,
         ...DefaultLayoutContents,
         ...DefaultTextContents,
+        ...ProductSections,
+      ],
+    },
+    icon: 'layout',
+  },
+  Column: {
+    component: Column,
+    properties: {
+      align: Utopia.radioControl([
+        {
+          label: 'start',
+          value: 'start',
+        },
+        {
+          label: 'center',
+          value: 'center',
+        },
+        {
+          label: 'end',
+          value: 'end',
+        },
+        {
+          label: 'baseline',
+          value: 'baseline',
+        },
+        {
+          label: 'stretch',
+          value: 'stretch',
+        },
+      ]),
+      justify: Utopia.radioControl([
+        {
+          label: 'start',
+          value: 'start',
+        },
+        {
+          label: 'center',
+          value: 'center',
+        },
+        {
+          label: 'end',
+          value: 'end',
+        },
+        {
+          label: 'between',
+          value: 'between',
+        },
+      ]),
+      gap: Utopia.sliderControl(0, 9, 1),
+      wrap: BooleanSegmentControl,
+      maxHeight: {
+        control: 'radio',
+        label: 'Max Height',
+        options: BooleanSegmentControlOptions,
+      },
+      maxWidth: {
+        control: 'radio',
+        label: 'Max Width',
+        options: BooleanSegmentControlOptions,
+      },
+    },
+    focus: 'never',
+    inspector: {
+      display: 'collapsed',
+      sections: ['typography'],
+    },
+    variants: [
+      RowWithPlaceholdersVariant,
+      ColumnWithPlaceholdersVariant,
+    ],
+    children: {
+      preferredContents: [
+        PlaceholderContent,
+        ...DefaultLayoutContents,
+        ...DefaultTextContents,
+        ...ProductSections,
       ],
     },
     icon: 'layout',
