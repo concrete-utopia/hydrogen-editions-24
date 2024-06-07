@@ -1,10 +1,28 @@
 import { PromiseCard } from '../app/routes/_index/sections/our-promise'
 
+const optionsWithIcons = [
+  {
+    label: '',
+    value: 'gray',
+    icon: 'Smiangle',
+  },
+  { label: '', value: 'black', icon: 'EyeOpen' },
+  {
+    label: '',
+    value: 'accent',
+    icon: 'Downloaded',
+  },
+]
+
 /**
  * @type {import("utopia-api").ComponentToRegister}}}
  */
 const PromiseCardAnnotation = {
   component: PromiseCard,
+  inspector: {
+    display: 'collapsed',
+    sections: ['visual'],
+  },
   properties: {
     heading: {
       control: 'string-input',
@@ -57,7 +75,10 @@ const PromiseCardAnnotation = {
  */
 const Components = {
   '/app/routes/_index/sections/our-promise': {
-    PromiseCard: PromiseCardAnnotation,
+    PromiseCard: {
+      component: PromiseCard,
+      properties: {},
+    },
   },
 }
 

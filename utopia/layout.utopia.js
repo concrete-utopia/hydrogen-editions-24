@@ -181,7 +181,56 @@ const ContainerContents = [
   },
 ]
 
+const rowAndColumn = [
+  {
+    component: 'Row',
+    moduleName: '@h2/new/Layout',
+    variants: RowWithPlaceholdersVariant,
+  },
+  {
+    component: 'Column',
+    moduleName: '@h2/new/Layout',
+    variants: ColumnWithPlaceholdersVariant,
+  },
+]
+
 const annotations = {
+  HalfAndHalf: {
+    component: HalfAndHalf,
+    properties: {
+      left: {
+        control: 'jsx',
+        preferredContents: [
+          PlaceholderContent,
+          ...DefaultLayoutContents,
+          ...DefaultTextContents,
+        ],
+      },
+      right: {
+        control: 'jsx',
+        preferredContents: [
+          PlaceholderContent,
+          ...DefaultLayoutContents,
+          ...DefaultTextContents,
+        ],
+      },
+      padded: BooleanSegmentControl,
+      gap: Utopia.numberControl(),
+    },
+    focus: 'never',
+    children: 'not-supported',
+    variants: {
+      label: 'HalfAndHalf',
+      imports: `
+        import { HalfAndHalf } from "/app/components/Components"
+        import { Placeholder } from "utopia-api"`,
+      code: `<HalfAndHalf
+          style={{ gap: 10 }}
+          left={<Placeholder />}
+          right={<Placeholder />}
+        />`,
+    },
+  },
   Background: {
     component: Background,
     properties: {
@@ -615,42 +664,6 @@ const annotations = {
     },
     variants: ContainerVariants,
     icon: 'section',
-  },
-  HalfAndHalf: {
-    component: HalfAndHalf,
-    properties: {
-      left: {
-        control: 'jsx',
-        preferredContents: [
-          PlaceholderContent,
-          ...DefaultLayoutContents,
-          ...DefaultTextContents,
-        ],
-      },
-      right: {
-        control: 'jsx',
-        preferredContents: [
-          PlaceholderContent,
-          ...DefaultLayoutContents,
-          ...DefaultTextContents,
-        ],
-      },
-      padded: BooleanSegmentControl,
-      gap: Utopia.numberControl(),
-    },
-    focus: 'never',
-    children: 'not-supported',
-    variants: {
-      label: 'HalfAndHalf',
-      imports: `
-        import { HalfAndHalf } from "/app/components/Components"
-        import { Placeholder } from "utopia-api"`,
-      code: `<HalfAndHalf
-          style={{ gap: 10 }}
-          left={<Placeholder />}
-          right={<Placeholder />}
-        />`,
-    },
   },
   Grid: {
     component: Grid,
