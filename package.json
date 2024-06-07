@@ -62,13 +62,7 @@
   "utopia": {
     "featuredRoutes": [
       "/",
-      "/blogs/news",
-      "/page-yellow-tuesday",
-      "/page-equal-scallion",
-      "/page-palm-plume",
-      "/page-capricious-judo",
-      "/page-zesty-lace",
-      "/page-cake-yellowhorn"
+      "/blogs/news"
     ],
     "pageTemplates": [
       {
