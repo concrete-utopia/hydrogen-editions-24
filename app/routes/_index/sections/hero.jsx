@@ -1,27 +1,13 @@
 import { Button } from '@h2/new/Button'
 import { Heading, Text, Span } from '@h2/new/Text'
-import {
-  Background,
-  Container,
-  Column,
-  Section,
-} from '@h2/new/Layout'
 import { Image } from '@shopify/hydrogen'
 
 export default function Hero() {
   return (
-    <Section className='h-svh max-h-[64rem] bg-darkGray'>
-      <Container resizeY='fill' className='pb-24 pt-36'>
-        <Column
-          resizeY='fill'
-          justify='between'
-          align='start'
-        >
-          <Column
-            gap='s'
-            justify='center'
-            className='pt-[10vh]'
-          >
+    <section className='w-full relative min-h-8 h-svh max-h-[64rem] bg-darkGray'>
+      <div className='min-h-inherit h-full mx-auto px-4 md:px-8 lg:px-10 w-full relative z-10 max-w-7xl pb-24 pt-36'>
+        <div className='w-auto min-h-inherit h-full items-start justify-between flex flex-col'>
+          <div className='w-auto h-auto gap-4 items-start justify-center flex flex-col pt-[10vh]'>
             <Text
               uppercase
               size={6}
@@ -37,13 +23,13 @@ export default function Hero() {
                 Essentials
               </Span>
             </Heading>
-          </Column>
+          </div>
           <Button to='/products/builder-tote'>
             Shop now
           </Button>
-        </Column>
-      </Container>
-      <Background columns={2}>
+        </div>
+      </div>
+      <div className='grid absolute z-0 inset-0 pointer-events-none grid-cols-2'>
         <div></div>
         <div className='relative'>
           <div className='absolute inset-0 bg-gradient-to-r from-darkGray to-transparent to-50% z-0'></div>
@@ -52,7 +38,7 @@ export default function Hero() {
             className='object-cover w-full h-full -z-10'
           />
         </div>
-      </Background>
-    </Section>
+      </div>
+    </section>
   )
 }
