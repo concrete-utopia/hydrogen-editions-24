@@ -16,6 +16,7 @@ const Components = {
       component: Hero,
       properties: {},
       inspector: 'hidden',
+      children: 'not-supported',
       variants: [
         {
           label: 'Hero Section (Product Page)',
@@ -31,6 +32,7 @@ const Components = {
         component: HighlightDetails,
         properties: {},
         inspector: 'hidden',
+        children: 'not-supported',
         variants: [
           {
             label: 'HighlightDetails Section',
@@ -46,6 +48,7 @@ const Components = {
         component: HighlightSolution,
         properties: {},
         inspector: 'hidden',
+        children: 'not-supported',
         variants: [
           {
             label: 'HighlightSolution Section',
@@ -60,6 +63,7 @@ const Components = {
       component: Recommended,
       properties: {},
       inspector: 'hidden',
+      children: 'not-supported',
       variants: [
         {
           label: 'Recommended Section',
@@ -74,6 +78,7 @@ const Components = {
       component: Reviews,
       properties: {},
       inspector: 'hidden',
+      children: 'not-supported',
       focus: 'always',
       variants: [
         {
@@ -88,6 +93,7 @@ const Components = {
       properties: {},
       inspector: 'hidden',
       focus: 'always',
+      children: 'not-supported',
       variants: [
         {
           label: 'ReviewsSkeleton Section',
