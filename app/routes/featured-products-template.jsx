@@ -1,7 +1,7 @@
 import React from 'react'
 import { defer, redirect } from '@shopify/remix-oxygen'
 import { getSelectedProductOptions } from '@shopify/hydrogen'
-import { Flex } from '@h2/new/Layout'
+import { Column } from '@h2/new/Layout'
 import { getVariantUrl } from '~/lib/variants'
 import { useLoaderData } from '@remix-run/react'
 import { Suspense } from 'react'
