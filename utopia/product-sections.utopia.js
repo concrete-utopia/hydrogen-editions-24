@@ -18,7 +18,7 @@ const Components = {
       inspector: 'hidden',
       variants: [
         {
-          label: 'Hero Section',
+          label: 'Hero Section (Product Page)',
           imports: `import Hero from '/app/routes/products.$handle/sections/hero'`,
           code: `<Hero />`,
         },
@@ -31,6 +31,13 @@ const Components = {
         component: HighlightDetails,
         properties: {},
         inspector: 'hidden',
+        variants: [
+          {
+            label: 'HighlightDetails Section',
+            imports: `import HighlightDetails from '/app/routes/products.$handle/sections/highlight-details'`,
+            code: `<HighlightDetails />`,
+          },
+        ],
       },
     },
   '/app/routes/products.$handle/sections/highlight-solution':
@@ -39,6 +46,13 @@ const Components = {
         component: HighlightSolution,
         properties: {},
         inspector: 'hidden',
+        variants: [
+          {
+            label: 'HighlightSolution Section',
+            imports: `import HighlightSolution from '/app/routes/products.$handle/sections/highlight-solution'`,
+            code: `<HighlightSolution />`,
+          },
+        ],
       },
     },
   '/app/routes/products.$handle/sections/recommended': {
@@ -46,6 +60,13 @@ const Components = {
       component: Recommended,
       properties: {},
       inspector: 'hidden',
+      variants: [
+        {
+          label: 'Recommended Section',
+          imports: `import Recommended from '/app/routes/products.$handle/sections/recommended'`,
+          code: `<Recommended />`,
+        },
+      ],
     },
   },
   '/app/routes/products.$handle/sections/reviews': {
@@ -54,12 +75,26 @@ const Components = {
       properties: {},
       inspector: 'hidden',
       focus: 'always',
+      variants: [
+        {
+          label: 'Reviews Section',
+          imports: `import Reviews from '/app/routes/products.$handle/sections/reviews'`,
+          code: `<Reviews />`,
+        },
+      ],
     },
     ReviewsSkeleton: {
       component: ReviewsSkeleton,
       properties: {},
       inspector: 'hidden',
       focus: 'always',
+      variants: [
+        {
+          label: 'ReviewsSkeleton Section (Product Page)',
+          imports: `import ReviewsSkeleton from '/app/routes/products.$handle/sections/reviews'`,
+          code: `<ReviewsSkeleton />`,
+        },
+      ],
     },
     Review: {
       component: Review,
@@ -71,21 +106,21 @@ const Components = {
           customer: Utopia.objectControl({
             value: Utopia.stringControl(),
           }),
+          background: Utopia.radioControl([
+            {
+              label: 'white',
+              value: 'white',
+            },
+            {
+              label: 'accent',
+              value: 'accent',
+            },
+            {
+              label: 'black',
+              value: 'black',
+            },
+          ]),
         }),
-        background: Utopia.radioControl([
-          {
-            label: 'white',
-            value: 'white',
-          },
-          {
-            label: 'accent',
-            value: 'accent',
-          },
-          {
-            label: 'black',
-            value: 'black',
-          },
-        ]),
       },
       inspector: 'hidden',
       variants: [
