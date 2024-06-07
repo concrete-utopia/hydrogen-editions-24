@@ -35,6 +35,7 @@ const PromiseCardAnnotation = {
     },
   },
   children: 'not-supported',
+  inspector: { display: 'collapsed', sections: ['visual'] },
   variants: [
     {
       imports:

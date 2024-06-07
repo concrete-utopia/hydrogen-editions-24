@@ -10,6 +10,7 @@ import { cx } from '@h2/new/utils'
 export const PromiseCard = ({
   heading,
   description,
+  style,
   borderRadius = 0,
   color = 'gray',
   icon = 'guarantee',
@@ -25,7 +26,7 @@ export const PromiseCard = ({
   return (
     <div
       className={`p-10 w-auto h-auto gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
-      style={{ borderRadius: borderRadius }}
+      style={{ borderRadius: borderRadius, ...style }}
     >
       <div className='aspect-[4/3] w-full relative'>
         <div className='absolute w-56 -right-4 -top-16'>
