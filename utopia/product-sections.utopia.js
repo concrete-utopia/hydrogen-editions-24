@@ -16,6 +16,13 @@ const Components = {
       component: Hero,
       properties: {},
       inspector: 'hidden',
+      variants: [
+        {
+          label: 'Hero Section',
+          imports: `import Hero from '/app/routes/products.$handle/sections/hero'`,
+          code: `<Hero />`,
+        },
+      ],
     },
   },
   '/app/routes/products.$handle/sections/highlight-details':

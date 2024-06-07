@@ -1,15 +1,9 @@
 import React from 'react'
 import { defer, redirect } from '@shopify/remix-oxygen'
 import { getSelectedProductOptions } from '@shopify/hydrogen'
+import { Flex } from '@h2/new/Layout'
 import { getVariantUrl } from '~/lib/variants'
-import Hero from './products.$handle/sections/hero'
-import HighlightDetails from './products.$handle/sections/highlight-details'
-import HighlightSolution from './products.$handle/sections/highlight-solution'
-import { ReviewsSkeleton } from './products.$handle/sections/reviews'
-import Spotlight from './products.$handle/sections/spotlight'
-import Recommended from './products.$handle/sections/recommended'
-import Marquee from './products.$handle/sections/marquee'
-import { Await, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { Suspense } from 'react'
 
 export const meta = ({ data }) => {
@@ -32,7 +26,7 @@ export async function loader(args) {
   }
   return defer({
     ...(await primaryData(argsWithBuilderTote)),
-    ...secondaryData(argsWithBuilderTote),
+    ...(await secondaryData(argsWithBuilderTote)),
   })
 }
 
@@ -94,39 +88,37 @@ async function primaryData({ context, params, request }) {
  * Load data for rendering content below the fold. This data is deferred and will be
  * fetched after the initial page load. If it's unavailable, the page should still 200.
  */
-function secondaryData({
+async function secondaryData({
   context: { storefront },
   params: { handle },
 }) {
-  const variants = storefront.query(VARIANTS_QUERY, {
-    variables: { handle },
-  })
+  const [variants, solution, reviews, relatedProducts] =
+    await Promise.all([
+      storefront.query(VARIANTS_QUERY, {
+        variables: { handle },
+      }),
+      storefront.query(SOLUTION_QUERY, {
+        variables: { handle },
+      }),
+      storefront.query(REVIEWS_QUERY, {
+        variables: { handle },
+      }),
+      storefront.query(RELATED_PRODUCTS_QUERY, {
+        variables: { handle },
+      }),
+    ])
 
-  const solution = storefront.query(SOLUTION_QUERY, {
-    variables: { handle },
-  })
-
-  const reviews = storefront.query(REVIEWS_QUERY, {
-    variables: { handle },
-  })
-
-  const relatedProducts = storefront.query(
-    RELATED_PRODUCTS_QUERY,
-    {
-      variables: { handle },
-    },
-  )
-
-  const spotlight = storefront.query(SPOTLIGHT_QUERY, {
-    variables: { handle },
-  })
+  const product = {
+    ...solution.product,
+    ...relatedProducts.product,
+  }
 
   return {
-    variants,
-    solution,
+    variants: variants.product.variants,
+    solution: solution.product.solution,
+    relatedProducts:
+      relatedProducts.product.relatedProducts,
     reviews,
-    relatedProducts,
-    spotlight,
   }
 }
 
@@ -148,50 +140,9 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const { solution, reviews, relatedProducts, spotlight } =
-    useLoaderData()
-  return (
-    <>
-      <Hero />
-      <Marquee />
-      <HighlightDetails />
-      <Suspense>
-        <Await resolve={solution}>
-          {(data) => (
-            <HighlightSolution
-              data={data.product.solution.reference}
-            />
-          )}
-        </Await>
-      </Suspense>
-      <Suspense>
-        <Await resolve={reviews}>
-          {(data) => <ReviewsSkeleton data={data} />}
-        </Await>
-      </Suspense>
-      <Suspense>
-        <Await resolve={relatedProducts}>
-          {(data) => (
-            <Recommended
-              data={
-                data.product.relatedProducts.references
-                  .nodes
-              }
-            />
-          )}
-        </Await>
-      </Suspense>
-      <Suspense>
-        <Await resolve={spotlight}>
-          {(data) => (
-            <Spotlight
-              data={data.product.spotlight.reference}
-            />
-          )}
-        </Await>
-      </Suspense>
-    </>
-  )
+  const data = useLoaderData()
+  const { product, reviews } = data
+  return <Flex direction='column'></Flex>
 }
 
 /***********************
