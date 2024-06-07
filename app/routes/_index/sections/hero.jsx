@@ -39,7 +39,7 @@ export default function Hero() {
               Building <br data-uid='6ff' />
             </Heading>
             <Heading
-              font='text'
+              font='display'
               size='8'
               color='white'
               data-uid='1f5'
