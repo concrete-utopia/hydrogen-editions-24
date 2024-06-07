@@ -297,7 +297,6 @@ const annotations = {
     focus: 'never',
     inspector: {
       display: 'collapsed',
-      sections: ['typography'],
     },
     variants: [
       RowWithPlaceholdersVariant,
@@ -372,7 +371,6 @@ const annotations = {
     focus: 'never',
     inspector: {
       display: 'collapsed',
-      sections: ['typography'],
     },
     variants: [
       RowWithPlaceholdersVariant,
@@ -447,7 +445,6 @@ const annotations = {
     focus: 'never',
     inspector: {
       display: 'collapsed',
-      sections: ['typography'],
     },
     variants: [
       RowWithPlaceholdersVariant,
