@@ -29,6 +29,24 @@ export const BooleanSegmentControlOptions = [
   },
 ]
 
+const SectionVariants = [
+  {
+    label: 'Section',
+    imports: "import { Section } from '@h2/new/Layout'",
+    code: `<Section />`,
+  },
+  {
+    label: 'Section (padded)',
+    imports: "import { Section } from '@h2/new/Layout'",
+    code: `<Section padded />`,
+  },
+  {
+    label: 'Section (with minHeight)',
+    imports: "import { Section } from '@h2/new/Layout'",
+    code: `<Section minHeight={500} />`,
+  },
+]
+
 export const BooleanSegmentControl = Utopia.radioControl(
   BooleanSegmentControlOptions,
 )
@@ -72,6 +90,11 @@ const DefaultLayoutContents = [
       imports: `import { Placeholder } from 'utopia-api'`,
       code: `<Placeholder />`,
     },
+  },
+  {
+    component: 'Section',
+    moduleName: '@h2/new/Layout',
+    variants: SectionVariants,
   },
 ]
 
@@ -459,24 +482,17 @@ const annotations = {
     component: Section,
     properties: {
       padded: BooleanSegmentControl,
+      minHeight: {
+        control: 'number-input',
+        label: 'Min Height',
+      },
     },
     focus: 'never',
     inspector: {
       display: 'collapsed',
       sections: ['typography'],
     },
-    variants: [
-      {
-        label: 'Section',
-        imports: "import { Section } from '@h2/new/Layout'",
-        code: `<Section />`,
-      },
-      {
-        label: 'Section (padded)',
-        imports: "import { Section } from '@h2/new/Layout'",
-        code: `<Section padded />`,
-      },
-    ],
+    variants: SectionVariants,
     children: {
       preferredContents: [
         PlaceholderContent,
