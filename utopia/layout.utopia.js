@@ -399,7 +399,7 @@ const annotations = {
         ...ProductSections,
       ],
     },
-    icon: 'layout',
+    icon: 'row',
   },
   Column: {
     component: Column,
@@ -473,7 +473,7 @@ const annotations = {
         ...ProductSections,
       ],
     },
-    icon: 'layout',
+    icon: 'column',
   },
   Spacer: {
     component: Spacer,
