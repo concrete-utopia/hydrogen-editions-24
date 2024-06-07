@@ -2,6 +2,8 @@ import * as Utopia from 'utopia-api'
 import {
   Background,
   Flex,
+  Row,
+  Column,
   Spacer,
   Section,
   Container,
@@ -32,33 +34,33 @@ export const BooleanSegmentControl = Utopia.radioControl(
 )
 
 const RowWithPlaceholdersVariant = {
-  label: 'Flex row with placeholders',
-  imports: `import { Flex } from '@h2/new/Layout'
+  label: 'Row with placeholders',
+  imports: `import { Row } from '@h2/new/Layout'
     import { Placeholder } from 'utopia-api'`,
-  code: `<Flex>
+  code: `<Row>
   <Placeholder />
   <Placeholder />
-</Flex>`,
+</Row>`,
 }
 
 const ColumnWithPlaceholdersVariant = {
-  label: 'Flex column with placeholders',
-  imports: `import { Flex } from '@h2/new/Layout'
+  label: 'Column with placeholders',
+  imports: `import { Column } from '@h2/new/Layout'
     import { Placeholder } from 'utopia-api'`,
-  code: `<Flex direction={'column'}>
+  code: `<Column>
   <Placeholder />
   <Placeholder />
-</Flex>`,
+</Column>`,
 }
 
 const DefaultLayoutContents = [
   {
-    component: 'Flex row',
+    component: 'Row',
     moduleName: '@h2/new/Layout',
     variants: RowWithPlaceholdersVariant,
   },
   {
-    component: 'Flex column',
+    component: 'Column',
     moduleName: '@h2/new/Layout',
     variants: ColumnWithPlaceholdersVariant,
   },
@@ -197,6 +199,80 @@ const annotations = {
           value: 'up',
         },
       ]),
+      align: Utopia.radioControl([
+        {
+          label: 'start',
+          value: 'start',
+        },
+        {
+          label: 'center',
+          value: 'center',
+        },
+        {
+          label: 'end',
+          value: 'end',
+        },
+        {
+          label: 'baseline',
+          value: 'baseline',
+        },
+        {
+          label: 'stretch',
+          value: 'stretch',
+        },
+      ]),
+      justify: Utopia.radioControl([
+        {
+          label: 'start',
+          value: 'start',
+        },
+        {
+          label: 'center',
+          value: 'center',
+        },
+        {
+          label: 'end',
+          value: 'end',
+        },
+        {
+          label: 'between',
+          value: 'between',
+        },
+      ]),
+      gap: Utopia.sliderControl(0, 9, 1),
+      wrap: BooleanSegmentControl,
+      maxHeight: {
+        control: 'radio',
+        label: 'Max Height',
+        options: BooleanSegmentControlOptions,
+      },
+      maxWidth: {
+        control: 'radio',
+        label: 'Max Width',
+        options: BooleanSegmentControlOptions,
+      },
+    },
+    focus: 'never',
+    inspector: {
+      display: 'collapsed',
+      sections: ['typography'],
+    },
+    variants: [
+      RowWithPlaceholdersVariant,
+      ColumnWithPlaceholdersVariant,
+    ],
+    children: {
+      preferredContents: [
+        PlaceholderContent,
+        ...DefaultLayoutContents,
+        ...DefaultTextContents,
+      ],
+    },
+    icon: 'layout',
+  },
+  Row: {
+    component: Row,
+    properties: {
       align: Utopia.radioControl([
         {
           label: 'start',
