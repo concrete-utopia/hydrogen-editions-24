@@ -142,7 +142,7 @@ function redirectToFirstVariant({ product, request }) {
 export default function Product() {
   const data = useLoaderData()
   const { product, reviews } = data
-  return <Flex direction='column'></Flex>
+  return <Column></Column>
 }
 
 /***********************

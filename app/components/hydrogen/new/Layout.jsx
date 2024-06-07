@@ -283,6 +283,90 @@ export const Flex = forwardRef(
   },
 )
 
+export const Column = forwardRef(
+  (
+    {
+      as: Component = 'div',
+      children,
+      wrap,
+      resizeX,
+      resizeY,
+      maxHeight,
+      maxWidth,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const styles = compose(layoutCore, layoutFlex, flex)
+
+    return (
+      <Component
+        ref={ref}
+        className={styles({
+          ...props,
+          resizeX,
+          resizeY,
+          wrap,
+          className,
+        })}
+        data-h2='Column'
+        {...props}
+        style={{
+          ...props.style,
+          flexDirection: 'column',
+          maxWidth: maxWidth ? 832 : undefined,
+          maxHeight: maxHeight ? 1084 : undefined,
+        }}
+      >
+        {children}
+      </Component>
+    )
+  },
+)
+
+export const Row = forwardRef(
+  (
+    {
+      as: Component = 'div',
+      children,
+      wrap,
+      resizeX,
+      resizeY,
+      maxHeight,
+      maxWidth,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const styles = compose(layoutCore, layoutFlex, flex)
+
+    return (
+      <Component
+        ref={ref}
+        className={styles({
+          ...props,
+          resizeX,
+          resizeY,
+          wrap,
+          className,
+        })}
+        data-h2='Column'
+        {...props}
+        style={{
+          ...props.style,
+          flexDirection: 'row',
+          maxWidth: maxWidth ? 832 : undefined,
+          maxHeight: maxHeight ? 1084 : undefined,
+        }}
+      >
+        {children}
+      </Component>
+    )
+  },
+)
+
 const grid = cva({
   base: ['grid'],
   variants: {

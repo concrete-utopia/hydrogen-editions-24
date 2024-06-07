@@ -1,8 +1,8 @@
 import {
   Container,
-  Flex,
+  Row,
+  Column,
   Section,
-  MultiColumn,
   Spacer,
 } from '@h2/new/Layout'
 import { Heading, Span, Strong, Text } from '@h2/new/Text'
@@ -26,23 +26,23 @@ export default function Reviews() {
   return (
     <Section>
       <Container paddingY='l' marginBottom>
-        <Flex direction='down' gap={8}>
+        <Column gap={8}>
           <Heading size='6xl'>
             Don’t take our word for it
           </Heading>
-          <Flex direction='down' gap={6}>
+          <Column gap={6}>
             <ReviewStatistics
               average={reviewAvg}
               count={reviewCount}
               icon={<Star />}
             />
             <Button color='accent'>View all reviews</Button>
-          </Flex>
-        </Flex>
+          </Column>
+        </Column>
       </Container>
       <Container paddingBottom='s'>
-        <Flex direction='row' justify='end'>
-          <Flex
+        <Row justify='end'>
+          <Column
             direction='down'
             wrap
             align='end'
@@ -55,8 +55,8 @@ export default function Reviews() {
                 <Review key={review.id} data={review} />
               )
             })}
-          </Flex>
-        </Flex>
+          </Column>
+        </Row>
       </Container>
     </Section>
   )
@@ -78,7 +78,6 @@ const review = cva({
 
 export function Review({ data, className, ...props }) {
   const { id, quote, customer, background } = data
-
   const classes = cx(
     review({ ...props, background }),
     className,
@@ -88,10 +87,9 @@ export function Review({ data, className, ...props }) {
 
   return (
     <div className='relative inline-block mx-6'>
-      <Flex
+      <Column
         px={7}
         py={6}
-        direction='down'
         gap={5}
         className={classes}
         style={{ width: 392 }}
@@ -131,7 +129,7 @@ export function Review({ data, className, ...props }) {
         >
           &mdash;{customer.value}
         </Text>
-      </Flex>
+      </Column>
     </div>
   )
 }

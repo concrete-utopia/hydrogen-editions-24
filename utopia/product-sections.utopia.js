@@ -90,7 +90,7 @@ const Components = {
       focus: 'always',
       variants: [
         {
-          label: 'ReviewsSkeleton Section (Product Page)',
+          label: 'ReviewsSkeleton Section',
           imports: `import ReviewsSkeleton from '/app/routes/products.$handle/sections/reviews'`,
           code: `<ReviewsSkeleton />`,
         },

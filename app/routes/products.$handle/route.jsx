@@ -1,7 +1,7 @@
 import React from 'react'
 import { defer, redirect } from '@shopify/remix-oxygen'
 import { getSelectedProductOptions } from '@shopify/hydrogen'
-import { Flex } from '@h2/new/Layout'
+import { Column } from '@h2/new/Layout'
 import { getVariantUrl } from '~/lib/variants'
 import Hero from './sections/hero'
 import HighlightDetails from './sections/highlight-details'
@@ -10,8 +10,7 @@ import Reviews from './sections/reviews'
 import Spotlight from './sections/spotlight'
 import Recommended from './sections/recommended'
 import Marquee from './sections/marquee'
-import { Await, useLoaderData } from '@remix-run/react'
-import { Suspense } from 'react'
+import { useLoaderData } from '@remix-run/react'
 
 export const meta = ({ data }) => {
   return [
@@ -143,7 +142,7 @@ export default function Product() {
   const data = useLoaderData()
   const { product, reviews } = data
   return (
-    <Flex direction='column'>
+    <Column>
       <Hero />
       <Marquee />
       <HighlightDetails />
@@ -151,7 +150,7 @@ export default function Product() {
       <Reviews />
       <Recommended />
       <Spotlight />
-    </Flex>
+    </Column>
   )
 }
 
