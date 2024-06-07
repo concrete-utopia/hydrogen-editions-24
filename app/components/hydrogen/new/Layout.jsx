@@ -625,7 +625,7 @@ export const Section = forwardRef(
         {...props}
         style={{
           ...props.style,
-          minHeight: minHeight ?? props.style.minHeight,
+          minHeight: minHeight ?? props.style?.minHeight,
         }}
       >
         {children}
