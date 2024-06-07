@@ -9,7 +9,8 @@ import { Heading, Text } from '@h2/new/Text'
 import { Price, PriceCompareAt } from '@h2/Price'
 import {
   Background,
-  Flex,
+  Row,
+  Column,
   Grid,
   Section,
 } from '@h2/new/Layout'
@@ -39,21 +40,20 @@ export default function Hero() {
             className='object-fill'
           />
         </div>
-        <Flex
+        <Row
           align='stretch'
           justify='center'
           className='items-center'
         >
           <ProductSummary />
-        </Flex>
+        </Row>
       </Grid>
       <Background columns={2}>
         <div className='bg-accent'></div>
         <div className='bg-lightGray'></div>
       </Background>
       <Background>
-        <Flex
-          direction='down'
+        <Column
           align='center'
           justify='center'
           className='absolute w-full h-full -translate-x-1/2 left-1/2'
@@ -64,7 +64,7 @@ export default function Hero() {
           <span className='leading-none text-white font-display whitespace-nowrap text-[25rem]'>
             BUILDERS BUILDERS BUILDERS
           </span>
-        </Flex>
+        </Column>
       </Background>
     </Section>
   )
@@ -152,14 +152,13 @@ function ProductSummary() {
           </Await>
         </Suspense>
       </div>
-      <Flex
-        direction='column'
+      <Column
         justify='center'
         gap={5}
         className='px-10 py-8 min-h-80 bg-lighterGray'
       >
         <div className='grid gap-3'>
-          <Flex gap={3}>
+          <Row gap={3}>
             <IconBox />
             <Text className='flex items-center gap-3'>
               <span>
@@ -189,18 +188,18 @@ function ProductSummary() {
                 />
               </svg>
             </Text>
-          </Flex>
-          <Flex gap={3}>
+          </Row>
+          <Row gap={3}>
             <IconShipping />
             <Text>Free shipping over $50</Text>
-          </Flex>
-          <Flex gap={3}>
+          </Row>
+          <Row gap={3}>
             <IconReturns />
             <Text>Free 30-day returns</Text>
-          </Flex>
+          </Row>
         </div>
         <Accordion data={accordionData} />
-      </Flex>
+      </Column>
     </div>
   )
 }
