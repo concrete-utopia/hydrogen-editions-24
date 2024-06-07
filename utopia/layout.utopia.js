@@ -113,6 +113,21 @@ const ProductSections = [
         imports: `import HighlightDetails from '/app/routes/products.$handle/sections/highlight-details'`,
         code: `<HighlightDetails />`,
       },
+      {
+        label: 'HighlightSolution Section',
+        imports: `import HighlightSolution from '/app/routes/products.$handle/sections/highlight-solution'`,
+        code: `<HighlightSolution />`,
+      },
+      {
+        label: 'Recommended Section',
+        imports: `import Recommended from '/app/routes/products.$handle/sections/recommended'`,
+        code: `<Recommended />`,
+      },
+      {
+        label: 'Reviews Section',
+        imports: `import Reviews from '/app/routes/products.$handle/sections/reviews'`,
+        code: `<Reviews />`,
+      },
     ],
   },
 ]
