@@ -144,7 +144,7 @@ export default function Product() {
   const { review_count, review_avg, reviews } =
     data.reviews.reviews
 
-  const customerReviews = reviews.references.nodes..map(
+  const customerReviews = reviews.references.nodes.map(
     (r, i) => {
       return {
         ...r,
