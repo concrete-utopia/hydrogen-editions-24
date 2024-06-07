@@ -273,8 +273,8 @@ export const Flex = forwardRef(
         {...props}
         style={{
           ...props.style,
-          maxWidth: maxWidth ? 832 : undefined,
-          maxHeight: maxHeight ? 1084 : undefined,
+          maxWidth: maxWidth ?? props.style?.maxWidth,
+          maxHeight: maxHeight ?? props.style?.maxHeight,
         }}
       >
         {children}
@@ -315,8 +315,8 @@ export const Column = forwardRef(
         style={{
           ...props.style,
           flexDirection: 'column',
-          maxWidth: maxWidth ? 832 : undefined,
-          maxHeight: maxHeight ? 1084 : undefined,
+          maxWidth: maxWidth ?? props.style?.maxWidth,
+          maxHeight: maxHeight ?? props.style?.maxHeight,
         }}
       >
         {children}
@@ -357,8 +357,8 @@ export const Row = forwardRef(
         style={{
           ...props.style,
           flexDirection: 'row',
-          maxWidth: maxWidth ? 832 : undefined,
-          maxHeight: maxHeight ? 1084 : undefined,
+          maxWidth: maxWidth ?? props.style?.maxWidth,
+          maxHeight: maxHeight ?? props.style?.maxHeight,
         }}
       >
         {children}

@@ -46,8 +46,8 @@ export default function Reviews() {
             direction='down'
             wrap
             align='end'
-            maxHeight
-            maxWidth
+            maxHeight={1080}
+            maxWidth={832}
           >
             <Spacer height={144} />
             {customerReviews.map((review) => {
