@@ -43,7 +43,7 @@ const SectionVariants = [
   {
     label: 'Section (with minHeight)',
     imports: "import { Section } from '@h2/new/Layout'",
-    code: `<Section minHeight={500} />`,
+    code: `<Section minHeight={800} />`,
   },
 ]
 
