@@ -7,52 +7,59 @@ import {
 } from '@h2/new/Layout'
 import { cx } from '@h2/new/utils'
 
-function PromiseCard({
-  heading,
-  description,
-  icon,
-  color = 'gray',
-}) {
-  const bg = {
-    black: 'bg-black',
-    accent: 'bg-accent',
-    gray: 'bg-lightGray',
+const PromiseCard =
+  (icon) =>
+  ({ heading, description, color = 'gray' }) => {
+    const bg = {
+      black: 'bg-black',
+      accent: 'bg-accent',
+      gray: 'bg-lightGray',
+    }
+
+    return (
+      <div
+        className={`p-10 w-auto h-auto gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
+      >
+        <div className='aspect-[4/3] w-full relative'>
+          <div className='absolute w-56 -right-4 -top-16'>
+            {icon}
+          </div>
+        </div>
+        <Heading
+          color={color === 'black' ? 'white' : 'black'}
+          size={3}
+          uppercase
+          weight='regular'
+          className='tracking-wide'
+          font='text'
+        >
+          {heading}
+        </Heading>
+        <Text
+          color={color === 'black' ? 'white' : undefined}
+          width='narrow'
+          className='opacity-60'
+          wrap='balance'
+        >
+          {description}
+        </Text>
+      </div>
+    )
   }
 
-  return (
-    <div
-      className={`p-10 w-auto h-auto gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
-    >
-      <div className='aspect-[4/3] w-full relative'>
-        <div className='absolute w-56 -right-4 -top-16'>
-          {icon}
-        </div>
-      </div>
-      <Heading
-        color={color === 'black' ? 'white' : 'black'}
-        size={3}
-        uppercase
-        weight='regular'
-        className='tracking-wide'
-        font='text'
-      >
-        {heading}
-      </Heading>
-      <Text
-        color={color === 'black' ? 'white' : undefined}
-        width='narrow'
-        className='opacity-60'
-        wrap='balance'
-      >
-        {description}
-      </Text>
-    </div>
-  )
-}
+export const PromiseGuarantee = PromiseCard(
+  <PromiseIconGuarantee />,
+)
+export const PromiseTrial = PromiseCard(
+  <PromiseIconTrial />,
+)
+export const PromiseShipping = PromiseCard(
+  <PromiseIconTrial />,
+)
 
 export default function OurPromise() {
   return (
-    <Section className='py-16'>
+    <section className='w-full relative min-h-8 py-16'>
       <Container as='header' className='z-20 pt-16 -mb-6'>
         <Heading uppercase size={9}>
           Our
@@ -62,27 +69,24 @@ export default function OurPromise() {
       </Container>
       <div className='h-auto mx-auto px-4 md:px-8 lg:px-10 w-full relative z-10 max-w-7xl pb-36'>
         <div style={{ display: 'flex', gap: 50 }}>
-          <PromiseCard
+          <PromiseGuarantee
             heading='Guaranteed For Life'
             description='Every one of our products comes with a limited lifetime warranty.'
-            icon={<PromiseIconGuarantee />}
             color='accent'
           />
-          <PromiseCard
+          <PromiseTrial
             heading='100 days to try'
             description='Try it out for 100 days. If you don’t love it, send it back.'
-            icon={<PromiseIconTrial />}
             color='gray'
           />
-          <PromiseCard
+          <PromiseShipping
             heading='Free shipping'
             description='We’ll cover shipping on all orders to the contiguous US and Canada.'
-            icon={<PromiseIconShipping />}
             color='black'
           />
         </div>
       </div>
-    </Section>
+    </section>
   )
 }
 
