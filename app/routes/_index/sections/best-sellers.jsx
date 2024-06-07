@@ -9,7 +9,7 @@ import {
 
 export default function BestSellers() {
   return (
-    <Section className='pt-32'>
+    <Section className='pt-32' style={{ height: 1880 }}>
       <Container
         as='header'
         className='z-20 pointer-events-none'
