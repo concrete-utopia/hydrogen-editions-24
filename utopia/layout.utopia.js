@@ -313,10 +313,6 @@ const annotations = {
     inspector: {
       display: 'collapsed',
     },
-    variants: [
-      RowWithPlaceholdersVariant,
-      ColumnWithPlaceholdersVariant,
-    ],
     children: {
       preferredContents: [
         PlaceholderContent,
@@ -387,10 +383,7 @@ const annotations = {
     inspector: {
       display: 'collapsed',
     },
-    variants: [
-      RowWithPlaceholdersVariant,
-      ColumnWithPlaceholdersVariant,
-    ],
+    variants: [RowWithPlaceholdersVariant],
     children: {
       preferredContents: [
         PlaceholderContent,
@@ -461,10 +454,7 @@ const annotations = {
     inspector: {
       display: 'collapsed',
     },
-    variants: [
-      RowWithPlaceholdersVariant,
-      ColumnWithPlaceholdersVariant,
-    ],
+    variants: [ColumnWithPlaceholdersVariant],
     children: {
       preferredContents: [
         PlaceholderContent,
