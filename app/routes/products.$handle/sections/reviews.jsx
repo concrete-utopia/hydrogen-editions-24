@@ -18,7 +18,15 @@ export default function Reviews() {
   const { review_count, review_avg, reviews } =
     data.reviews.reviews
 
-  const customerReviews = reviews.references.nodes
+  const customerReviews = reviews.references.nodes.map(
+    (r, i) => {
+      return {
+        ...r,
+        background:
+          i === 0 ? 'black' : i === 4 ? 'accent' : 'white',
+      }
+    },
+  )
 
   const reviewAvg = JSON.parse(review_avg.value).value
   const reviewCount = review_count.value
