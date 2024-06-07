@@ -8,7 +8,8 @@ import { useLoaderData } from '@remix-run/react'
 import { Button } from '@h2/new/Button'
 import { Image } from '@shopify/hydrogen'
 import {
-  Flex,
+  Row,
+  Column,
   Section,
   Container,
   Background,
@@ -24,16 +25,15 @@ export default function HighlightSolution() {
 
   return (
     <Section className='aspect-[2/1]'>
-      <Flex
+      <Row
         className='relative z-10 h-full'
-        direction='right'
         justify='center'
         align='center'
       >
         <Container className='h-full'>
           <Grid columns={2} className='h-full'>
             <div></div>
-            <Flex
+            <Column
               className='pl-8'
               resizeY='fill'
               direction='down'
@@ -52,10 +52,10 @@ export default function HighlightSolution() {
                 {description.value}
               </Text>
               <Button color='white'>Learn more</Button>
-            </Flex>
+            </Column>
           </Grid>
         </Container>
-      </Flex>
+      </Row>
       <Background
         overflow='visible'
         columns={2}
