@@ -1,6 +1,9 @@
 import * as Utopia from 'utopia-api'
 import { Button } from '@h2/new/Button'
 
+/**
+ * @type {{[componentName:string]: import("utopia-api").ComponentToRegister}}}
+ */
 const annotations = {
   Button: {
     component: Button,
@@ -52,6 +55,9 @@ const annotations = {
   },
 }
 
+/**
+ * @type {{[modulePath: string]: {[componentName:string]: import("utopia-api").ComponentToRegister}}}
+ */
 const Components = {
   '/app/components/hydrogen/new/Button': annotations,
   '@h2/new/Button': annotations,
