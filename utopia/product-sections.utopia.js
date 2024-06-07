@@ -125,7 +125,7 @@ const Components = {
       inspector: 'hidden',
       variants: [
         {
-          label: 'Review with dummy data',
+          label: 'ReviewCard',
           imports: `import { Review } from '/app/routes/products.$handle/sections/reviews'`,
           code: `<Review data= {{
             id: '1',
