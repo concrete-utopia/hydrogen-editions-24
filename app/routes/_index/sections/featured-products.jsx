@@ -2,7 +2,7 @@ import { AddToCartButton } from '@h2/new/Button'
 import { Heading, Text } from '@h2/new/Text'
 import {
   Background,
-  Flex,
+  Column,
   Grid,
   Section,
   HalfAndHalf,
@@ -14,8 +14,7 @@ import { cx } from '@h2/new/utils'
 function SaleCard({ className, ...props }) {
   return (
     <div className={cx('relative', className)} {...props}>
-      <Flex
-        direction='down'
+      <Column
         align='center'
         justify='center'
         gap={6}
@@ -26,7 +25,7 @@ function SaleCard({ className, ...props }) {
         {...props}
       >
         {props.children}
-      </Flex>
+      </Column>
       <Background justify='center' align='center'>
         <Heading
           color='white'
@@ -43,8 +42,7 @@ function SaleCard({ className, ...props }) {
 
 export function SaleBadge({ price, compareAtPrice }) {
   return (
-    <Flex
-      direction='down'
+    <Column
       gap={0}
       align='center'
       justify='center'
@@ -66,7 +64,7 @@ export function SaleBadge({ price, compareAtPrice }) {
         price={price}
         withoutTrailingZeros
       />
-    </Flex>
+    </Column>
   )
 }
 
@@ -94,12 +92,7 @@ export default function FeaturedProducts() {
                 src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-DevMode-Buildertote_PDP_3_fa8b6520-484a-47e7-818d-b217b04d31e6.png'
               />
             </div>
-            <Flex
-              gap={4}
-              direction='down'
-              align='center'
-              justify='center'
-            >
+            <Column gap={4} align='center' justify='center'>
               <Heading font='text' weight='medium' size='l'>
                 Builders Tote
               </Heading>
@@ -112,7 +105,7 @@ export default function FeaturedProducts() {
                 skincare essentials designed for acne-prone
                 skin.
               </Text>
-            </Flex>
+            </Column>
             <AddToCartButton color='accent'>
               Add to cart
             </AddToCartButton>
@@ -157,12 +150,7 @@ export default function FeaturedProducts() {
                 src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-GSD-Hat-PDP.webp'
               />
             </div>
-            <Flex
-              gap={4}
-              direction='down'
-              align='center'
-              justify='center'
-            >
+            <Column gap={4} align='center' justify='center'>
               <Heading font='text' weight='medium' size='l'>
                 Get Ship Done Hat 2.0
               </Heading>
@@ -175,7 +163,7 @@ export default function FeaturedProducts() {
                 skincare essentials designed for acne-prone
                 skin.
               </Text>
-            </Flex>
+            </Column>
             <AddToCartButton color='white'>
               Add to cart
             </AddToCartButton>

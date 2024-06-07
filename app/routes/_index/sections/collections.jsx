@@ -3,7 +3,7 @@ import { Heading, Span } from '@h2/new/Text'
 import {
   Background,
   Container,
-  Flex,
+  Row,
   Grid,
   Section,
 } from '@h2/new/Layout'
@@ -18,7 +18,7 @@ export default function Collections() {
       className='bg-accent -mt-[28rem] bg-gradient-to-b from-white to-accent to-50%'
       style={{ width: '100%' }}
     >
-      <Flex
+      <Row
         resizeY='fill'
         align='end'
         justify='center'
@@ -43,7 +43,7 @@ export default function Collections() {
             For Everyone
           </Span>
         </Heading>
-      </Flex>
+      </Row>
       <Section>
         <Container className='aspect-[20/7] px-0 lg:px-0'>
           <Grid

@@ -2,7 +2,7 @@ import { ProductCard } from '@h2/ProductCard'
 import { Heading, Span } from '@h2/new/Text'
 import {
   Container,
-  Flex,
+  Row,
   Grid,
   Section,
 } from '@h2/new/Layout'
@@ -20,7 +20,7 @@ export default function BestSellers() {
           size={8}
           className='relative -mx-1 -mb-8'
         >
-          <Flex as='span' justify='between'>
+          <Row as='span' justify='between'>
             <Span font='display'>Best</Span>
             <Span
               font='sans'
@@ -28,7 +28,7 @@ export default function BestSellers() {
             >
               Sellers
             </Span>
-          </Flex>
+          </Row>
         </Heading>
       </Container>
       <Container>
