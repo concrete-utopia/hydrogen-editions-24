@@ -2,7 +2,7 @@ import { flattenConnection, Image } from '@shopify/hydrogen'
 
 import { Button, AddToCartButton } from '@h2/new/Button'
 import { cx } from '@h2/new/utils'
-import { Flex, Grid } from '@h2/new/Layout'
+import { Column, Grid, Row } from '@h2/new/Layout'
 import { Heading, Text } from '@h2/new/Text'
 import { Price, PriceCompareAt } from '@h2/Price'
 import Link from '@h2/Link'
@@ -62,7 +62,7 @@ export function ProductCard({
         to={`/products/${nonNullProduct.handle}`}
         prefetch='viewport'
       >
-        <Flex direction='down' gap={4} resizeX='fill'>
+        <Column gap={4} resizeX='fill'>
           <div className='aspect-[4/5] bg-offWhite w-full'>
             {image && (
               <Image
@@ -88,7 +88,7 @@ export function ProductCard({
             >
               {nonNullProduct.title}
             </Heading>
-            <Flex gap={3} justify='start' align='baseline'>
+            <Row gap={3} justify='start' align='baseline'>
               <Price
                 color='black'
                 className='opacity-60'
@@ -104,9 +104,9 @@ export function ProductCard({
                   firstVariant?.compareAtPrice
                 }
               />
-            </Flex>
+            </Row>
           </Grid>
-        </Flex>
+        </Column>
       </Link>
       {quickAdd && firstVariant.availableForSale && (
         <AddToCartButton

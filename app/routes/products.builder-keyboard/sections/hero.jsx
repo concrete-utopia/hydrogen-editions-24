@@ -5,7 +5,6 @@ import { Heading, Span, Text } from '@h2/new/Text'
 import {
   Background,
   Container,
-  Flex,
   Section,
 } from '@h2/new/Layout'
 import { useLoaderData } from '@remix-run/react'
@@ -17,14 +16,9 @@ export default function Hero() {
   return (
     <Section className='min-h-screen text-white bg-darkGray'>
       <Container resizeY='fill'>
-        <Flex
-          direction='down'
-          justify='between'
-          py='2xl'
-          resizeY='fill'
-        >
-          <Flex direction='down' gap={6}>
-            <Text
+        <Column justify='between' py='2xl' resizeY='fill'>
+          <Column gap={6}>
+            <Row
               size='3xl'
               uppercase
               color='accent'
@@ -32,7 +26,7 @@ export default function Hero() {
               className='pt-16 pl-1'
             >
               Coming Soon
-            </Text>
+            </Row>
             <Heading font='text' size='5xl' leading='tight'>
               Builder
               <br />
@@ -48,8 +42,8 @@ export default function Hero() {
               size='6xl'
               price={selectedVariant?.price}
             />
-          </Flex>
-          <Flex direction='down' gap={4}>
+          </Column>
+          <Column gap={4}>
             <Button color='accent'>Pre-order</Button>
             <Text
               width='narrow'
@@ -65,8 +59,8 @@ export default function Hero() {
               </Link>{' '}
               for more details on pre-orders
             </Text>
-          </Flex>
-        </Flex>
+          </Column>
+        </Column>
       </Container>
       <Background columns={1}>
         <Image />

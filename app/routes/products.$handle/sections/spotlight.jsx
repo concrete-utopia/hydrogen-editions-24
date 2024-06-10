@@ -1,8 +1,8 @@
 import { AddToCartButton } from '@h2/new/Button'
 import { Heading, Text } from '@h2/new/Text'
 import {
+  Column,
   Container,
-  Flex,
   Grid,
   Section,
 } from '@h2/new/Layout'
@@ -13,7 +13,7 @@ export default function Spotlight() {
   return (
     <Section padding className='mb-24'>
       <Container as='header' className='pb-16'>
-        <Flex gap={4} direction='down'>
+        <Column gap={4}>
           <Heading size={9} uppercase weight='regular'>
             New
           </Heading>
@@ -25,15 +25,14 @@ export default function Spotlight() {
           >
             Just Dropped
           </Text>
-        </Flex>
+        </Column>
       </Container>
       <Container>
         <div className='absolute top-0 flex items-center justify-center w-40 translate-x-1/2 -translate-y-1/2 bg-white rounded-full text-7xl -rotate-12 right-10 shadow-badge aspect-square'>
           👀
         </div>
         <Grid columns={2} gap={0}>
-          <Flex
-            direction='down'
+          <Column
             align='center'
             justify='center'
             gap={6}
@@ -48,12 +47,7 @@ export default function Spotlight() {
                 src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-GSD-Hat-PDP.webp'
               />
             </div>
-            <Flex
-              gap={4}
-              direction='down'
-              align='center'
-              justify='center'
-            >
+            <Column gap={4} align='center' justify='center'>
               <Heading size='l' font='text' weight='medium'>
                 Get Ship Done Hat 2.0
               </Heading>
@@ -62,9 +56,9 @@ export default function Spotlight() {
                 features premium materials and adjustable
                 strap.
               </Text>
-            </Flex>
+            </Column>
             <AddToCartButton>Add to cart</AddToCartButton>
-          </Flex>
+          </Column>
           <div className='self-stretch bg-accent'>
             <Image
               className='object-cover h-full'

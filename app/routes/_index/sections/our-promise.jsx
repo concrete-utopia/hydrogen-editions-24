@@ -1,10 +1,5 @@
 import { Heading, Text } from '@h2/new/Text'
-import {
-  Container,
-  Flex,
-  Grid,
-  Section,
-} from '@h2/new/Layout'
+import { Container } from '@h2/new/Layout'
 import { cx } from '@h2/new/utils'
 
 export const PromiseCard = ({

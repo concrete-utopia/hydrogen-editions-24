@@ -1,33 +1,38 @@
-import {Heading, Text} from '@h2/new/Text';
-import {Container, Flex, Grid, Section} from '@h2/new/Layout';
-import {Image} from '@shopify/hydrogen';
+import { Heading, Text } from '@h2/new/Text'
+import { Container, Grid, Section } from '@h2/new/Layout'
+import { Image } from '@shopify/hydrogen'
 
-function Feature({number, title, description, image}) {
+function Feature({ number, title, description, image }) {
   return (
     <Grid columns={9}>
-      <div className="col-span-2">
+      <div className='col-span-2'>
         <Heading
-          leading="none"
-          size="5xl"
-          color="white"
-          className="-mt-[0.125em]"
+          leading='none'
+          size='5xl'
+          color='white'
+          className='-mt-[0.125em]'
         >
           {number}
         </Heading>
       </div>
-      <Flex direction="down" gap="m" className="col-span-3">
-        <Heading font="text" size="m" color="accent">
+      <Column gap='m' className='col-span-3'>
+        <Heading font='text' size='m' color='accent'>
           {title}
         </Heading>
-        <Text className="text-white/70" as="p">
+        <Text className='text-white/70' as='p'>
           {description}
         </Text>
-      </Flex>
-      <div className="col-span-3 col-start-7 bg-offWhite">
-        <Image src={image.src} width={370} height={257} crop="center" />
+      </Column>
+      <div className='col-span-3 col-start-7 bg-offWhite'>
+        <Image
+          src={image.src}
+          width={370}
+          height={257}
+          crop='center'
+        />
       </div>
     </Grid>
-  );
+  )
 }
 
 const data = [
@@ -58,18 +63,18 @@ const data = [
       src: 'https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-DevMode-Buildertote_PDP_3_fa8b6520-484a-47e7-818d-b217b04d31e6.png',
     },
   },
-];
+]
 
 export default function Features() {
   return (
-    <Section className="bg-darkGray">
+    <Section className='bg-darkGray'>
       <Container>
-        <Flex direction="down" gap={9} py="3xl">
+        <Column gap={9} py='3xl'>
           {data.map((feature) => (
             <Feature key={feature.number} {...feature} />
           ))}
-        </Flex>
+        </Column>
       </Container>
     </Section>
-  );
+  )
 }
