@@ -1,7 +1,6 @@
 import * as Utopia from 'utopia-api'
 import {
   Background,
-  Flex,
   Row,
   Column,
   Spacer,
@@ -295,92 +294,6 @@ const annotations = {
       </Background>`,
       },
     ],
-  },
-  Flex: {
-    component: Flex,
-    properties: {
-      direction: Utopia.radioControl([
-        {
-          label: 'right',
-          value: 'right',
-        },
-        {
-          label: 'down',
-          value: 'down',
-        },
-        {
-          label: 'left',
-          value: 'left',
-        },
-        {
-          label: 'up',
-          value: 'up',
-        },
-      ]),
-      align: Utopia.radioControl([
-        {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
-          value: 'center',
-        },
-        {
-          label: 'end',
-          value: 'end',
-        },
-        {
-          label: 'baseline',
-          value: 'baseline',
-        },
-        {
-          label: 'stretch',
-          value: 'stretch',
-        },
-      ]),
-      justify: Utopia.radioControl([
-        {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
-          value: 'center',
-        },
-        {
-          label: 'end',
-          value: 'end',
-        },
-        {
-          label: 'between',
-          value: 'between',
-        },
-      ]),
-      gap: Utopia.sliderControl(0, 9, 1),
-      wrap: BooleanSegmentControl,
-      maxHeight: {
-        control: 'number-input',
-        label: 'Max Height',
-      },
-      maxWidth: {
-        control: 'number-input',
-        label: 'Max Width',
-      },
-    },
-    focus: 'never',
-    inspector: {
-      display: 'collapsed',
-    },
-    children: {
-      preferredContents: [
-        PlaceholderContent,
-        ...DefaultLayoutContents,
-        ...DefaultTextContents,
-        ...ProductSections,
-      ],
-    },
-    icon: 'layout',
   },
   Row: {
     component: Row,

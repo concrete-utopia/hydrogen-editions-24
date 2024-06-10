@@ -242,47 +242,6 @@ const flex = cva({
   },
 })
 
-export const Flex = forwardRef(
-  (
-    {
-      as: Component = 'div',
-      children,
-      wrap,
-      resizeX,
-      resizeY,
-      maxHeight,
-      maxWidth,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
-    const styles = compose(layoutCore, layoutFlex, flex)
-
-    return (
-      <Component
-        ref={ref}
-        className={styles({
-          ...props,
-          resizeX,
-          resizeY,
-          wrap,
-          className,
-        })}
-        data-h2='Flex'
-        {...props}
-        style={{
-          ...props.style,
-          maxWidth: maxWidth ?? props.style?.maxWidth,
-          maxHeight: maxHeight ?? props.style?.maxHeight,
-        }}
-      >
-        {children}
-      </Component>
-    )
-  },
-)
-
 export const Column = forwardRef(
   (
     {
