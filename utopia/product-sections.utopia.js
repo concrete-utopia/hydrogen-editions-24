@@ -132,15 +132,10 @@ const Components = {
         {
           label: 'ReviewCard',
           imports: `import { Review } from '/app/routes/products.$handle/sections/reviews'`,
-          code: `<Review data= {{
-            id: '1',
-            quote: {
-              value: 'This is a really nice tote bag, perfect size for carry on travel or day trips. I really like that it zips up. Sturdy and the handles don’t slip off your shoulder! I love it.”'
-            },
-            customer: {
-              value: 'Lynn W.',
-            }
-          }} />`,
+          code: `<Review 
+            quote='This is a really nice tote bag, perfect size for carry on travel or day trips. I really like that it zips up. Sturdy and the handles don’t slip off your shoulder! I love it.”'
+            customer='Lynn W.'
+          />`,
         },
       ],
     },
