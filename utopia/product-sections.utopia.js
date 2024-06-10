@@ -110,28 +110,22 @@ const Components = {
     Review: {
       component: Review,
       properties: {
-        data: Utopia.objectControl({
-          quote: Utopia.objectControl({
-            value: Utopia.stringControl(),
-          }),
-          customer: Utopia.objectControl({
-            value: Utopia.stringControl(),
-          }),
-          background: Utopia.radioControl([
-            {
-              label: 'white',
-              value: 'white',
-            },
-            {
-              label: 'accent',
-              value: 'accent',
-            },
-            {
-              label: 'black',
-              value: 'black',
-            },
-          ]),
-        }),
+        quote: Utopia.stringControl(),
+        customer: Utopia.stringControl(),
+        background: Utopia.radioControl([
+          {
+            label: 'white',
+            value: 'white',
+          },
+          {
+            label: 'accent',
+            value: 'accent',
+          },
+          {
+            label: 'black',
+            value: 'black',
+          },
+        ]),
       },
       inspector: 'hidden',
       variants: [
