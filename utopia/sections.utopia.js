@@ -12,6 +12,7 @@ const Components = {
       properties: {},
       focus: 'always',
       inspector: 'hidden',
+      icon: 'section',
     },
   },
   '/app/routes/_index/sections/best-sellers': {
@@ -20,6 +21,7 @@ const Components = {
       properties: {},
       focus: 'always',
       inspector: 'hidden',
+      icon: 'section',
     },
   },
   '/app/routes/_index/sections/collections': {
@@ -28,6 +30,7 @@ const Components = {
       properties: {},
       focus: 'always',
       inspector: 'hidden',
+      icon: 'section',
     },
   },
   '/app/routes/_index/sections/featured-products': {
@@ -36,6 +39,7 @@ const Components = {
       properties: {},
       focus: 'always',
       inspector: 'hidden',
+      icon: 'section',
     },
   },
   '/app/routes/_index/sections/our-promise': {
@@ -44,6 +48,7 @@ const Components = {
       properties: {},
       focus: 'always',
       inspector: 'hidden',
+      icon: 'section',
     },
   },
 }

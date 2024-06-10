@@ -24,6 +24,7 @@ const Components = {
           code: `<Hero />`,
         },
       ],
+      icon: 'section',
     },
   },
   '/app/routes/products.$handle/sections/highlight-details':
@@ -40,6 +41,7 @@ const Components = {
             code: `<HighlightDetails />`,
           },
         ],
+        icon: 'section',
       },
     },
   '/app/routes/products.$handle/sections/highlight-solution':
@@ -56,6 +58,7 @@ const Components = {
             code: `<HighlightSolution />`,
           },
         ],
+        icon: 'section',
       },
     },
   '/app/routes/products.$handle/sections/recommended': {
@@ -71,6 +74,7 @@ const Components = {
           code: `<Recommended />`,
         },
       ],
+      icon: 'section',
     },
   },
   '/app/routes/products.$handle/sections/reviews': {
@@ -87,6 +91,7 @@ const Components = {
           code: `<Reviews />`,
         },
       ],
+      icon: 'section',
     },
     ReviewsSkeleton: {
       component: ReviewsSkeleton,
@@ -195,6 +200,7 @@ const Components = {
       component: Spotlight,
       properties: {},
       inspector: 'hidden',
+      icon: 'section',
     },
   },
 }
