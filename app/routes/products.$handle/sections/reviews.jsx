@@ -60,7 +60,12 @@ export default function Reviews() {
             <Spacer height={144} />
             {customerReviews.map((review) => {
               return (
-                <Review key={review.id} data={review} />
+                <Review
+                  key={review.id}
+                  quote={review.quote.value}
+                  customer={review.customer.value}
+                  background={review.background}
+                />
               )
             })}
           </Column>
@@ -84,14 +89,14 @@ const review = cva({
   },
 })
 
-export function Review({ data, className, ...props }) {
-  const { id, quote, customer, background } = data
+export function Review({ className, ...props }) {
+  const { quote, customer, background } = props
   const classes = cx(
     review({ ...props, background }),
     className,
   )
   const { firstSentence, remainingText } =
-    splitTextIntoSentences(quote.value)
+    splitTextIntoSentences(quote)
 
   return (
     <div className='relative inline-block mx-6'>
@@ -135,7 +140,7 @@ export function Review({ data, className, ...props }) {
             background === 'black' && 'text-accent'
           }
         >
-          &mdash;{customer.value}
+          &mdash;{customer}
         </Text>
       </Column>
     </div>
