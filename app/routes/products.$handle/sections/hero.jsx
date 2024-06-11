@@ -77,15 +77,15 @@ function ProductSummary() {
   const accordionData = [
     {
       title: 'Materials',
-      content: product.materials.value,
+      content: product.materials?.value,
     },
     {
       title: 'Care Instructions',
-      content: product.care_guide.value,
+      content: product.care_guide?.value,
     },
     {
       title: 'Fit',
-      content: product.fit.value,
+      content: product.fit?.value,
     },
   ]
 

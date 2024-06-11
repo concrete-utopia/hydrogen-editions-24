@@ -19,6 +19,8 @@ import {
 export default function HighlightSolution() {
   const data = useLoaderData()
 
+  if (data.solution == null) return null
+
   const { featuredImage } = data.product
   const { title, description, learn_more } =
     data.solution.reference

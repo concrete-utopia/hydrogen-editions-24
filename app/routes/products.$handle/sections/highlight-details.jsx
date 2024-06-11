@@ -13,7 +13,7 @@ import { Image } from '@shopify/hydrogen'
 export default function HighlightDetails() {
   const { details } = useLoaderData()
 
-  if (!details) return null
+  if (details?.features == null) return null
 
   const { highlights } = JSON.parse(
     details.features.reference.content.value,

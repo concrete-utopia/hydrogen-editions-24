@@ -143,17 +143,20 @@ export default function Product() {
   const { review_count, review_avg, reviews } =
     data.reviews.reviews
 
-  const customerReviews = reviews.references.nodes
+  const customerReviews = reviews?.references.nodes
 
-  const reviewAvg = JSON.parse(review_avg.value).value
-  const reviewCount = review_count.value
+  const reviewAvg =
+    customerReviews != null
+      ? JSON.parse(review_avg.value).value
+      : null
+  const reviewCount = review_count?.value
   return (
     <Column>
       <Hero />
       <Marquee />
       <HighlightDetails />
       <HighlightSolution />
-      <Reviews />
+      {customerReviews != null ? <Reviews /> : null}
       <Recommended />
       <Spotlight />
     </Column>
