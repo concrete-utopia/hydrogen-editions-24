@@ -245,7 +245,7 @@ const flex = cva({
 export const Column = forwardRef(
   (
     {
-      as: Component = 'div',
+      as,
       children,
       wrap,
       resizeX,
@@ -258,6 +258,8 @@ export const Column = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'div'
+
     const styles = compose(layoutCore, layoutFlex, flex)
 
     return (
@@ -289,7 +291,7 @@ export const Column = forwardRef(
 export const Row = forwardRef(
   (
     {
-      as: Component = 'div',
+      as,
       children,
       wrap,
       resizeX,
@@ -302,6 +304,8 @@ export const Row = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'div'
+
     const styles = compose(layoutCore, layoutFlex, flex)
 
     return (
@@ -521,7 +525,7 @@ const container = cva({
 export const Container = forwardRef(
   (
     {
-      as: Component = 'div',
+      as,
       fluid,
       paddingTop,
       paddingBottom,
@@ -534,6 +538,8 @@ export const Container = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'div'
+
     const styles = compose(layoutCore, container)
 
     return (
@@ -571,7 +577,7 @@ const section = cva({
 export const Section = forwardRef(
   (
     {
-      as: Component = 'section',
+      as,
       minHeight,
       children,
       padding,
@@ -580,6 +586,8 @@ export const Section = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'section'
+
     return (
       <Component
         ref={ref}
