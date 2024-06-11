@@ -17,13 +17,15 @@ export function isDiscounted(price, compareAtPrice) {
 export function PriceCompareAt({
   price,
   compareAtPrice,
-  as = Text,
+  as,
   className,
   ...props
 }) {
+  const Component = as ?? Text
+
   return isDiscounted(price, compareAtPrice) ? (
     <Money
-      as={as}
+      as={Component}
       className={cx('line-through', className)}
       data={price}
       {...props}
@@ -32,12 +34,14 @@ export function PriceCompareAt({
 }
 
 export function PriceRange({
-  as: Component = 'span',
+  as,
   product,
   separator = '-',
   className,
   ...props
 }) {
+  const Component = as ?? 'span'
+
   const { minVariantPrice, maxVariantPrice } =
     product.priceRange
 

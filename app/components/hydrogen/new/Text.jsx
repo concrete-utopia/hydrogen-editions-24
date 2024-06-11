@@ -105,7 +105,7 @@ const text = cva({
 export const Text = forwardRef(
   (
     {
-      as: Component = 'span',
+      as,
       children,
       truncate = false,
       uppercase = false,
@@ -116,6 +116,8 @@ export const Text = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'span'
+
     const styles = compose(typography, text)
 
     return (
@@ -171,7 +173,7 @@ const heading = cva({
 export const Heading = forwardRef(
   (
     {
-      as: Component = 'h2',
+      as,
       children,
       truncate = false,
       uppercase = false,
@@ -188,6 +190,8 @@ export const Heading = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'h2'
+
     const styles = compose(typography, heading)
 
     return (
@@ -233,7 +237,7 @@ const span = cva({
 export const Span = forwardRef(
   (
     {
-      as: Component = 'span',
+      as,
       children,
       truncate = false,
       uppercase = false,
@@ -244,6 +248,8 @@ export const Span = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'span'
+
     const styles = compose(span, typography)
 
     return (
@@ -268,7 +274,7 @@ export const Span = forwardRef(
 export const Em = forwardRef(
   (
     {
-      as: Component = 'em',
+      as,
       children,
       truncate = false,
       uppercase = false,
@@ -278,6 +284,8 @@ export const Em = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'em'
+
     const styles = compose(typography)
 
     return (
@@ -301,7 +309,7 @@ export const Em = forwardRef(
 export const Strong = forwardRef(
   (
     {
-      as: Component = 'strong',
+      as,
       weight = 'semibold',
       children,
       truncate = false,
@@ -311,6 +319,8 @@ export const Strong = forwardRef(
     },
     ref,
   ) => {
+    const Component = as ?? 'strong'
+
     const styles = compose(typography)
 
     return (
@@ -329,10 +339,10 @@ export const Strong = forwardRef(
       </Component>
     )
   },
-);
+)
 
-export function HighlightText({text}) {
-  const parts = text.split('*');
+export function HighlightText({ text }) {
+  const parts = text.split('*')
 
   return (
     <>
@@ -342,13 +352,13 @@ export function HighlightText({text}) {
             <Span
               key={index}
               pill
-              className="bg-accent"
-              dangerouslySetInnerHTML={{__html: part}}
+              className='bg-accent'
+              dangerouslySetInnerHTML={{ __html: part }}
             />
-          );
+          )
         }
-        return part;
+        return part
       })}
     </>
-  );
+  )
 }

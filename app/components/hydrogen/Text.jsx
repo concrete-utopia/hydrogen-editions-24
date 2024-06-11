@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { missingClass, formatText } from '~/lib/utils'
 
 export function Text({
-  as: Component = 'span',
+  as,
   className,
   color = 'default',
   format = false,
@@ -12,6 +12,8 @@ export function Text({
   children,
   ...props
 }) {
+  const Component = as ?? 'span'
+
   const colors = {
     default: 'inherit',
     primary: 'text-primary/90',
@@ -47,7 +49,7 @@ export function Text({
 }
 
 export function Heading({
-  as: Component = 'h2',
+  as,
   children,
   className = '',
   format,
@@ -55,6 +57,8 @@ export function Heading({
   width = 'default',
   ...props
 }) {
+  const Component = as ?? 'h2'
+
   const sizes = {
     display: 'font-bold text-display',
     heading: 'font-bold text-heading',

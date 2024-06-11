@@ -1,12 +1,12 @@
-import React from 'react';
-import {cva} from 'cva';
+import React from 'react'
+import { cva } from 'cva'
 
 /**
  * Trying a new thing — starting from what I actually need
  */
 
-function Dx({props}) {
-  return <Flex>{props.children}</Flex>;
+function Dx({ props }) {
+  return <Flex>{props.children}</Flex>
 }
 
 /**
@@ -53,28 +53,35 @@ function Dx({props}) {
 const flex = cva({
   base: 'flex',
   variants: {},
-});
+})
 
 const Flex = React.forwardRef(
-  ({as: Component = 'div', asChild, children, ...props}, ref) => {
-    const className = flex(props); // Apply CVA-generated class
+  ({ as, asChild, children, ...props }, ref) => {
+    const Component = as ?? 'div'
+
+    const className = flex(props) // Apply CVA-generated class
 
     if (asChild) {
       // If asChild is true, clone the only child and pass all props
-      return React.cloneElement(React.Children.only(children), {
-        ...props,
-        ref,
-        className: `${children.props.className || ''} ${className}`,
-      });
+      return React.cloneElement(
+        React.Children.only(children),
+        {
+          ...props,
+          ref,
+          className: `${
+            children.props.className || ''
+          } ${className}`,
+        },
+      )
     }
 
     return (
       <Component ref={ref} className={className} {...props}>
         {children}
       </Component>
-    );
+    )
   },
-);
+)
 
 function DemoDX(props) {
   /**
@@ -90,13 +97,18 @@ function DemoDX(props) {
         t={305} // Default: null https://tailwindcss.com/docs/position - when there's a change
         w={374} // Default: 'auto' https://tailwindcss.com/docs/width
         h={150} // https://tailwindcss.com/docs/height
-        horizontalResizing="fixed" // fixed | hug | auto ??
-        verticalResizing=""
+        horizontalResizing='fixed' // fixed | hug | auto ??
+        verticalResizing=''
       >
         {props.children}
       </Flex>
       {/* Basic*/}
-      <Flex left={'80px'} top={'105px'} width={'4'} height={'4'}>
+      <Flex
+        left={'80px'}
+        top={'105px'}
+        width={'4'}
+        height={'4'}
+      >
         {props.children}
       </Flex>
       {/* Other ideas… */}
@@ -117,11 +129,11 @@ function DemoDX(props) {
         {props.children}
       </Flex>
       {/* Prop shorthands */}
-      <Flex l="10px" t="50px" w="80px" h="px">
+      <Flex l='10px' t='50px' w='80px' h='px'>
         {props.children}
       </Flex>
     </>
-  );
+  )
 }
 
 // Define possible style variants and default props if needed
@@ -151,25 +163,31 @@ const box = cva({
   defaultVariants: {
     display: 'block',
   },
-});
+})
 
 const Box = React.forwardRef(
-  ({as: Component = 'div', asChild, children, ...props}, ref) => {
-    const className = box(props); // Apply CVA-generated class
+  ({ as, asChild, children, ...props }, ref) => {
+    const Component = as ?? 'div'
+    const className = box(props) // Apply CVA-generated class
 
     if (asChild) {
       // If asChild is true, clone the only child and pass all props
-      return React.cloneElement(React.Children.only(children), {
-        ...props,
-        ref,
-        className: `${children.props.className || ''} ${className}`,
-      });
+      return React.cloneElement(
+        React.Children.only(children),
+        {
+          ...props,
+          ref,
+          className: `${
+            children.props.className || ''
+          } ${className}`,
+        },
+      )
     }
 
     return (
       <Component ref={ref} className={className} {...props}>
         {children}
       </Component>
-    );
+    )
   },
-);
+)
