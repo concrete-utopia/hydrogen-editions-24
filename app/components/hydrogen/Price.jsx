@@ -27,7 +27,7 @@ export function PriceCompareAt({
     <Money
       as={Component}
       className={cx('line-through', className)}
-      data={price}
+      data={compareAtPrice}
       {...props}
     />
   ) : null
