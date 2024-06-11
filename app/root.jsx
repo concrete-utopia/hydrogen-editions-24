@@ -14,7 +14,7 @@ import {
 } from '@remix-run/react'
 import favicon from '/app/assets/favicon.svg'
 
-import appStyles from './styles/app-generated.css'
+import './styles/app-generated.css'
 import { Layout } from '~/components/Layout'
 
 /**
@@ -41,8 +41,6 @@ export const shouldRevalidate = ({
 
 export function links() {
   return [
-    { rel: 'stylesheet', href: appStyles },
-
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
