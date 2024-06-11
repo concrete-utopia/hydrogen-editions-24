@@ -41,6 +41,8 @@ export const shouldRevalidate = ({
 
 export function links() {
   return [
+    { rel: 'stylesheet', href: appStyles },
+
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
