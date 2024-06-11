@@ -98,7 +98,7 @@ const text = cva({
     },
   },
   defaultVariants: {
-    size: 3,
+    size: 'm',
   },
 })
 
@@ -142,6 +142,7 @@ export const Text = forwardRef(
 )
 
 const heading = cva({
+  base: ['tracking-tight'],
   variants: {
     size: {
       1: ['text-base', 'leading-normal'], // 16 - 1rem
@@ -166,7 +167,7 @@ const heading = cva({
     },
   },
   defaultVariants: {
-    size: 5,
+    size: '2xl',
   },
 })
 
@@ -310,7 +311,7 @@ export const Strong = forwardRef(
   (
     {
       as,
-      weight = 'semibold',
+      weight = 'bold',
       children,
       truncate = false,
       uppercase = false,

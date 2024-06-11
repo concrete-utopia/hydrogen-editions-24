@@ -6,6 +6,38 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'Sequel';
+  src: url('./sequel-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Sequel';
+  src: url('./sequel-medium.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Sequel';
+  src: url('./sequel-itals.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Sequel';
+  src: url('./sequel-mediumitalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,7 +78,7 @@
   }
 
   body {
-    @apply antialiased text-primary/90 bg-contrast border-primary/10;
+    @apply text-primary/90 bg-contrast border-primary/10;
   }
 }
 
@@ -58,8 +90,14 @@
     justify-content: flex-start;
     overflow-x: scroll;
     padding-bottom: 1rem;
-    padding-left: max(1rem, calc((100vw - var(--container-width) + 2rem) / 2));
-    padding-right: max(1rem, calc((100vw - var(--container-width) + 2rem) / 2));
+    padding-left: max(
+      1rem,
+      calc((100vw - var(--container-width) + 2rem) / 2)
+    );
+    padding-right: max(
+      1rem,
+      calc((100vw - var(--container-width) + 2rem) / 2)
+    );
     scroll-padding-left: max(
       1rem,
       calc((100vw - var(--container-width) + 2rem) / 2)
@@ -74,16 +112,30 @@
     }
     @media (min-width: 48em) {
       padding-bottom: 2rem;
-      padding-left: max(2rem, calc((100vw - 80rem + 4rem) / 2));
-      padding-right: max(2rem, calc((100vw - 80rem + 4rem) / 2));
-      scroll-padding-left: max(2rem, calc((100vw - 80rem + 4rem) / 2));
-      scroll-padding-right: max(2rem, calc((100vw - 80rem + 4rem) / 2));
+      padding-left: max(
+        2rem,
+        calc((100vw - 80rem + 4rem) / 2)
+      );
+      padding-right: max(
+        2rem,
+        calc((100vw - 80rem + 4rem) / 2)
+      );
+      scroll-padding-left: max(
+        2rem,
+        calc((100vw - 80rem + 4rem) / 2)
+      );
+      scroll-padding-right: max(
+        2rem,
+        calc((100vw - 80rem + 4rem) / 2)
+      );
     }
     @media (min-width: 64em) {
       padding-left: calc((100vw - 80rem + 5rem) / 2);
       padding-right: calc((100vw - 80rem + 5rem) / 2);
       scroll-padding-left: calc((100vw - 80rem + 5rem) / 2);
-      scroll-padding-right: calc((100vw - 80rem + 5rem) / 2);
+      scroll-padding-right: calc(
+        (100vw - 80rem + 5rem) / 2
+      );
     }
   }
 }
@@ -293,13 +345,17 @@ aside li {
 */
 .cart-main {
   height: 100%;
-  max-height: calc(100vh - var(--cart-aside-summary-height));
+  max-height: calc(
+    100vh - var(--cart-aside-summary-height)
+  );
   overflow-y: auto;
   width: auto;
 }
 
 .cart-main.with-discount {
-  max-height: calc(100vh - var(--cart-aside-summary-height-with-discount));
+  max-height: calc(
+    100vh - var(--cart-aside-summary-height-with-discount)
+  );
 }
 
 .cart-line {
@@ -438,7 +494,10 @@ aside li {
 .collections-grid {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-item-width), 1fr)
+  );
   margin-bottom: 2rem;
 }
 
@@ -462,7 +521,10 @@ aside li {
 .products-grid {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-item-width), 1fr)
+  );
   margin-bottom: 2rem;
 }
 
@@ -520,7 +582,10 @@ aside li {
 .blog-grid {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-item-width), 1fr)
+  );
   margin-bottom: 2rem;
 }
 
@@ -611,7 +676,8 @@ aside li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+  animation: scroll var(--duration) linear var(--delay)
+    var(--iteration-count);
   animation-play-state: var(--play);
   animation-delay: var(--delay);
   animation-direction: var(--direction);

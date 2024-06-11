@@ -53,7 +53,7 @@ export default function Collections() {
           >
             <Link className='col-span-2 col-start-3 row-start-4'>
               <Grid
-                className='items-center justify-center'
+                className='relative items-center justify-center'
                 columns={1}
                 rows={1}
               >
@@ -62,7 +62,7 @@ export default function Collections() {
                   align='center'
                   size={6}
                   weight='regular'
-                  className='z-20 col-span-1 col-start-1 row-span-1 row-start-1 text-center'
+                  className='absolute z-20 col-span-1 col-start-1 row-span-1 row-start-1 text-center -translate-x-1/2 left-1/2'
                 >
                   Apparel
                 </Heading>

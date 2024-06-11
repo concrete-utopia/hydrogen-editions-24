@@ -206,7 +206,7 @@ export const ReviewStatistics = ({
 }) => {
   const averageLabel = ` ${average} `
   return (
-    <Text size='2xl' weight='medium'>
+    <Text size='2xl'>
       {icon}
       {averageLabel}
       <Span transparent>&mdash; {count} reviews</Span>

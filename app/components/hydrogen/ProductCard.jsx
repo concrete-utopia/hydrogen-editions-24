@@ -78,24 +78,26 @@ export function ProductCard({
               />
             )}
           </div>
-          <Grid gap={1} justify='start'>
+          <Grid gap={0} justify='start'>
             <Heading
               font='text'
               truncate
-              size={3}
-              weight='medium'
+              size='m'
               as='h3'
+              leading='none'
             >
               {nonNullProduct.title}
             </Heading>
             <Row gap={3} justify='start' align='baseline'>
               <Price
+                withoutTrailingZeros
                 color='black'
                 className='opacity-60'
                 as={Text}
                 price={firstVariant?.price}
               />
               <PriceCompareAt
+                withoutTrailingZeros
                 as={Text}
                 color='black'
                 className='opacity-60'

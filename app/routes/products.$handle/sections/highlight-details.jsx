@@ -13,6 +13,8 @@ import { Image } from '@shopify/hydrogen'
 export default function HighlightDetails() {
   const { details } = useLoaderData()
 
+  if (!details) return null
+
   const { highlights } = JSON.parse(
     details.features.reference.content.value,
   )
@@ -24,7 +26,12 @@ export default function HighlightDetails() {
           <Column resizeY='fill' justify='center' gap={9}>
             {highlights.map((highlight) => (
               <Column gap={5} key={highlight.title}>
-                <Heading font='text' size={4} color='white'>
+                <Heading
+                  font='text'
+                  size={4}
+                  weight='bold'
+                  color='white'
+                >
                   {highlight.title}
                 </Heading>
                 <Column as='ul' gap={2}>
@@ -36,11 +43,7 @@ export default function HighlightDetails() {
                       className='flex items-center'
                     >
                       <span className='bg-accent inline-block w-10 h-[2px]' />
-                      <Text
-                        size='xl'
-                        color='white'
-                        className='opacity-70'
-                      >
+                      <Text size='xl' color='white'>
                         {item}
                       </Text>
                     </Row>
