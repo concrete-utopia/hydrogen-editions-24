@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Storyboard, RemixScene } from 'utopia-api'
 
 import { getLoadContext } from '../server-context-getter'
-import { Image } from '@shopify/hydrogen'
 
 const contextGetter = getLoadContext(
   {
@@ -13,8 +12,8 @@ const contextGetter = getLoadContext(
   {
     waitUntil: () => {},
   },
-  // Demo cart ID obtained from https://mock.shop/create-cart
-  'gid://shopify/Cart/Z2NwLXVzLWNlbnRyYWwxOjAxSEhKQ0I3RFoySlY3Mk5ORlhUVEo2RjhU',
+  // Demo cart ID logged from a locally running store
+  'gid://shopify/Cart/Z2NwLWV1cm9wZS13ZXN0MTowMUhaUzVXRDFHMEpLQVQ5OVdaSkhEMzcwSA?key=90a8b665c9521e8ee9b4c514fc44319b',
 )
 
 export var storyboard = (

@@ -268,7 +268,8 @@ function ProductForm({
           }
           onClick={() => {
             window.location.href =
-              window.location.href + '#cart-aside'
+              window.location.href.split('#')[0] +
+              '#cart-aside'
           }}
           lines={
             selectedVariant
