@@ -156,7 +156,7 @@ export default function Product() {
       <Marquee />
       <HighlightDetails />
       <HighlightSolution />
-      {customerReviews != null ? <Reviews /> : null}
+      <Reviews />
       <Recommended />
       <Spotlight />
     </Column>

@@ -18,6 +18,10 @@ export default function Reviews() {
   const { review_count, review_avg, reviews } =
     data.reviews.reviews
 
+  if (reviews == null) {
+    return null
+  }
+
   const customerReviews = reviews.references.nodes.map(
     (r, i) => {
       return {
