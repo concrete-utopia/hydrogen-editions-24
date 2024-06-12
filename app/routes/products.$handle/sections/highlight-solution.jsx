@@ -17,13 +17,15 @@ import {
 } from '/app/components/hydrogen/new/Layout'
 
 export default function HighlightSolution() {
-  const { solution, product } = useLoaderData()
+  const data = useLoaderData()
+
+  if (data.solution == null) return null
 
   const { featuredImage } = data.product
-  const title = solution?.reference?.title
-  const description = solution?.reference.description
+  const { title, description, learn_more } =
+    data.solution.reference
 
-  return solution != null ? (
+  return (
     <Section className='aspect-[2/1]'>
       <Row
         className='relative z-10 h-full'
@@ -76,5 +78,5 @@ export default function HighlightSolution() {
         <span className='bg-white aspect-square w-14 -translate-y-7'></span>
       </div>
     </Section>
-  ) : null
+  )
 }
