@@ -113,20 +113,19 @@ const SharedTextProperties = {
     control: 'radio',
     options: [
       {
-        value: 'light',
-        label: 'light',
-      },
-      {
         value: 'left',
-        label: 'left',
+        label: '',
+        icon: 'TextAlignLeft',
       },
       {
         value: 'center',
-        label: 'center',
+        label: '',
+        icon: 'TextAlignCenter',
       },
       {
         value: 'right',
-        label: 'right',
+        label: '',
+        icon: 'TextAlignRight',
       },
     ],
     folder: 'Paragraph',
@@ -135,25 +134,26 @@ const SharedTextProperties = {
     control: 'radio',
     options: [
       {
-        value: 'wrap',
-        label: 'wrap',
-      },
-      {
         value: 'nowrap',
-        label: 'nowrap',
+        label: '—',
       },
       {
-        value: 'pretty',
-        label: 'pretty',
+        value: 'wrap',
+        label: 'Wrap',
       },
-      {
-        value: 'balance',
-        label: 'balance',
-      },
-      {
-        value: 'bold',
-        label: 'bold',
-      },
+      // omitted values:
+      // {
+      //   value: 'pretty',
+      //   label: 'pretty',
+      // },
+      // {
+      //   value: 'balance',
+      //   label: 'balance',
+      // },
+      // {
+      //   value: 'bold',
+      //   label: 'bold',
+      // },
     ],
     folder: 'Paragraph',
   },
@@ -184,7 +184,17 @@ const SharedTextProperties = {
     folder: 'Character',
   },
   truncate: {
-    ...BooleanSegmentControl,
+    control: 'radio',
+    options: [
+      {
+        label: '—',
+        value: true,
+      },
+      {
+        label: 'A...',
+        value: false,
+      },
+    ],
     folder: 'Paragraph',
   },
   uppercase: {
@@ -192,27 +202,22 @@ const SharedTextProperties = {
     folder: 'Character',
   },
   fontStyle: {
-    control: 'popuplist',
+    control: 'radio',
     options: [
       {
         value: 'italic',
-        label: 'italic',
+        label: '',
+        icon: 'Italic',
       },
       {
         value: 'underline',
-        label: 'underline',
-      },
-      {
-        value: 'lineThrough',
-        label: 'linethrough',
+        label: '',
+        icon: 'Underline',
       },
       {
         value: 'strike',
-        label: 'strike',
-      },
-      {
-        value: 'bold',
-        label: 'bold',
+        label: '',
+        icon: 'Strikethrough',
       },
     ],
     folder: 'Character',
@@ -223,23 +228,23 @@ const SharedTextProperties = {
     options: [
       {
         value: 'sans',
-        label: 'sans',
+        label: '',
+        icon: 'FontStyleSansSerif',
       },
       {
         value: 'serif',
-        label: 'serif',
+        label: '',
+        icon: 'FontStyleSerif',
       },
       {
         value: 'mono',
-        label: 'mono',
-      },
-      {
-        value: 'text',
-        label: 'text',
+        label: '',
+        icon: 'FontStyleMonospace',
       },
       {
         value: 'display',
-        label: 'display',
+        label: '',
+        icon: 'FontStyleScript',
       },
     ],
     folder: 'Character',
