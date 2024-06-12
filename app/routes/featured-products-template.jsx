@@ -5,6 +5,7 @@ import { Column } from '@h2/new/Layout'
 import { getVariantUrl } from '~/lib/variants'
 import { useLoaderData } from '@remix-run/react'
 import { Suspense } from 'react'
+import { Section } from '@h2/new/Layout'
 
 export const meta = ({ data }) => {
   return [
@@ -156,7 +157,11 @@ export default function Product() {
 
   const reviewAvg = JSON.parse(review_avg.value).value
   const reviewCount = review_count.value
-  return <Column></Column>
+  return (
+    <Column>
+      <Section minHeight={800} />
+    </Column>
+  )
 }
 
 /***********************
