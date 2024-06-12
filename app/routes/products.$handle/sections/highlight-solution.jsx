@@ -19,7 +19,7 @@ import {
 export default function HighlightSolution() {
   const { solution, product } = useLoaderData()
 
-  const { featuredImage } = product
+  const { featuredImage } = data.product
   const title = solution?.reference?.title
   const description = solution?.reference.description
 
