@@ -13,15 +13,13 @@ import { Image } from '@shopify/hydrogen'
 export default function HighlightDetails() {
   const { details } = useLoaderData()
 
-  const features = details?.features
+  if (details?.features == null) return null
 
-  const highlights =
-    features != null
-      ? JSON.parse(features.reference.content.value)
-          .highlights
-      : null
+  const { highlights } = JSON.parse(
+    details.features.reference.content.value,
+  )
 
-  return highlights ? (
+  return (
     <Section className='items-center text-white py-44 bg-darkGray'>
       <Container resizeY='fill'>
         <Grid resizeY='fill'>
@@ -69,5 +67,5 @@ export default function HighlightDetails() {
         </div>
       </Background>
     </Section>
-  ) : null
+  )
 }

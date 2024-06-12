@@ -14,10 +14,15 @@ import { useLoaderData } from '@remix-run/react'
 
 export default function Reviews() {
   const data = useLoaderData()
+
   const { review_count, review_avg, reviews } =
     data.reviews.reviews
 
-  const customerReviews = reviews?.references.nodes.map(
+  if (reviews == null) {
+    return null
+  }
+
+  const customerReviews = reviews.references.nodes.map(
     (r, i) => {
       return {
         ...r,
@@ -27,13 +32,10 @@ export default function Reviews() {
     },
   )
 
-  const reviewAvg =
-    customerReviews != null
-      ? JSON.parse(review_avg.value).value
-      : null
-  const reviewCount = review_count?.value
+  const reviewAvg = JSON.parse(review_avg.value).value
+  const reviewCount = review_count.value
 
-  return customerReviews != null ? (
+  return (
     <Section>
       <Container paddingY='l' marginBottom>
         <Column gap={8}>
@@ -74,7 +76,7 @@ export default function Reviews() {
         </Row>
       </Container>
     </Section>
-  ) : null
+  )
 }
 
 const review = cva({
