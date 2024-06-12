@@ -52,233 +52,235 @@ export const DefaultTextContents = [
   ...TextContents,
 ]
 
+const SharedTextProperties = {
+  size: {
+    control: 'popuplist',
+    options: tshirtSizes.map((size) => ({
+      label: size,
+      value: size,
+    })),
+    folder: 'Size',
+  },
+  width: {
+    control: 'popuplist',
+    options: [
+      {
+        label: 'narrow',
+        value: 'narrow',
+      },
+      {
+        label: 'base',
+        value: 'base',
+      },
+      {
+        label: 'wide',
+        value: 'wide',
+      },
+      {
+        label: 'full',
+        value: 'full',
+      },
+    ],
+    folder: 'Size',
+  },
+  weight: {
+    control: 'popuplist',
+    options: [
+      {
+        value: 'light',
+        label: 'light',
+      },
+      {
+        value: 'regular',
+        label: 'regular',
+      },
+      {
+        value: 'medium',
+        label: 'medium',
+      },
+      {
+        value: 'semibold',
+        label: 'semibold',
+      },
+      {
+        value: 'bold',
+        label: 'bold',
+      },
+    ],
+    folder: 'Character',
+  },
+  align: {
+    control: 'radio',
+    options: [
+      {
+        value: 'light',
+        label: 'light',
+      },
+      {
+        value: 'left',
+        label: 'left',
+      },
+      {
+        value: 'center',
+        label: 'center',
+      },
+      {
+        value: 'right',
+        label: 'right',
+      },
+    ],
+    folder: 'Paragraph',
+  },
+  wrap: {
+    control: 'radio',
+    options: [
+      {
+        value: 'wrap',
+        label: 'wrap',
+      },
+      {
+        value: 'nowrap',
+        label: 'nowrap',
+      },
+      {
+        value: 'pretty',
+        label: 'pretty',
+      },
+      {
+        value: 'balance',
+        label: 'balance',
+      },
+      {
+        value: 'bold',
+        label: 'bold',
+      },
+    ],
+    folder: 'Paragraph',
+  },
+  color: {
+    control: 'popuplist',
+    options: [
+      {
+        value: 'text',
+        label: 'text',
+      },
+      {
+        value: 'black',
+        label: 'black',
+      },
+      {
+        value: 'accent',
+        label: 'accent',
+      },
+      {
+        value: 'white',
+        label: 'white',
+      },
+      {
+        value: 'gray',
+        label: 'gray',
+      },
+    ],
+    folder: 'Character',
+  },
+  truncate: {
+    ...BooleanSegmentControl,
+    folder: 'Paragraph',
+  },
+  uppercase: {
+    ...BooleanSegmentControl,
+    folder: 'Character',
+  },
+  fontStyle: {
+    control: 'popuplist',
+    options: [
+      {
+        value: 'italic',
+        label: 'italic',
+      },
+      {
+        value: 'underline',
+        label: 'underline',
+      },
+      {
+        value: 'lineThrough',
+        label: 'linethrough',
+      },
+      {
+        value: 'strike',
+        label: 'strike',
+      },
+      {
+        value: 'bold',
+        label: 'bold',
+      },
+    ],
+    folder: 'Character',
+    label: 'Font style',
+  },
+  font: {
+    control: 'radio',
+    options: [
+      {
+        value: 'sans',
+        label: 'sans',
+      },
+      {
+        value: 'serif',
+        label: 'serif',
+      },
+      {
+        value: 'mono',
+        label: 'mono',
+      },
+      {
+        value: 'text',
+        label: 'text',
+      },
+      {
+        value: 'display',
+        label: 'display',
+      },
+    ],
+    folder: 'Character',
+  },
+  leading: {
+    control: 'popuplist',
+    options: [
+      {
+        value: 'none',
+        label: 'none',
+      },
+      {
+        value: 'tight',
+        label: 'tight',
+      },
+      {
+        value: 'snug',
+        label: 'snug',
+      },
+      {
+        value: 'normal',
+        label: 'normal',
+      },
+      {
+        value: 'relaxed',
+        label: 'relaxed',
+      },
+      {
+        value: 'loose',
+        label: 'loose',
+      },
+    ],
+    folder: 'Paragraph',
+    label: 'Line height',
+  },
+}
+
 const annotations = {
   Heading: {
     component: Heading,
-    properties: {
-      size: {
-        control: 'radio',
-        options: tshirtSizes.map((size) => ({
-          label: size,
-          value: size,
-        })),
-        folder: 'Size',
-      },
-      width: {
-        control: 'radio',
-        options: [
-          {
-            label: 'narrow',
-            value: 'narrow',
-          },
-          {
-            label: 'base',
-            value: 'base',
-          },
-          {
-            label: 'wide',
-            value: 'wide',
-          },
-          {
-            label: 'full',
-            value: 'full',
-          },
-        ],
-        folder: 'Size',
-      },
-      weight: {
-        control: 'radio',
-        options: [
-          {
-            value: 'light',
-            label: 'light',
-          },
-          {
-            value: 'regular',
-            label: 'regular',
-          },
-          {
-            value: 'medium',
-            label: 'medium',
-          },
-          {
-            value: 'semibold',
-            label: 'semibold',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Character',
-      },
-      align: {
-        control: 'radio',
-        options: [
-          {
-            value: 'light',
-            label: 'light',
-          },
-          {
-            value: 'left',
-            label: 'left',
-          },
-          {
-            value: 'center',
-            label: 'center',
-          },
-          {
-            value: 'right',
-            label: 'right',
-          },
-        ],
-        folder: 'Paragraph',
-      },
-      wrap: {
-        control: 'radio',
-        options: [
-          {
-            value: 'wrap',
-            label: 'wrap',
-          },
-          {
-            value: 'nowrap',
-            label: 'nowrap',
-          },
-          {
-            value: 'pretty',
-            label: 'pretty',
-          },
-          {
-            value: 'balance',
-            label: 'balance',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Paragraph',
-      },
-      color: {
-        control: 'radio',
-        options: [
-          {
-            value: 'text',
-            label: 'text',
-          },
-          {
-            value: 'black',
-            label: 'black',
-          },
-          {
-            value: 'accent',
-            label: 'accent',
-          },
-          {
-            value: 'white',
-            label: 'white',
-          },
-          {
-            value: 'gray',
-            label: 'gray',
-          },
-        ],
-        folder: 'Character',
-      },
-      truncate: {
-        ...BooleanSegmentControl,
-        folder: 'Paragraph',
-      },
-      uppercase: {
-        ...BooleanSegmentControl,
-        folder: 'Character',
-      },
-      fontStyle: {
-        control: 'radio',
-        options: [
-          {
-            value: 'italic',
-            label: 'italic',
-          },
-          {
-            value: 'underline',
-            label: 'underline',
-          },
-          {
-            value: 'lineThrough',
-            label: 'linethrough',
-          },
-          {
-            value: 'strike',
-            label: 'strike',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Character',
-        label: 'Font style',
-      },
-      font: {
-        control: 'radio',
-        options: [
-          {
-            value: 'sans',
-            label: 'sans',
-          },
-          {
-            value: 'serif',
-            label: 'serif',
-          },
-          {
-            value: 'mono',
-            label: 'mono',
-          },
-          {
-            value: 'text',
-            label: 'text',
-          },
-          {
-            value: 'display',
-            label: 'display',
-          },
-        ],
-        folder: 'Character',
-      },
-      leading: {
-        control: 'radio',
-        options: [
-          {
-            value: 'none',
-            label: 'none',
-          },
-          {
-            value: 'tight',
-            label: 'tight',
-          },
-          {
-            value: 'snug',
-            label: 'snug',
-          },
-          {
-            value: 'normal',
-            label: 'normal',
-          },
-          {
-            value: 'relaxed',
-            label: 'relaxed',
-          },
-          {
-            value: 'loose',
-            label: 'loose',
-          },
-        ],
-        folder: 'Paragraph',
-        label: 'Line height',
-      },
-    },
+    properties: SharedTextProperties,
     focus: 'never',
     inspector: 'hidden',
     variants: HeadingVariants,
@@ -286,230 +288,7 @@ const annotations = {
   },
   Text: {
     component: Text,
-    properties: {
-      size: {
-        control: 'radio',
-        options: tshirtSizes.map((size) => ({
-          label: size,
-          value: size,
-        })),
-        folder: 'Size',
-      },
-      width: {
-        control: 'radio',
-        options: [
-          {
-            label: 'narrow',
-            value: 'narrow',
-          },
-          {
-            label: 'base',
-            value: 'base',
-          },
-          {
-            label: 'wide',
-            value: 'wide',
-          },
-          {
-            label: 'full',
-            value: 'full',
-          },
-        ],
-        folder: 'Size',
-      },
-      weight: {
-        control: 'radio',
-        options: [
-          {
-            value: 'light',
-            label: 'light',
-          },
-          {
-            value: 'regular',
-            label: 'regular',
-          },
-          {
-            value: 'medium',
-            label: 'medium',
-          },
-          {
-            value: 'semibold',
-            label: 'semibold',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Character',
-      },
-      align: {
-        control: 'radio',
-        options: [
-          {
-            value: 'light',
-            label: 'light',
-          },
-          {
-            value: 'left',
-            label: 'left',
-          },
-          {
-            value: 'center',
-            label: 'center',
-          },
-          {
-            value: 'right',
-            label: 'right',
-          },
-        ],
-        folder: 'Paragraph',
-      },
-      wrap: {
-        control: 'radio',
-        options: [
-          {
-            value: 'wrap',
-            label: 'wrap',
-          },
-          {
-            value: 'nowrap',
-            label: 'nowrap',
-          },
-          {
-            value: 'pretty',
-            label: 'pretty',
-          },
-          {
-            value: 'balance',
-            label: 'balance',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Paragraph',
-      },
-      color: {
-        control: 'radio',
-        options: [
-          {
-            value: 'text',
-            label: 'text',
-          },
-          {
-            value: 'black',
-            label: 'black',
-          },
-          {
-            value: 'accent',
-            label: 'accent',
-          },
-          {
-            value: 'white',
-            label: 'white',
-          },
-          {
-            value: 'gray',
-            label: 'gray',
-          },
-        ],
-        folder: 'Character',
-      },
-      truncate: {
-        ...BooleanSegmentControl,
-        folder: 'Paragraph',
-      },
-      uppercase: {
-        ...BooleanSegmentControl,
-        folder: 'Character',
-      },
-      fontStyle: {
-        control: 'radio',
-        options: [
-          {
-            value: 'italic',
-            label: 'italic',
-          },
-          {
-            value: 'underline',
-            label: 'underline',
-          },
-          {
-            value: 'lineThrough',
-            label: 'linethrough',
-          },
-          {
-            value: 'strike',
-            label: 'strike',
-          },
-          {
-            value: 'bold',
-            label: 'bold',
-          },
-        ],
-        folder: 'Character',
-        label: 'Font style',
-      },
-      font: {
-        control: 'radio',
-        options: [
-          {
-            value: 'sans',
-            label: 'sans',
-          },
-          {
-            value: 'serif',
-            label: 'serif',
-          },
-          {
-            value: 'mono',
-            label: 'mono',
-          },
-          {
-            value: 'text',
-            label: 'text',
-          },
-          {
-            value: 'display',
-            label: 'display',
-          },
-        ],
-        folder: 'Character',
-      },
-      leading: {
-        control: 'radio',
-        options: [
-          {
-            value: 'none',
-            label: 'none',
-          },
-          {
-            value: 'tight',
-            label: 'tight',
-          },
-          {
-            value: 'snug',
-            label: 'snug',
-          },
-          {
-            value: 'normal',
-            label: 'normal',
-          },
-          {
-            value: 'relaxed',
-            label: 'relaxed',
-          },
-          {
-            value: 'loose',
-            label: 'loose',
-          },
-        ],
-        folder: 'Paragraph',
-        label: 'Line height',
-      },
-    },
+    properties: SharedTextProperties,
     focus: 'never',
     inspector: 'hidden',
     variants: TextVariants,
@@ -518,6 +297,7 @@ const annotations = {
   Span: {
     component: Span,
     properties: {
+      ...SharedTextProperties,
       transparent: BooleanSegmentControl,
     },
     focus: 'never',
