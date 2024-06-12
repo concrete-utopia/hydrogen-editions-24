@@ -57,24 +57,25 @@ export const getLoadContext =
      * create and update the cart in the session.
      */
 
-    const cartId =
-      mockCartID != null
-        ? () => mockCartID
-        : cartGetIdDefault(request.headers)
-
-    console.log('Logging CartID for Utopia', cartId)
-
     const IS_TEST_ENVIRONMENT =
       typeof window !== 'undefined'
 
     const cart = createCartHandler({
       storefront,
-      getCartId: cartId,
+      getCartId:
+        mockCartID != null
+          ? () => mockCartID
+          : cartGetIdDefault(request.headers),
       setCartId: IS_TEST_ENVIRONMENT
         ? () => {}
         : cartSetIdDefault(),
       cartQueryFragment: CART_QUERY_FRAGMENT,
     })
+
+    console.log(
+      'Logging CartID for Utopia',
+      cart.getCartId(),
+    )
 
     return {
       session,
