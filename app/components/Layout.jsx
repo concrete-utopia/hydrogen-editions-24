@@ -9,6 +9,7 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search'
+import { Column } from '~/components/hydrogen/new/Layout'
 
 /**
  * @param {LayoutProps}
@@ -21,8 +22,7 @@ export function Layout({
   isLoggedIn,
 }) {
   return (
-    <>
-      <CartAside cart={cart} />
+    <Column>
       <SearchAside />
       <MobileMenuAside
         menu={header?.menu}
@@ -46,7 +46,7 @@ export function Layout({
           )}
         </Await>
       </Suspense>
-    </>
+    </Column>
   )
 }
 
