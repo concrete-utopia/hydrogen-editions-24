@@ -21,7 +21,7 @@ export function Layout({
   isLoggedIn,
 }) {
   return (
-    <>
+    <div>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside
@@ -46,7 +46,7 @@ export function Layout({
           )}
         </Await>
       </Suspense>
-    </>
+    </div>
   )
 }
 
