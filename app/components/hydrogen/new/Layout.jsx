@@ -279,8 +279,8 @@ export const Column = forwardRef(
         {...props}
         style={{
           padding: padded ? 100 : undefined,
-          maxWidth: maxWidth ?? props.style?.maxWidth,
-          maxHeight: maxHeight ?? props.style?.maxHeight,
+          maxWidth: maxWidth,
+          maxHeight: maxHeight,
           ...props.style,
         }}
       >
@@ -326,8 +326,8 @@ export const Row = forwardRef(
         {...props}
         style={{
           padding: padded ? 100 : undefined,
-          maxWidth: maxWidth ?? props.style?.maxWidth,
-          maxHeight: maxHeight ?? props.style?.maxHeight,
+          maxWidth: maxWidth,
+          maxHeight: maxHeight,
           ...props.style,
         }}
       >
@@ -598,8 +598,8 @@ export const Section = forwardRef(
         className={section({ padding, className })}
         {...props}
         style={{
+          minHeight: minHeight,
           ...props.style,
-          minHeight: minHeight ?? props.style?.minHeight,
         }}
       >
         {children}
