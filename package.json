@@ -62,7 +62,8 @@
   "utopia": {
     "featuredRoutes": [
       "/",
-      "/blogs/news"
+      "/blogs/news",
+      "/featured-product-tote"
     ],
     "pageTemplates": [
       {

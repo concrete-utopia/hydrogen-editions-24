@@ -30,19 +30,13 @@ export default function Hero() {
             >
               Summer 2024
             </Text>
-            <Heading
-              font='text'
-              size='8'
-              color='white'
-              data-uid='bqa'
-            >
+            <Heading font='text' size='8' color='white'>
               Building
             </Heading>
             <Heading
               font='display'
               size='8'
               color='white'
-              data-uid='1f5'
               style={{ height: 106 }}
             >
               Essentials
