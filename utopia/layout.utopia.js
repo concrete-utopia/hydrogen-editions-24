@@ -38,7 +38,7 @@ const SectionVariants = [
   {
     label: 'Section (padded)',
     imports: "import { Section } from '@h2/new/Layout'",
-    code: `<Section padded />`,
+    code: `<Section padding />`,
   },
   {
     label: 'Section (with minHeight)',
@@ -519,7 +519,11 @@ const annotations = {
   Section: {
     component: Section,
     properties: {
-      padded: BooleanSegmentControl,
+      padding: {
+        control: 'radio',
+        label: 'padded',
+        options: BooleanSegmentControlOptions,
+      },
       minHeight: {
         control: 'number-input',
         label: 'Min Height',
