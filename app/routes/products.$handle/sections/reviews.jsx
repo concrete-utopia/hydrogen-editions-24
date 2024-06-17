@@ -60,6 +60,7 @@ export default function Reviews() {
             align='end'
             maxHeight={1080}
             maxWidth={832}
+            style={{ gap: 48 }}
           >
             <Spacer height={144} />
             {customerReviews.map((review) => {
@@ -80,7 +81,7 @@ export default function Reviews() {
 }
 
 const review = cva({
-  base: ['mb-12'],
+  base: [],
   variants: {
     background: {
       black: 'bg-black text-white',
@@ -103,7 +104,7 @@ export function Review({ className, ...props }) {
     splitTextIntoSentences(quote)
 
   return (
-    <div className='relative inline-block mx-6'>
+    <div style={{ contain: 'layout' }}>
       <Column
         px={7}
         py={6}
