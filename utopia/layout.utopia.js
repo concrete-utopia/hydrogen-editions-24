@@ -1,4 +1,5 @@
 import * as Utopia from 'utopia-api'
+import { Placeholder } from 'utopia-api'
 import {
   Background,
   Row,
@@ -650,6 +651,13 @@ const annotations = {
 const Components = {
   '/app/components/hydrogen/new/Layout': annotations,
   '@h2/new/Layout': annotations,
+  'utopia-api': {
+    Placeholder: {
+      component: Placeholder,
+      properties: {},
+      children: 'not-supported',
+    },
+  },
 }
 
 export default Components
