@@ -532,7 +532,6 @@ const annotations = {
     focus: 'never',
     inspector: {
       display: 'collapsed',
-      sections: ['typography'],
     },
     variants: SectionVariants,
     children: {
