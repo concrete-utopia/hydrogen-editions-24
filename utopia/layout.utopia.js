@@ -325,7 +325,7 @@ const annotations = {
         {
           label: '',
           value: 'end',
-          icon: 'AlignItemsRowFlexStart',
+          icon: 'AlignItemsRowFlexEnd',
         },
         {
           label: '',
@@ -426,7 +426,7 @@ const annotations = {
         {
           label: '',
           value: 'end',
-          icon: 'AlignItemsColumnFlexStart',
+          icon: 'AlignItemsColumnFlexEnd',
         },
         {
           label: '',
