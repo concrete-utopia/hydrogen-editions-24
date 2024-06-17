@@ -62,7 +62,7 @@ export default function Reviews() {
             maxWidth={832}
             style={{ gap: 48 }}
           >
-            <Spacer height={144} />
+            <Spacer height={96} />
             {customerReviews.map((review) => {
               return (
                 <Review

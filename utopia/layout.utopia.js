@@ -512,7 +512,7 @@ const annotations = {
     variants: {
       label: 'Spacer',
       imports: "import { Spacer } from '@h2/new/Layout'",
-      code: `<Spacer height={144} />`,
+      code: `<Spacer height={96} />`,
     },
     icon: 'dashedframe',
   },
