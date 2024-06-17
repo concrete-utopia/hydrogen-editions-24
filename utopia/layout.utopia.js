@@ -443,12 +443,12 @@ const annotations = {
         {
           label: '',
           value: 'center',
-          icon: 'JustifyContentRowCenter',
+          icon: 'JustifyContentColumnCenter',
         },
         {
           label: '',
           value: 'start',
-          icon: 'JustifyContentRowFlexStart',
+          icon: 'JustifyContentColumnFlexStart',
         },
         {
           label: '',
