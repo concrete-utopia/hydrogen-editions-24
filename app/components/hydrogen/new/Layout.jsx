@@ -212,6 +212,7 @@ const layoutFlex = cva({
       end: 'justify-end',
       between: 'justify-between',
       around: 'justify-around',
+      evenly: 'justify-evenly',
     },
   },
   defaultVariants: {
@@ -253,6 +254,7 @@ export const Column = forwardRef(
       maxHeight,
       maxWidth,
       padded,
+      direction = 'down',
       className,
       ...props
     },
@@ -270,13 +272,13 @@ export const Column = forwardRef(
           resizeX,
           resizeY,
           wrap,
+          direction,
           className,
         })}
         data-h2='Column'
         {...props}
         style={{
           ...props.style,
-          flexDirection: 'column',
           padding: padded ? 100 : undefined,
           maxWidth: maxWidth ?? props.style?.maxWidth,
           maxHeight: maxHeight ?? props.style?.maxHeight,
@@ -299,6 +301,7 @@ export const Row = forwardRef(
       maxHeight,
       maxWidth,
       padded,
+      direction = 'right',
       className,
       ...props
     },
@@ -316,13 +319,13 @@ export const Row = forwardRef(
           resizeX,
           resizeY,
           wrap,
+          direction,
           className,
         })}
         data-h2='Column'
         {...props}
         style={{
           ...props.style,
-          flexDirection: 'row',
           padding: padded ? 100 : undefined,
           maxWidth: maxWidth ?? props.style?.maxWidth,
           maxHeight: maxHeight ?? props.style?.maxHeight,

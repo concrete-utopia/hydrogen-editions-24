@@ -298,44 +298,75 @@ const annotations = {
   Row: {
     component: Row,
     properties: {
+      direction: Utopia.radioControl([
+        {
+          label: '',
+          value: 'right',
+          icon: 'FlexDirectionRow',
+        },
+        {
+          label: '',
+          value: 'left',
+          icon: 'FlexDirectionRowReverse',
+        },
+      ]),
       align: Utopia.radioControl([
         {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
+          label: '',
           value: 'center',
+          icon: 'AlignItemsRowCenter',
         },
         {
-          label: 'end',
+          label: '',
+          value: 'start',
+          icon: 'AlignItemsRowFlexStart',
+        },
+        {
+          label: '',
           value: 'end',
+          icon: 'AlignItemsRowFlexStart',
         },
         {
-          label: 'baseline',
-          value: 'baseline',
-        },
-        {
-          label: 'stretch',
+          label: '',
           value: 'stretch',
+          icon: 'AlignItemsRowStretch',
+        },
+        {
+          label: '',
+          value: 'baseline',
+          icon: 'AlignItemsRowBaseline',
         },
       ]),
       justify: Utopia.radioControl([
         {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
+          label: '',
           value: 'center',
+          icon: 'JustifyContentRowCenter',
         },
         {
-          label: 'end',
+          label: '',
+          value: 'start',
+          icon: 'JustifyContentRowFlexStart',
+        },
+        {
+          label: '',
           value: 'end',
+          icon: 'JustifyContentRowFlexEnd',
         },
         {
-          label: 'between',
+          label: '',
           value: 'between',
+          icon: 'JustifyContentRowSpaceBetween',
+        },
+        {
+          label: '',
+          value: 'around',
+          icon: 'JustifyContentRowSpaceAround',
+        },
+        {
+          label: '',
+          value: 'evenly',
+          icon: 'JustifyContentRowSpaceEvenly',
         },
       ]),
       gap: Utopia.sliderControl(0, 9, 1),
@@ -368,44 +399,75 @@ const annotations = {
   Column: {
     component: Column,
     properties: {
+      direction: Utopia.radioControl([
+        {
+          label: '',
+          value: 'down',
+          icon: 'FlexDirectionColumn',
+        },
+        {
+          label: '',
+          value: 'up',
+          icon: 'FlexDirectionColumnReverse',
+        },
+      ]),
       align: Utopia.radioControl([
         {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
+          label: '',
           value: 'center',
+          icon: 'AlignItemsColumnCenter',
         },
         {
-          label: 'end',
+          label: '',
+          value: 'start',
+          icon: 'AlignItemsColumnFlexStart',
+        },
+        {
+          label: '',
           value: 'end',
+          icon: 'AlignItemsColumnFlexStart',
         },
         {
-          label: 'baseline',
-          value: 'baseline',
-        },
-        {
-          label: 'stretch',
+          label: '',
           value: 'stretch',
+          icon: 'AlignItemsColumnStretch',
+        },
+        {
+          label: '',
+          value: 'baseline',
+          icon: 'AlignItemsColumnBaseline',
         },
       ]),
       justify: Utopia.radioControl([
         {
-          label: 'start',
-          value: 'start',
-        },
-        {
-          label: 'center',
+          label: '',
           value: 'center',
+          icon: 'JustifyContentRowCenter',
         },
         {
-          label: 'end',
+          label: '',
+          value: 'start',
+          icon: 'JustifyContentRowFlexStart',
+        },
+        {
+          label: '',
           value: 'end',
+          icon: 'JustifyContentColumnFlexEnd',
         },
         {
-          label: 'between',
+          label: '',
           value: 'between',
+          icon: 'JustifyContentColumnSpaceBetween',
+        },
+        {
+          label: '',
+          value: 'around',
+          icon: 'JustifyContentColumnSpaceAround',
+        },
+        {
+          label: '',
+          value: 'evenly',
+          icon: 'JustifyContentColumnSpaceEvenly',
         },
       ]),
       gap: Utopia.sliderControl(0, 9, 1),
