@@ -278,10 +278,10 @@ export const Column = forwardRef(
         data-h2='Column'
         {...props}
         style={{
-          ...props.style,
           padding: padded ? 100 : undefined,
-          maxWidth: maxWidth ?? props.style?.maxWidth,
-          maxHeight: maxHeight ?? props.style?.maxHeight,
+          maxWidth: maxWidth,
+          maxHeight: maxHeight,
+          ...props.style,
         }}
       >
         {children}
@@ -325,10 +325,10 @@ export const Row = forwardRef(
         data-h2='Column'
         {...props}
         style={{
-          ...props.style,
           padding: padded ? 100 : undefined,
-          maxWidth: maxWidth ?? props.style?.maxWidth,
-          maxHeight: maxHeight ?? props.style?.maxHeight,
+          maxWidth: maxWidth,
+          maxHeight: maxHeight,
+          ...props.style,
         }}
       >
         {children}
@@ -598,8 +598,8 @@ export const Section = forwardRef(
         className={section({ padding, className })}
         {...props}
         style={{
+          minHeight: minHeight,
           ...props.style,
-          minHeight: minHeight ?? props.style?.minHeight,
         }}
       >
         {children}
