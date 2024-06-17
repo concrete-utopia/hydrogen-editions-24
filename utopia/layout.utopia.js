@@ -314,13 +314,13 @@ const annotations = {
       align: Utopia.radioControl([
         {
           label: '',
-          value: 'center',
-          icon: 'AlignItemsRowCenter',
+          value: 'start',
+          icon: 'AlignItemsRowFlexStart',
         },
         {
           label: '',
-          value: 'start',
-          icon: 'AlignItemsRowFlexStart',
+          value: 'center',
+          icon: 'AlignItemsRowCenter',
         },
         {
           label: '',
@@ -341,14 +341,15 @@ const annotations = {
       justify: Utopia.radioControl([
         {
           label: '',
-          value: 'center',
-          icon: 'JustifyContentRowCenter',
-        },
-        {
-          label: '',
           value: 'start',
           icon: 'JustifyContentRowFlexStart',
         },
+        {
+          label: '',
+          value: 'center',
+          icon: 'JustifyContentRowCenter',
+        },
+
         {
           label: '',
           value: 'end',
@@ -415,13 +416,13 @@ const annotations = {
       align: Utopia.radioControl([
         {
           label: '',
-          value: 'center',
-          icon: 'AlignItemsColumnCenter',
+          value: 'start',
+          icon: 'AlignItemsColumnFlexStart',
         },
         {
           label: '',
-          value: 'start',
-          icon: 'AlignItemsColumnFlexStart',
+          value: 'center',
+          icon: 'AlignItemsColumnCenter',
         },
         {
           label: '',
@@ -442,13 +443,13 @@ const annotations = {
       justify: Utopia.radioControl([
         {
           label: '',
-          value: 'center',
-          icon: 'JustifyContentColumnCenter',
+          value: 'start',
+          icon: 'JustifyContentColumnFlexStart',
         },
         {
           label: '',
-          value: 'start',
-          icon: 'JustifyContentColumnFlexStart',
+          value: 'center',
+          icon: 'JustifyContentColumnCenter',
         },
         {
           label: '',
