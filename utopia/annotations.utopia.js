@@ -71,6 +71,7 @@ const PromiseCardAnnotation = {
     },
   },
   children: 'not-supported',
+  icon: 'star',
   inspector: { display: 'collapsed', sections: ['visual'] },
   variants: [
     {
