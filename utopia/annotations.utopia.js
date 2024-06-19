@@ -49,7 +49,25 @@ const PromiseCardAnnotation = {
     borderRadius: {
       control: 'number-input',
       min: 0,
-      max: 100,
+      max: 300,
+    },
+    dropShadow: {
+      control: 'radio',
+      options: [
+        { label: 'Off', value: 'off' },
+        { label: 'Soft', value: 'soft' },
+      ],
+      folder: 'advanced',
+    },
+    rotation: {
+      control: 'number-input',
+      min: 0,
+      max: 90,
+      folder: 'advanced',
+    },
+    offset: {
+      control: 'vector2',
+      folder: 'advanced',
     },
   },
   children: 'not-supported',

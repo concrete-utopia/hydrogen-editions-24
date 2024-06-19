@@ -9,6 +9,9 @@ export const PromiseCard = ({
   borderRadius = 0,
   color = 'gray',
   icon = 'guarantee',
+  dropShadow = '',
+  rotation = 0,
+  offset = [0, 0],
 }) => {
   const bg = {
     black: 'bg-black',
@@ -67,6 +70,11 @@ export default function OurPromise() {
             description='Every one of our products comes with a limited lifetime warranty.'
             color='accent'
             icon='guarantee'
+            borderRadius={0}
+            dropShadow='off'
+            rotation={0}
+            offset={[0, 0]}
+            style={{ opacity: '100%' }}
           />
           <PromiseCard
             heading='100 days to try'
