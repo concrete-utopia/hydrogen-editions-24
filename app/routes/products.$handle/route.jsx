@@ -107,10 +107,14 @@ async function secondaryData({
       }),
     ])
 
-  const product = {
-    ...solution.product,
-    ...relatedProducts.product,
-  }
+  const reviewsWithBg =
+    reviews.reviews.reviews.references.nodes.map((r, i) => {
+      return {
+        ...r,
+        background:
+          i === 0 ? 'black' : i === 4 ? 'accent' : 'white',
+      }
+    })
 
   return {
     variants: variants.product.variants,
@@ -118,6 +122,7 @@ async function secondaryData({
     relatedProducts:
       relatedProducts.product.relatedProducts,
     reviews,
+    reviewsWithBg,
   }
 }
 
@@ -139,17 +144,6 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const data = useLoaderData()
-  const { review_count, review_avg, reviews } =
-    data.reviews.reviews
-
-  const customerReviews = reviews?.references.nodes
-
-  const reviewAvg =
-    customerReviews != null
-      ? JSON.parse(review_avg.value).value
-      : null
-  const reviewCount = review_count?.value
   return (
     <Column>
       <Hero />
