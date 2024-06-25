@@ -95,10 +95,7 @@ const PromiseCardAnnotation = {
  */
 const Components = {
   '/app/routes/_index/sections/our-promise': {
-    PromiseCard: {
-      component: PromiseCard,
-      properties: {},
-    },
+    PromiseCard: PromiseCardAnnotation,
   },
 }
 
