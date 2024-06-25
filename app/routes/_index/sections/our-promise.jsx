@@ -37,9 +37,8 @@ export const PromiseCard = ({
             : undefined,
         transform:
           offset == null
-            ? undefined
-            : `translate(${offset[0]}px, ${offset[1]}px)`,
-        rotate: `${rotation}deg`,
+            ? `rotate(${rotation}deg)`
+            : `translate(${offset[0]}px, ${offset[1]}px) rotate(${rotation}deg)`,
         ...style,
       }}
     >
