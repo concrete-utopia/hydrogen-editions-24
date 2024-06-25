@@ -69,7 +69,6 @@ export default function BestSellers() {
             product={products[5]}
             className='col-span-4 col-start-9 row-start-5 mt-8'
           />
-          s
         </Grid>
       </Container>
     </Section>
