@@ -11,7 +11,7 @@ export const PromiseCard = ({
   icon = 'guarantee',
   dropShadow = 'off',
   rotation = 0,
-  offset = [0, 0],
+  offset = null,
 }) => {
   const bg = {
     black: 'bg-black',
@@ -32,6 +32,10 @@ export const PromiseCard = ({
             : dropShadow === 'hard'
             ? '0px 16px 36px rgba(0, 0, 0, 0.3), 0px 16px 12px rgba(0, 0, 0, 0.4), 0px 8px 8px rgba(0, 0, 0, 0.4)'
             : undefined,
+        transform:
+          offset == null
+            ? undefined
+            : `translate(${offset[0]}px, ${offset[1]}px)`,
         ...style,
       }}
     >
