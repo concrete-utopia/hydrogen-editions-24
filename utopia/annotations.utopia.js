@@ -56,6 +56,7 @@ const PromiseCardAnnotation = {
       options: [
         { label: 'Off', value: 'off' },
         { label: 'Soft', value: 'soft' },
+        { label: 'Hard', value: 'hard' },
       ],
       folder: 'advanced',
     },

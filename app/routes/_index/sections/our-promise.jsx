@@ -9,7 +9,7 @@ export const PromiseCard = ({
   borderRadius = 0,
   color = 'gray',
   icon = 'guarantee',
-  dropShadow = '',
+  dropShadow = 'off',
   rotation = 0,
   offset = [0, 0],
 }) => {
@@ -24,7 +24,16 @@ export const PromiseCard = ({
   return (
     <div
       className={`p-10 w-auto h-auto gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
-      style={{ borderRadius: borderRadius, ...style }}
+      style={{
+        borderRadius: borderRadius,
+        boxShadow:
+          dropShadow === 'soft'
+            ? '0px 16px 36px rgba(0, 0, 0, 0.3), 0px 8px 12px rgba(0, 0, 0, 0.2)'
+            : dropShadow === 'hard'
+            ? '0px 16px 36px rgba(0, 0, 0, 0.3), 0px 16px 12px rgba(0, 0, 0, 0.4), 0px 8px 8px rgba(0, 0, 0, 0.4)'
+            : undefined,
+        ...style,
+      }}
     >
       <div className='aspect-[4/3] w-full relative'>
         <div className='absolute w-56 -right-4 -top-16'>
@@ -71,7 +80,6 @@ export default function OurPromise() {
             color='accent'
             icon='guarantee'
             borderRadius={0}
-            dropShadow='off'
             rotation={0}
             offset={[0, 0]}
             style={{ opacity: '100%' }}
