@@ -23,8 +23,11 @@ export const PromiseCard = ({
 
   return (
     <div
-      className={`p-10 w-auto h-auto gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
+      className={`p-10 gap-2 items-start justify-start flex flex-col bg-accent aspect-square overflow-hidden ${bg[color]}`}
       style={{
+        width: 360,
+        height: 360,
+        flexShrink: 0,
         borderRadius: borderRadius,
         boxShadow:
           dropShadow === 'soft'
