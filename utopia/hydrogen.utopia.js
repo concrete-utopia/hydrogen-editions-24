@@ -1,14 +1,14 @@
-import * as Utopia from 'utopia-api';
-import {Image, Money} from '@shopify/hydrogen';
-import {BooleanSegmentControl} from './layout.utopia';
+import * as Utopia from 'utopia-api'
+import { Image, Money } from '@shopify/hydrogen'
+import { BooleanSegmentControl } from './layout.utopia'
 
 const ImageCropControl = Utopia.popupListControl([
-  {value: 'center', label: 'center'},
-  {value: 'top', label: 'top'},
-  {value: 'bottom', label: 'bottom'},
-  {value: 'left', label: 'left'},
-  {value: 'right', label: 'right'},
-]);
+  { value: 'center', label: 'center' },
+  { value: 'top', label: 'top' },
+  { value: 'bottom', label: 'bottom' },
+  { value: 'left', label: 'left' },
+  { value: 'right', label: 'right' },
+])
 
 const ImageTypeControl = Utopia.objectControl({
   altText: Utopia.stringControl(),
@@ -16,7 +16,7 @@ const ImageTypeControl = Utopia.objectControl({
   url: Utopia.stringControl(),
   height: Utopia.numberControl(),
   width: Utopia.numberControl(),
-});
+})
 
 const CurrencyCodeControl = Utopia.popupListControl([
   {
@@ -31,59 +31,60 @@ const CurrencyCodeControl = Utopia.popupListControl([
     value: 'EUR',
     label: 'Euro (EUR).',
   },
-]);
+])
 
-const UnitPriceMeasurementMeasuredUnit = Utopia.popupListControl([
-  {
-    label: 'CL',
-    value: 'Centiliter',
-  },
-  {
-    value: 'CM',
-    label: 'Centimeter',
-  },
-  {
-    value: 'G',
-    label: 'Gram',
-  },
-  {
-    value: 'KG',
-    label: 'Kilogram',
-  },
-  {
-    value: 'L',
-    label: 'Liter',
-  },
-  {
-    value: 'M',
-    label: 'Meter',
-  },
-  {
-    value: 'M2',
-    label: 'Square meter',
-  },
-  {
-    value: 'M3',
-    label: 'Cubic meter',
-  },
-  {
-    value: 'MG',
-    label: 'Milligram',
-  },
-  {
-    value: 'ML',
-    label: 'Milliliter',
-  },
-  {
-    value: 'MM',
-    label: 'Millimeter',
-  },
-]);
+const UnitPriceMeasurementMeasuredUnit =
+  Utopia.popupListControl([
+    {
+      label: 'CL',
+      value: 'Centiliter',
+    },
+    {
+      value: 'CM',
+      label: 'Centimeter',
+    },
+    {
+      value: 'G',
+      label: 'Gram',
+    },
+    {
+      value: 'KG',
+      label: 'Kilogram',
+    },
+    {
+      value: 'L',
+      label: 'Liter',
+    },
+    {
+      value: 'M',
+      label: 'Meter',
+    },
+    {
+      value: 'M2',
+      label: 'Square meter',
+    },
+    {
+      value: 'M3',
+      label: 'Cubic meter',
+    },
+    {
+      value: 'MG',
+      label: 'Milligram',
+    },
+    {
+      value: 'ML',
+      label: 'Milliliter',
+    },
+    {
+      value: 'MM',
+      label: 'Millimeter',
+    },
+  ])
 
 const MoneyV2Control = Utopia.objectControl({
   amount: Utopia.stringControl(),
   currencyCode: CurrencyCodeControl,
-});
+})
 
 const UnitPriceMeasurementControl = Utopia.objectControl({
   measuredType: Utopia.popupListControl([
@@ -108,7 +109,7 @@ const UnitPriceMeasurementControl = Utopia.objectControl({
   quantityValue: Utopia.numberControl(),
   referenceUnit: UnitPriceMeasurementMeasuredUnit,
   referenceValue: Utopia.numberControl(), // this can only be int
-});
+})
 
 const Components = {
   '@shopify/hydrogen': {
@@ -138,6 +139,7 @@ const Components = {
           code: "<Image style={{ height: 'auto' }} data={{ altText: 'Example image', url: 'https://cdn.shopify.com/s/files/1/0598/5959/9382/files/backpack-art-5.png', height: 'auto', }} />",
         },
       ],
+      children: 'not-supported',
     },
     Money: {
       component: Money,
@@ -184,6 +186,6 @@ const Components = {
       ],
     },
   },
-};
+}
 
-export default Components;
+export default Components
