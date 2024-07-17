@@ -30,6 +30,8 @@ declare global {
     PUBLIC_STOREFRONT_ID: string;
     PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID: string;
     PUBLIC_CUSTOMER_ACCOUNT_API_URL: string;
+    SHOPIFY_STORE_URL: string;
+    SHOPIFY_STORE_ACCESS_TOKEN: string;
   }
 }
 
