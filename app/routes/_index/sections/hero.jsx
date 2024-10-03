@@ -1,6 +1,4 @@
 import * as React from 'react'
-// import { Button } from '@h2/new/Button'
-// import { Heading, Text } from '@h2/new/Text'
 
 export default function Hero() {
   return (
@@ -38,10 +36,9 @@ export default function Hero() {
 }
 
 function Counter() {
+  const [clickCount, setClickCount] = React.useState(0)
   const renderCount = React.useRef(0)
   renderCount.current += 1
-
-  const onClick = React.useCallback(())
 
   return (
     <div style={{ contain: 'layout' }}>
@@ -53,8 +50,12 @@ function Counter() {
           backgroundColor: 'red',
         }}
       />
-      <div
+      <button
+        onClick={() => {
+          setClickCount((prev) => prev + 1)
+        }}
         style={{
+          cursor: 'pointer',
           backgroundColor: '#aaaaaa33',
           position: 'absolute',
           left: 26,
@@ -63,9 +64,8 @@ function Counter() {
           height: 45,
         }}
       >
-        click me
-        <br />
-      </div>
+        click me {clickCount}
+      </button>
     </div>
   )
 }
