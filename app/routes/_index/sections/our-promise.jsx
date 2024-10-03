@@ -78,9 +78,44 @@ export default function OurPromise() {
           <br />
           Promise
         </Heading>
+        <div
+          style={{
+            backgroundColor: '#aaaaaa33',
+            position: 'absolute',
+            left: 587,
+            top: 121,
+            width: 158,
+            height: 126,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: '#aaaaaa33',
+              position: 'absolute',
+              left: 44,
+              top: 34,
+              width: 70,
+              height: 32,
+            }}
+          />
+        </div>
       </Container>
       <div className='h-auto mx-auto px-4 md:px-8 lg:px-10 w-full relative z-10 max-w-7xl pb-36'>
-        <div style={{ display: 'flex', gap: 50 }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 50,
+            contain: 'layout',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: '#aaaaaa33',
+              contain: 'layout',
+              width: 0,
+              height: 642,
+            }}
+          />
           <PromiseCard
             heading='Guaranteed For Life'
             description='Every one of our products comes with a limited lifetime warranty.'
@@ -89,13 +124,31 @@ export default function OurPromise() {
             borderRadius={0}
             rotation={0}
             offset={[0, 0]}
-            style={{ opacity: '100%' }}
+            style={{
+              opacity: '100%',
+              width: 296,
+              height: 360,
+            }}
           />
           <PromiseCard
             heading='100 days to try'
             description='Try it out for 100 days. If you don’t love it, send it back.'
             color='gray'
             icon='trial'
+          />
+          <PromiseCard
+            heading='Guaranteed For Life'
+            description='Every one of our products comes with a limited lifetime warranty.'
+            color='accent'
+            icon='guarantee'
+            borderRadius={0}
+            rotation={0}
+            offset={[0, 0]}
+            style={{
+              opacity: '100%',
+              width: 390,
+              contain: 'layout',
+            }}
           />
           <PromiseCard
             heading='Free shipping'

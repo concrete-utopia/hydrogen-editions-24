@@ -227,6 +227,6 @@ export const countries = {
     country: 'XK',
     currency: 'EUR',
   },
-};
+}
 
 /** @typedef {import('~/lib/type').Localizations} Localizations */

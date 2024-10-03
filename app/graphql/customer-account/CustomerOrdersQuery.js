@@ -15,7 +15,7 @@ export const ORDER_ITEM_FRAGMENT = `#graphql
     number
     processedAt
   }
-`;
+`
 
 // https://shopify.dev/docs/api/customer/latest/objects/Customer
 export const CUSTOMER_ORDERS_FRAGMENT = `#graphql
@@ -40,7 +40,7 @@ export const CUSTOMER_ORDERS_FRAGMENT = `#graphql
     }
   }
   ${ORDER_ITEM_FRAGMENT}
-`;
+`
 
 // https://shopify.dev/docs/api/customer/latest/queries/customer
 export const CUSTOMER_ORDERS_QUERY = `#graphql
@@ -55,4 +55,4 @@ export const CUSTOMER_ORDERS_QUERY = `#graphql
       ...CustomerOrders
     }
   }
-`;
+`

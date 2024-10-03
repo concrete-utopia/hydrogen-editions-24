@@ -49,8 +49,8 @@ export default function Hero() {
         </Row>
       </Grid>
       <Background columns={2}>
-        <div className='bg-accent'></div>
-        <div className='bg-lightGray'></div>
+        <div className='bg-accent' />
+        <div className='bg-lightGray' />
       </Background>
       <Background>
         <Column
@@ -101,7 +101,6 @@ function ProductSummary() {
         <Heading align='left' className='-mt-2 -mb-5'>
           {title}
         </Heading>
-
         <div
           id='product-info-content'
           className='grid gap-3'
@@ -126,7 +125,6 @@ function ProductSummary() {
             {description}
           </Text>
         </div>
-
         <Suspense
           fallback={
             <ProductForm
@@ -256,7 +254,6 @@ function ProductForm({
           </div>
         )}
       </VariantSelector>
-
       <Grid columns={2} gap={3}>
         <ShopPayButton variant={selectedVariant} />
         <AddToCartButton

@@ -84,11 +84,6 @@ const Flex = React.forwardRef(
 )
 
 function DemoDX(props) {
-  /**
-   * Use Tailwind values for all prop values —
-   * ideally dynamically via [`resolveConfig`](https://tailwindcss.com/docs/configuration#referencing-in-java-script);
-   * if we need to [hard code it at the start](https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js)
-   * that's OK too. */
   return (
     <>
       {/* Strict Utopia… not thinking about naming, just using what's there */}
@@ -98,33 +93,27 @@ function DemoDX(props) {
         w={374} // Default: 'auto' https://tailwindcss.com/docs/width
         h={150} // https://tailwindcss.com/docs/height
         horizontalResizing='fixed' // fixed | hug | auto ??
+        // fixed | hug | auto ??
+
+        // fixed | hug | auto ??
         verticalResizing=''
       >
         {props.children}
       </Flex>
       {/* Basic*/}
-      <Flex
-        left={'80px'}
-        top={'105px'}
-        width={'4'}
-        height={'4'}
-      >
+      <Flex left='80px' top='105px' width='4' height='4'>
         {props.children}
       </Flex>
       {/* Other ideas… */}
       {/* Responsive styles: `default, tablet, laptop, desktop` */}
-      <Flex left={'80px'} top={'105px'} width={[3, 6, 9]}>
+      <Flex left='80px' top='105px' width={[3, 6, 9]}>
         {props.children}
       </Flex>
       {/* With min-max, array of objects for responsive */}
       <Flex
-        left={'80px'}
-        top={'105px'}
-        width={{
-          min: '8',
-          width: 'full',
-          max: 'prose',
-        }}
+        left='80px'
+        top='105px'
+        width={{ min: '8', width: 'full', max: 'prose' }}
       >
         {props.children}
       </Flex>

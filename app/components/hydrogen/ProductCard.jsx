@@ -113,10 +113,7 @@ export function ProductCard({
       {quickAdd && firstVariant.availableForSale && (
         <AddToCartButton
           lines={[
-            {
-              quantity: 1,
-              merchandiseId: firstVariant.id,
-            },
+            { quantity: 1, merchandiseId: firstVariant.id },
           ]}
           variant='secondary'
           className='mt-2'

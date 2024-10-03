@@ -1,53 +1,71 @@
 import React from 'react'
-import {useLoaderData, Link} from '@remix-run/react';
-import {json} from '@shopify/remix-oxygen';
-import {Pagination, getPaginationVariables, Image} from '@shopify/hydrogen';
+import { useLoaderData, Link } from '@remix-run/react'
+import { json } from '@shopify/remix-oxygen'
+import {
+  Pagination,
+  getPaginationVariables,
+  Image,
+} from '@shopify/hydrogen'
 
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({context, request}) {
-  const paginationVariables = getPaginationVariables(request, {
-    pageBy: 4,
-  });
+export async function loader({ context, request }) {
+  const paginationVariables = getPaginationVariables(
+    request,
+    {
+      pageBy: 4,
+    },
+  )
 
-  const {collections} = await context.storefront.query(COLLECTIONS_QUERY, {
-    variables: paginationVariables,
-  });
+  const { collections } = await context.storefront.query(
+    COLLECTIONS_QUERY,
+    {
+      variables: paginationVariables,
+    },
+  )
 
-  return json({collections});
+  return json({ collections })
 }
 
 export default function Collections() {
   /** @type {LoaderReturnData} */
-  const {collections} = useLoaderData();
+  const { collections } = useLoaderData()
 
   return (
-    <div className="collections">
+    <div className='collections'>
       <h1>Collections</h1>
       <Pagination connection={collections}>
-        {({nodes, isLoading, PreviousLink, NextLink}) => (
+        {({ nodes, isLoading, PreviousLink, NextLink }) => (
           <div>
             <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+              {isLoading ? (
+                'Loading...'
+              ) : (
+                <span>↑ Load previous</span>
+              )}
             </PreviousLink>
             <CollectionsGrid collections={nodes} />
             <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+              {isLoading ? (
+                'Loading...'
+              ) : (
+                <span>Load more ↓</span>
+              )}
             </NextLink>
           </div>
         )}
       </Pagination>
     </div>
-  );
+  )
 }
 
 /**
  * @param {{collections: CollectionFragment[]}}
  */
-function CollectionsGrid({collections}) {
+function CollectionsGrid({ collections }) {
   return (
-    <div className="collections-grid">
+    <div className='collections-grid'>
       {collections.map((collection, index) => (
         <CollectionItem
           key={collection.id}
@@ -56,7 +74,7 @@ function CollectionsGrid({collections}) {
         />
       ))}
     </div>
-  );
+  )
 }
 
 /**
@@ -65,25 +83,25 @@ function CollectionsGrid({collections}) {
  *   index: number;
  * }}
  */
-function CollectionItem({collection, index}) {
+function CollectionItem({ collection, index }) {
   return (
     <Link
-      className="collection-item"
+      className='collection-item'
       key={collection.id}
       to={`/collections/${collection.handle}`}
-      prefetch="intent"
+      prefetch='intent'
     >
       {collection?.image && (
         <Image
           alt={collection.image.altText || collection.title}
-          aspectRatio="1/1"
+          aspectRatio='1/1'
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
       <h5>{collection.title}</h5>
     </Link>
-  );
+  )
 }
 
 const COLLECTIONS_QUERY = `#graphql
@@ -124,7 +142,7 @@ const COLLECTIONS_QUERY = `#graphql
       }
     }
   }
-`;
+`
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @typedef {import('storefrontapi.generated').CollectionFragment} CollectionFragment */

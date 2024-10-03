@@ -1,92 +1,118 @@
 import React from 'react'
-import {Link, useLoaderData} from '@remix-run/react';
+import { Link, useLoaderData } from '@remix-run/react'
 import {
   Money,
   Pagination,
   getPaginationVariables,
   flattenConnection,
-} from '@shopify/hydrogen';
-import {json} from '@shopify/remix-oxygen';
-import {CUSTOMER_ORDERS_QUERY} from '~/graphql/customer-account/CustomerOrdersQuery';
+} from '@shopify/hydrogen'
+import { json } from '@shopify/remix-oxygen'
+import { CUSTOMER_ORDERS_QUERY } from '~/graphql/customer-account/CustomerOrdersQuery'
 
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Orders'}];
-};
+  return [{ title: 'Orders' }]
+}
 
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({request, context}) {
-  const paginationVariables = getPaginationVariables(request, {
-    pageBy: 20,
-  });
-
-  const {data, errors} = await context.customerAccount.query(
-    CUSTOMER_ORDERS_QUERY,
+export async function loader({ request, context }) {
+  const paginationVariables = getPaginationVariables(
+    request,
     {
-      variables: {
-        ...paginationVariables,
-      },
+      pageBy: 20,
     },
-  );
+  )
+
+  const { data, errors } =
+    await context.customerAccount.query(
+      CUSTOMER_ORDERS_QUERY,
+      {
+        variables: {
+          ...paginationVariables,
+        },
+      },
+    )
 
   if (errors?.length || !data?.customer) {
-    throw Error('Customer orders not found');
+    throw Error('Customer orders not found')
   }
 
   return json(
-    {customer: data.customer},
+    { customer: data.customer },
     {
       headers: {
         'Set-Cookie': await context.session.commit(),
       },
     },
-  );
+  )
 }
 
 export default function Orders() {
   /** @type {LoaderReturnData} */
-  const {customer} = useLoaderData();
-  const {orders} = customer;
+  const { customer } = useLoaderData()
+  const { orders } = customer
   return (
-    <div className="orders">
-      {orders.nodes.length ? <OrdersTable orders={orders} /> : <EmptyOrders />}
+    <div className='orders'>
+      {orders.nodes.length ? (
+        <OrdersTable orders={orders} />
+      ) : (
+        <EmptyOrders />
+      )}
     </div>
-  );
+  )
 }
 
 /**
  * @param {Pick<CustomerOrdersFragment, 'orders'>}
  */
-function OrdersTable({orders}) {
+function OrdersTable({ orders }) {
   return (
-    <div className="acccount-orders">
+    <div className='acccount-orders'>
       {orders?.nodes.length ? (
         <Pagination connection={orders}>
-          {({nodes, isLoading, PreviousLink, NextLink}) => {
+          {({
+            nodes,
+            isLoading,
+            PreviousLink,
+            NextLink,
+          }) => {
             return (
               <>
                 <PreviousLink>
-                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+                  {isLoading ? (
+                    'Loading...'
+                  ) : (
+                    <span>↑ Load previous</span>
+                  )}
                 </PreviousLink>
                 {nodes.map((order) => {
-                  return <OrderItem key={order.id} order={order} />;
+                  return (
+                    <OrderItem
+                      key={order.id}
+                      order={order}
+                    />
+                  )
                 })}
                 <NextLink>
-                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+                  {isLoading ? (
+                    'Loading...'
+                  ) : (
+                    <span>Load more ↓</span>
+                  )}
                 </NextLink>
               </>
-            );
+            )
           }}
         </Pagination>
       ) : (
         <EmptyOrders />
       )}
     </div>
-  );
+  )
 }
 
 function EmptyOrders() {
@@ -95,17 +121,19 @@ function EmptyOrders() {
       <p>You haven&apos;t placed any orders yet.</p>
       <br />
       <p>
-        <Link to="/collections">Start Shopping →</Link>
+        <Link to='/collections'>Start Shopping →</Link>
       </p>
     </div>
-  );
+  )
 }
 
 /**
  * @param {{order: OrderItemFragment}}
  */
-function OrderItem({order}) {
-  const fulfillmentStatus = flattenConnection(order.fulfillments)[0]?.status;
+function OrderItem({ order }) {
+  const fulfillmentStatus = flattenConnection(
+    order.fulfillments,
+  )[0]?.status
   return (
     <>
       <fieldset>
@@ -116,11 +144,13 @@ function OrderItem({order}) {
         <p>{order.financialStatus}</p>
         {fulfillmentStatus && <p>{fulfillmentStatus}</p>}
         <Money data={order.totalPrice} />
-        <Link to={`/account/orders/${btoa(order.id)}`}>View Order →</Link>
+        <Link to={`/account/orders/${btoa(order.id)}`}>
+          View Order →
+        </Link>
       </fieldset>
       <br />
     </>
-  );
+  )
 }
 
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */

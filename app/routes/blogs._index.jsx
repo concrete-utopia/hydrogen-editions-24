@@ -1,69 +1,91 @@
 import React from 'react'
-import {json} from '@shopify/remix-oxygen';
-import {Link, useLoaderData} from '@remix-run/react';
-import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
+import { json } from '@shopify/remix-oxygen'
+import { Link, useLoaderData } from '@remix-run/react'
+import {
+  Pagination,
+  getPaginationVariables,
+} from '@shopify/hydrogen'
 
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: `Builder Supply | Blogs`}];
-};
+  return [{ title: `Builder Supply | Blogs` }]
+}
 
 /**
  * @param {LoaderFunctionArgs}
  */
-export const loader = async ({request, context: {storefront}}) => {
-  const paginationVariables = getPaginationVariables(request, {
-    pageBy: 10,
-  });
+export const loader = async ({
+  request,
+  context: { storefront },
+}) => {
+  const paginationVariables = getPaginationVariables(
+    request,
+    {
+      pageBy: 10,
+    },
+  )
 
-  const {blogs} = await storefront.query(BLOGS_QUERY, {
+  const { blogs } = await storefront.query(BLOGS_QUERY, {
     variables: {
       ...paginationVariables,
     },
-  });
+  })
 
-  return json({blogs});
-};
+  return json({ blogs })
+}
 
 export default function Blogs() {
   /** @type {LoaderReturnData} */
-  const {blogs} = useLoaderData();
+  const { blogs } = useLoaderData()
 
   return (
-    <div className="blogs">
+    <div className='blogs'>
       <h1>Blogs</h1>
-      <div className="blogs-grid">
+      <div className='blogs-grid'>
         <Pagination connection={blogs}>
-          {({nodes, isLoading, PreviousLink, NextLink}) => {
+          {({
+            nodes,
+            isLoading,
+            PreviousLink,
+            NextLink,
+          }) => {
             return (
               <>
                 <PreviousLink>
-                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+                  {isLoading ? (
+                    'Loading...'
+                  ) : (
+                    <span>↑ Load previous</span>
+                  )}
                 </PreviousLink>
                 {nodes.map((blog) => {
                   return (
                     <Link
-                      className="blog"
+                      className='blog'
                       key={blog.handle}
-                      prefetch="intent"
+                      prefetch='intent'
                       to={`/blogs/${blog.handle}`}
                     >
                       <h2>{blog.title}</h2>
                     </Link>
-                  );
+                  )
                 })}
                 <NextLink>
-                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+                  {isLoading ? (
+                    'Loading...'
+                  ) : (
+                    <span>Load more ↓</span>
+                  )}
                 </NextLink>
               </>
-            );
+            )
           }}
         </Pagination>
       </div>
     </div>
-  );
+  )
 }
 
 // NOTE: https://shopify.dev/docs/api/storefront/latest/objects/blog
@@ -98,7 +120,7 @@ const BLOGS_QUERY = `#graphql
       }
     }
   }
-`;
+`
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */

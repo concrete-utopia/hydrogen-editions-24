@@ -72,7 +72,6 @@ export function SearchResults({ results, searchTerm }) {
       {results &&
         keys.map((type) => {
           const resourceResults = results[type]
-
           if (
             resourceResults.nodes[0]?.__typename === 'Page'
           ) {
@@ -84,7 +83,6 @@ export function SearchResults({ results, searchTerm }) {
               />
             ) : null
           }
-
           if (
             resourceResults.nodes[0]?.__typename ===
             'Product'
@@ -98,7 +96,6 @@ export function SearchResults({ results, searchTerm }) {
               />
             ) : null
           }
-
           if (
             resourceResults.nodes[0]?.__typename ===
             'Article'
@@ -111,7 +108,6 @@ export function SearchResults({ results, searchTerm }) {
               />
             ) : null
           }
-
           return null
         })}
     </div>
@@ -135,7 +131,6 @@ function SearchResultsProductsGrid({
               product,
               `q=${encodeURIComponent(searchTerm)}`,
             )
-
             return (
               <div
                 className='search-results-item'
@@ -167,29 +162,30 @@ function SearchResultsProductsGrid({
             )
           })
           return (
-            <div>
-              <div>
-                <PreviousLink>
-                  {isLoading ? (
-                    'Loading...'
-                  ) : (
-                    <span>↑ Load previous</span>
-                  )}
-                </PreviousLink>
-              </div>
-              <div>
-                {ItemsMarkup}
-                <br />
-              </div>
-              <div>
-                <NextLink>
-                  {isLoading ? (
-                    'Loading...'
-                  ) : (
-                    <span>Load more ↓</span>
-                  )}
-                </NextLink>
-              </div>
+            <div
+              className='search-results-item'
+              key={product.id}
+            >
+              <Link
+                prefetch='intent'
+                to={`/products/${product.handle}${trackingParams}`}
+              >
+                {product.variants.nodes[0].image && (
+                  <Image
+                    data={product.variants.nodes[0].image}
+                    alt={product.title}
+                    width={50}
+                  />
+                )}
+                <div>
+                  <p>{product.title}</p>
+                  <small>
+                    <Money
+                      data={product.variants.nodes[0].price}
+                    />
+                  </small>
+                </div>
+              </Link>
             </div>
           )
         }}
@@ -207,7 +203,7 @@ function SearchResultPageGrid({ pages }) {
     <div className='search-result'>
       <h2>Pages</h2>
       <div>
-        {pages?.nodes?.map((page) => (
+        {pages?.nodes.map((page) => (
           <div
             className='search-results-item'
             key={page.id}
@@ -234,7 +230,7 @@ function SearchResultArticleGrid({ articles }) {
     <div className='search-result'>
       <h2>Articles</h2>
       <div>
-        {articles?.nodes?.map((article) => (
+        {articles?.nodes.map((article) => (
           <div
             className='search-results-item'
             key={article.id}

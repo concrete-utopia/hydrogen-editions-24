@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 /** TODO: Move to CVA
 
 import {cva} from 'cva';
@@ -37,12 +37,12 @@ export const Button = ({className, intent, size, ...props}) => (
 
 */
 
-import {forwardRef} from 'react';
-import {Link} from '@remix-run/react';
-import clsx from 'clsx';
-import {CartForm} from '@shopify/hydrogen';
+import { forwardRef } from 'react'
+import { Link } from '@remix-run/react'
+import clsx from 'clsx'
+import { CartForm } from '@shopify/hydrogen'
 
-import {missingClass} from '~/lib/utils';
+import { missingClass } from '~/lib/utils'
 
 export const Button = forwardRef(
   (
@@ -55,31 +55,34 @@ export const Button = forwardRef(
     },
     ref,
   ) => {
-    const Component = props?.to ? Link : as;
+    const Component = props?.to ? Link : as
 
     const baseButtonClasses =
-      'inline-block rounded-button font-medium text-center py-3 px-6';
+      'inline-block rounded-button font-medium text-center py-3 px-6'
 
     const variants = {
       primary: `${baseButtonClasses} bg-primary text-contrast`,
       secondary: `${baseButtonClasses} border border-primary/10 bg-contrast text-primary`,
-      inline: 'border-b border-primary/10 leading-none pb-1',
-    };
+      inline:
+        'border-b border-primary/10 leading-none pb-1',
+    }
 
     const widths = {
       auto: 'w-auto',
       full: 'w-full',
-    };
+    }
 
     const styles = clsx(
       missingClass(className, 'bg-') && variants[variant],
       missingClass(className, 'w-') && widths[width],
       className,
-    );
+    )
 
-    return <Component className={styles} {...props} ref={ref} />;
+    return (
+      <Component className={styles} {...props} ref={ref} />
+    )
   },
-);
+)
 
 export function AddToCartButton({
   analytics,
@@ -94,33 +97,34 @@ export function AddToCartButton({
   return (
     <div className={className}>
       <CartForm
-        route="/cart"
-        inputs={{
-          lines,
-        }}
+        route='/cart'
+        inputs={{ lines: lines }}
         action={CartForm.ACTIONS.LinesAdd}
       >
         {(fetcher) => {
           return (
             <>
               <input
-                name="analytics"
-                type="hidden"
+                name='analytics'
+                type='hidden'
                 value={JSON.stringify(analytics)}
               />
+
               <Button
-                type="submit"
+                type='submit'
                 width={width}
                 variant={variant}
-                disabled={disabled ?? fetcher.state !== 'idle'}
+                disabled={
+                  disabled ?? fetcher.state !== 'idle'
+                }
                 {...props}
               >
                 {children}
               </Button>
             </>
-          );
+          )
         }}
       </CartForm>
     </div>
-  );
+  )
 }

@@ -101,4 +101,4 @@ export const CART_QUERY_FRAGMENT = `#graphql
       applicable
     }
   }
-`;
+`

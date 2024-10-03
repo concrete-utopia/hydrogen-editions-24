@@ -1,7 +1,7 @@
 import React from 'react'
-import {json} from '@shopify/remix-oxygen';
-import {NO_PREDICTIVE_SEARCH_RESULTS} from '~/components/Search';
-import {applyTrackingParams} from '~/lib/search';
+import { json } from '@shopify/remix-oxygen'
+import { NO_PREDICTIVE_SEARCH_RESULTS } from '~/components/Search'
+import { applyTrackingParams } from '~/lib/search'
 
 const DEFAULT_SEARCH_TYPES = [
   'ARTICLE',
@@ -9,34 +9,42 @@ const DEFAULT_SEARCH_TYPES = [
   'PAGE',
   'PRODUCT',
   'QUERY',
-];
+]
 
 /**
  * Fetches the search results from the predictive search API
  * requested by the SearchForm component
  * @param {LoaderFunctionArgs}
  */
-export async function loader({request, params, context}) {
+export async function loader({ request, params, context }) {
   const search = await fetchPredictiveSearchResults({
     params,
     request,
     context,
-  });
+  })
 
   return json(search, {
-    headers: {'Cache-Control': `max-age=${search.searchTerm ? 60 : 3600}`},
-  });
+    headers: {
+      'Cache-Control': `max-age=${
+        search.searchTerm ? 60 : 3600
+      }`,
+    },
+  })
 }
 
 /**
  * @param {Pick<LoaderFunctionArgs, 'params' | 'context' | 'request'>}
  */
-async function fetchPredictiveSearchResults({params, request, context}) {
-  const url = new URL(request.url);
-  const searchParams = new URLSearchParams(url.search);
-  const searchTerm = searchParams.get('q') || '';
-  const limit = Number(searchParams.get('limit') || 10);
-  const rawTypes = String(searchParams.get('type') || 'ANY');
+async function fetchPredictiveSearchResults({
+  params,
+  request,
+  context,
+}) {
+  const url = new URL(request.url)
+  const searchParams = new URLSearchParams(url.search)
+  const searchTerm = searchParams.get('q') || ''
+  const limit = Number(searchParams.get('limit') || 10)
+  const rawTypes = String(searchParams.get('type') || 'ANY')
 
   const searchTypes =
     rawTypes === 'ANY'
@@ -44,35 +52,38 @@ async function fetchPredictiveSearchResults({params, request, context}) {
       : rawTypes
           .split(',')
           .map((t) => t.toUpperCase())
-          .filter((t) => DEFAULT_SEARCH_TYPES.includes(t));
+          .filter((t) => DEFAULT_SEARCH_TYPES.includes(t))
 
   if (!searchTerm) {
     return {
-      searchResults: {results: null, totalResults: 0},
+      searchResults: { results: null, totalResults: 0 },
       searchTerm,
       searchTypes,
-    };
+    }
   }
 
-  const data = await context.storefront.query(PREDICTIVE_SEARCH_QUERY, {
-    variables: {
-      limit,
-      limitScope: 'EACH',
-      searchTerm,
-      types: searchTypes,
+  const data = await context.storefront.query(
+    PREDICTIVE_SEARCH_QUERY,
+    {
+      variables: {
+        limit,
+        limitScope: 'EACH',
+        searchTerm,
+        types: searchTypes,
+      },
     },
-  });
+  )
 
   if (!data) {
-    throw new Error('No data returned from Shopify API');
+    throw new Error('No data returned from Shopify API')
   }
 
   const searchResults = normalizePredictiveSearchResults(
     data.predictiveSearch,
     params.locale,
-  );
+  )
 
-  return {searchResults, searchTerm, searchTypes};
+  return { searchResults, searchTerm, searchTypes }
 }
 
 /**
@@ -80,17 +91,20 @@ async function fetchPredictiveSearchResults({params, request, context}) {
  * @param {PredictiveSearchQuery['predictiveSearch']} predictiveSearch
  * @param {LoaderFunctionArgs['params']['locale']} locale
  */
-export function normalizePredictiveSearchResults(predictiveSearch, locale) {
-  let totalResults = 0;
+export function normalizePredictiveSearchResults(
+  predictiveSearch,
+  locale,
+) {
+  let totalResults = 0
   if (!predictiveSearch) {
     return {
       results: NO_PREDICTIVE_SEARCH_RESULTS,
       totalResults,
-    };
+    }
   }
 
-  const localePrefix = locale ? `/${locale}` : '';
-  const results = [];
+  const localePrefix = locale ? `/${locale}` : ''
+  const results = []
 
   if (predictiveSearch.queries.length) {
     results.push({
@@ -99,9 +113,9 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
         const trackingParams = applyTrackingParams(
           query,
           `q=${encodeURIComponent(query.text)}`,
-        );
+        )
 
-        totalResults++;
+        totalResults++
         return {
           __typename: query.__typename,
           handle: '',
@@ -110,17 +124,17 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
           title: query.text,
           styledTitle: query.styledText,
           url: `${localePrefix}/search${trackingParams}`,
-        };
+        }
       }),
-    });
+    })
   }
 
   if (predictiveSearch.products.length) {
     results.push({
       type: 'products',
       items: predictiveSearch.products.map((product) => {
-        totalResults++;
-        const trackingParams = applyTrackingParams(product);
+        totalResults++
+        const trackingParams = applyTrackingParams(product)
         return {
           __typename: product.__typename,
           handle: product.handle,
@@ -129,35 +143,38 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
           title: product.title,
           url: `${localePrefix}/products/${product.handle}${trackingParams}`,
           price: product.variants.nodes[0].price,
-        };
+        }
       }),
-    });
+    })
   }
 
   if (predictiveSearch.collections.length) {
     results.push({
       type: 'collections',
-      items: predictiveSearch.collections.map((collection) => {
-        totalResults++;
-        const trackingParams = applyTrackingParams(collection);
-        return {
-          __typename: collection.__typename,
-          handle: collection.handle,
-          id: collection.id,
-          image: collection.image,
-          title: collection.title,
-          url: `${localePrefix}/collections/${collection.handle}${trackingParams}`,
-        };
-      }),
-    });
+      items: predictiveSearch.collections.map(
+        (collection) => {
+          totalResults++
+          const trackingParams =
+            applyTrackingParams(collection)
+          return {
+            __typename: collection.__typename,
+            handle: collection.handle,
+            id: collection.id,
+            image: collection.image,
+            title: collection.title,
+            url: `${localePrefix}/collections/${collection.handle}${trackingParams}`,
+          }
+        },
+      ),
+    })
   }
 
   if (predictiveSearch.pages.length) {
     results.push({
       type: 'pages',
       items: predictiveSearch.pages.map((page) => {
-        totalResults++;
-        const trackingParams = applyTrackingParams(page);
+        totalResults++
+        const trackingParams = applyTrackingParams(page)
         return {
           __typename: page.__typename,
           handle: page.handle,
@@ -165,17 +182,17 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
           image: undefined,
           title: page.title,
           url: `${localePrefix}/pages/${page.handle}${trackingParams}`,
-        };
+        }
       }),
-    });
+    })
   }
 
   if (predictiveSearch.articles.length) {
     results.push({
       type: 'articles',
       items: predictiveSearch.articles.map((article) => {
-        totalResults++;
-        const trackingParams = applyTrackingParams(article);
+        totalResults++
+        const trackingParams = applyTrackingParams(article)
         return {
           __typename: article.__typename,
           handle: article.handle,
@@ -183,12 +200,12 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
           image: article.image,
           title: article.title,
           url: `${localePrefix}/blog/${article.handle}${trackingParams}`,
-        };
+        }
       }),
-    });
+    })
   }
 
-  return {results, totalResults};
+  return { results, totalResults }
 }
 
 const PREDICTIVE_SEARCH_QUERY = `#graphql
@@ -284,7 +301,7 @@ const PREDICTIVE_SEARCH_QUERY = `#graphql
       }
     }
   }
-`;
+`
 
 /**
  * @typedef {| 'ARTICLE'

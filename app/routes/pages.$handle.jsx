@@ -1,47 +1,54 @@
 import React from 'react'
-import {json} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
+import { json } from '@shopify/remix-oxygen'
+import { useLoaderData } from '@remix-run/react'
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({data}) => {
-  return [{title: `Builder Supply | ${data?.page.title ?? ''}`}];
-};
+export const meta = ({ data }) => {
+  return [
+    { title: `Builder Supply | ${data?.page.title ?? ''}` },
+  ]
+}
 
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({params, context}) {
+export async function loader({ params, context }) {
   if (!params.handle) {
-    throw new Error('Missing page handle');
+    throw new Error('Missing page handle')
   }
 
-  const {page} = await context.storefront.query(PAGE_QUERY, {
-    variables: {
-      handle: params.handle,
+  const { page } = await context.storefront.query(
+    PAGE_QUERY,
+    {
+      variables: {
+        handle: params.handle,
+      },
     },
-  });
+  )
 
   if (!page) {
-    throw new Response('Not Found', {status: 404});
+    throw new Response('Not Found', { status: 404 })
   }
 
-  return json({page});
+  return json({ page })
 }
 
 export default function Page() {
   /** @type {LoaderReturnData} */
-  const {page} = useLoaderData();
+  const { page } = useLoaderData()
 
   return (
-    <div className="page">
+    <div className='page'>
       <header>
         <h1>{page.title}</h1>
       </header>
-      <main dangerouslySetInnerHTML={{__html: page.body}} />
+      <main
+        dangerouslySetInnerHTML={{ __html: page.body }}
+      />
     </div>
-  );
+  )
 }
 
 const PAGE_QUERY = `#graphql
@@ -61,7 +68,7 @@ const PAGE_QUERY = `#graphql
       }
     }
   }
-`;
+`
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */

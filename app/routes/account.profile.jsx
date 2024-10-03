@@ -1,25 +1,25 @@
 import React from 'react'
-import {CUSTOMER_UPDATE_MUTATION} from '~/graphql/customer-account/CustomerUpdateMutation';
-import {json} from '@shopify/remix-oxygen';
+import { CUSTOMER_UPDATE_MUTATION } from '~/graphql/customer-account/CustomerUpdateMutation'
+import { json } from '@shopify/remix-oxygen'
 import {
   Form,
   useActionData,
   useNavigation,
   useOutletContext,
-} from '@remix-run/react';
+} from '@remix-run/react'
 
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Profile'}];
-};
+  return [{ title: 'Profile' }]
+}
 
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({context}) {
-  await context.customerAccount.handleAuthStatus();
+export async function loader({ context }) {
+  await context.customerAccount.handleAuthStatus()
 
   return json(
     {},
@@ -28,49 +28,52 @@ export async function loader({context}) {
         'Set-Cookie': await context.session.commit(),
       },
     },
-  );
+  )
 }
 
 /**
  * @param {ActionFunctionArgs}
  */
-export async function action({request, context}) {
-  const {customerAccount} = context;
+export async function action({ request, context }) {
+  const { customerAccount } = context
 
   if (request.method !== 'PUT') {
-    return json({error: 'Method not allowed'}, {status: 405});
+    return json(
+      { error: 'Method not allowed' },
+      { status: 405 },
+    )
   }
 
-  const form = await request.formData();
+  const form = await request.formData()
 
   try {
-    const customer = {};
-    const validInputKeys = ['firstName', 'lastName'];
+    const customer = {}
+    const validInputKeys = ['firstName', 'lastName']
     for (const [key, value] of form.entries()) {
       if (!validInputKeys.includes(key)) {
-        continue;
+        continue
       }
       if (typeof value === 'string' && value.length) {
-        customer[key] = value;
+        customer[key] = value
       }
     }
 
     // update customer and possibly password
-    const {data, errors} = await customerAccount.mutate(
+    const { data, errors } = await customerAccount.mutate(
       CUSTOMER_UPDATE_MUTATION,
       {
         variables: {
           customer,
         },
       },
-    );
+    )
 
     if (errors?.length) {
-      throw new Error(errors[0].message);
+      throw new Error(errors[0].message)
     }
 
     if (!data?.customerUpdate?.customer) {
-      throw new Error('Customer profile update failed.');
+      throw new Error('Customer profile update failed.')
     }
 
     return json(
@@ -83,53 +86,53 @@ export async function action({request, context}) {
           'Set-Cookie': await context.session.commit(),
         },
       },
-    );
+    )
   } catch (error) {
     return json(
-      {error: error.message, customer: null},
+      { error: error.message, customer: null },
       {
         status: 400,
         headers: {
           'Set-Cookie': await context.session.commit(),
         },
       },
-    );
+    )
   }
 }
 
 export default function AccountProfile() {
-  const account = useOutletContext();
-  const {state} = useNavigation();
+  const account = useOutletContext()
+  const { state } = useNavigation()
   /** @type {ActionReturnData} */
-  const action = useActionData();
-  const customer = action?.customer ?? account?.customer;
+  const action = useActionData()
+  const customer = action?.customer ?? account?.customer
 
   return (
-    <div className="account-profile">
+    <div className='account-profile'>
       <h2>My profile</h2>
       <br />
-      <Form method="PUT">
+      <Form method='PUT'>
         <legend>Personal information</legend>
         <fieldset>
-          <label htmlFor="firstName">First name</label>
+          <label htmlFor='firstName'>First name</label>
           <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            autoComplete="given-name"
-            placeholder="First name"
-            aria-label="First name"
+            id='firstName'
+            name='firstName'
+            type='text'
+            autoComplete='given-name'
+            placeholder='First name'
+            aria-label='First name'
             defaultValue={customer.firstName ?? ''}
             minLength={2}
           />
-          <label htmlFor="lastName">Last name</label>
+          <label htmlFor='lastName'>Last name</label>
           <input
-            id="lastName"
-            name="lastName"
-            type="text"
-            autoComplete="family-name"
-            placeholder="Last name"
-            aria-label="Last name"
+            id='lastName'
+            name='lastName'
+            type='text'
+            autoComplete='family-name'
+            placeholder='Last name'
+            aria-label='Last name'
             defaultValue={customer.lastName ?? ''}
             minLength={2}
           />
@@ -143,12 +146,12 @@ export default function AccountProfile() {
         ) : (
           <br />
         )}
-        <button type="submit" disabled={state !== 'idle'}>
+        <button type='submit' disabled={state !== 'idle'}>
           {state !== 'idle' ? 'Updating' : 'Update'}
         </button>
       </Form>
     </div>
-  );
+  )
 }
 
 /**

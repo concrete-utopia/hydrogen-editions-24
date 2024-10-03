@@ -38,10 +38,10 @@ export function Footer({ menu, shop }) {
       )} */}
       <div className='absolute top-0 right-0 flex justify-around w-full -translate-y-7'>
         <div className='flex gap-8 translate-x-24 -translate-y-6'>
-          <span className='aspect-square w-14 bg-darkGray'></span>
-          <span className='-translate-y-8 aspect-square w-14 bg-darkGray'></span>
+          <span className='aspect-square w-14 bg-darkGray' />
+          <span className='-translate-y-8 aspect-square w-14 bg-darkGray' />
         </div>
-        <div></div>
+        <div />
         <div className='flex translate-x-40'>
           <span
             className={cx([
@@ -49,7 +49,7 @@ export function Footer({ menu, shop }) {
               'aspect-square',
               'w-14',
             ])}
-          ></span>
+          />
           <span
             className={cx([
               bgColor,
@@ -57,7 +57,7 @@ export function Footer({ menu, shop }) {
               'aspect-square',
               'w-14',
             ])}
-          ></span>
+          />
         </div>
       </div>
       <Container className='pb-16 border-b border-white/10'>
@@ -233,7 +233,6 @@ function FooterMenu({ menu, primaryDomainUrl }) {
     <nav className='footer-menu' role='navigation'>
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null
-        // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
           item.url.includes(publicStoreDomain) ||

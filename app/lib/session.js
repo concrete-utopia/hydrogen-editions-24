@@ -1,4 +1,4 @@
-import {createCookieSessionStorage} from '@shopify/remix-oxygen';
+import { createCookieSessionStorage } from '@shopify/remix-oxygen'
 
 /**
  * This is a custom session implementation for your Hydrogen shop.
@@ -6,16 +6,16 @@ import {createCookieSessionStorage} from '@shopify/remix-oxygen';
  * swap out the cookie-based implementation with something else!
  */
 export class AppSession {
-  #sessionStorage;
-  #session;
+  #sessionStorage
+  #session
 
   /**
    * @param {SessionStorage} sessionStorage
    * @param {Session} session
    */
   constructor(sessionStorage, session) {
-    this.#sessionStorage = sessionStorage;
-    this.#session = session;
+    this.#sessionStorage = sessionStorage
+    this.#session = session
   }
 
   /**
@@ -32,41 +32,43 @@ export class AppSession {
         sameSite: 'lax',
         secrets,
       },
-    });
+    })
 
     const session = await storage
       .getSession(request.headers.get('Cookie'))
-      .catch(() => storage.getSession());
+      .catch(() => storage.getSession())
 
-    return new this(storage, session);
+    return new this(storage, session)
   }
 
   get has() {
-    return this.#session.has;
+    return this.#session.has
   }
 
   get get() {
-    return this.#session.get;
+    return this.#session.get
   }
 
   get flash() {
-    return this.#session.flash;
+    return this.#session.flash
   }
 
   get unset() {
-    return this.#session.unset;
+    return this.#session.unset
   }
 
   get set() {
-    return this.#session.set;
+    return this.#session.set
   }
 
   destroy() {
-    return this.#sessionStorage.destroySession(this.#session);
+    return this.#sessionStorage.destroySession(
+      this.#session,
+    )
   }
 
   commit() {
-    return this.#sessionStorage.commitSession(this.#session);
+    return this.#sessionStorage.commitSession(this.#session)
   }
 }
 

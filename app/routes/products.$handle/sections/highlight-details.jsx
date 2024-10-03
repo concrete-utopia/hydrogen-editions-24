@@ -55,7 +55,7 @@ export default function HighlightDetails() {
         </Grid>
       </Container>
       <Background columns={2}>
-        <div className='w-full h-full'></div>
+        <div className='w-full h-full' />
         <div className='w-full h-full bg-accent'>
           <Image
             className='w-full h-full'

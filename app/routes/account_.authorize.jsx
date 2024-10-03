@@ -2,8 +2,8 @@ import React from 'react'
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({context}) {
-  return context.customerAccount.authorize();
+export async function loader({ context }) {
+  return context.customerAccount.authorize()
 }
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */

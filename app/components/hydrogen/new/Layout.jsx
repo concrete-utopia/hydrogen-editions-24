@@ -597,10 +597,7 @@ export const Section = forwardRef(
         data-h2='Section'
         className={section({ padding, className })}
         {...props}
-        style={{
-          minHeight: minHeight,
-          ...props.style,
-        }}
+        style={{ minHeight: minHeight, ...props.style }}
       >
         {children}
       </Component>

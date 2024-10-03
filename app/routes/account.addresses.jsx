@@ -386,7 +386,7 @@ function NewAddressForm() {
 
   return (
     <AddressForm
-      addressId={'NEW_ADDRESS_ID'}
+      addressId='NEW_ADDRESS_ID'
       address={newAddress}
       defaultAddress={null}
     >

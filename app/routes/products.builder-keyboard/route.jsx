@@ -1,46 +1,57 @@
-import {defer, redirect} from '@shopify/remix-oxygen';
-import {getSelectedProductOptions} from '@shopify/hydrogen';
-import {getVariantUrl} from '~/lib/variants';
-import Hero from './sections/hero';
-import Features from './sections/features';
-import CTA from './sections/cta';
+import { defer, redirect } from '@shopify/remix-oxygen'
+import { getSelectedProductOptions } from '@shopify/hydrogen'
+import { getVariantUrl } from '~/lib/variants'
+import Hero from './sections/hero'
+import Features from './sections/features'
+import CTA from './sections/cta'
 
-export const meta = ({data}) => {
-  return [{title: `Builder Supply | ${data?.product.title ?? ''}`}];
-};
-
-export async function loader({params, request, context}) {
-  //   const {handle} = params;
-  const handle = 'builder-tote';
-  const {storefront} = context;
-
-  const {product} = await storefront.query(PRODUCT_QUERY, {
-    variables: {
-      handle,
-      selectedOptions: getSelectedProductOptions(request),
+export const meta = ({ data }) => {
+  return [
+    {
+      title: `Builder Supply | ${
+        data?.product.title ?? ''
+      }`,
     },
-  });
+  ]
+}
+
+export async function loader({ params, request, context }) {
+  //   const {handle} = params;
+  const handle = 'builder-tote'
+  const { storefront } = context
+
+  const { product } = await storefront.query(
+    PRODUCT_QUERY,
+    {
+      variables: {
+        handle,
+        selectedOptions: getSelectedProductOptions(request),
+      },
+    },
+  )
 
   if (!product?.id) {
-    throw new Response(null, {status: 404});
+    throw new Response(null, { status: 404 })
   }
 
   // TODO: Package up all this stuff into a utility function
   // setDefaultSelectedVariant(product, 'first'); Also handle "available" for first available variant as well
-  const firstVariant = product.variants.nodes[0];
+  const firstVariant = product.variants.nodes[0]
   const firstVariantIsDefault = Boolean(
     firstVariant.selectedOptions.find(
-      (option) => option.name === 'Title' && option.value === 'Default Title',
+      (option) =>
+        option.name === 'Title' &&
+        option.value === 'Default Title',
     ),
-  );
+  )
 
   if (firstVariantIsDefault) {
-    product.selectedVariant = firstVariant;
+    product.selectedVariant = firstVariant
   } else {
     if (!product.selectedVariant) {
-      throw function ({product, request}) {
-        const url = new URL(request.url);
-        const firstVariant = product.variants.nodes[0];
+      throw function ({ product, request }) {
+        const url = new URL(request.url)
+        const firstVariant = product.variants.nodes[0]
 
         return redirect(
           getVariantUrl({
@@ -52,28 +63,27 @@ export async function loader({params, request, context}) {
           {
             status: 302,
           },
-        );
-      };
+        )
+      }
     }
   }
   // END TODO
 
   const variants = storefront.query(VARIANTS_QUERY, {
-    variables: {handle},
-  });
+    variables: { handle },
+  })
 
-  return defer({product, variants});
+  return defer({ product, variants })
 }
 
 export default function Product() {
-  /** @type {LoaderReturnData} */
   return (
     <>
       <Hero />
       <Features />
       <CTA />
     </>
-  );
+  )
 }
 
 /***********************
@@ -115,7 +125,7 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
       currencyCode
     }
   }
-`;
+`
 
 const PRODUCT_FRAGMENT = `#graphql
   fragment Product on Product {
@@ -142,7 +152,7 @@ const PRODUCT_FRAGMENT = `#graphql
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}
-`;
+`
 
 const PRODUCT_QUERY = `#graphql
   query Product(
@@ -156,7 +166,7 @@ const PRODUCT_QUERY = `#graphql
     }
   }
   ${PRODUCT_FRAGMENT}
-`;
+`
 
 const PRODUCT_VARIANTS_FRAGMENT = `#graphql
   fragment ProductVariants on Product {
@@ -167,7 +177,7 @@ const PRODUCT_VARIANTS_FRAGMENT = `#graphql
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}
-`;
+`
 
 const VARIANTS_QUERY = `#graphql
   query ProductVariants(
@@ -180,7 +190,7 @@ const VARIANTS_QUERY = `#graphql
     }
   }
   ${PRODUCT_VARIANTS_FRAGMENT}
-`;
+`
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */

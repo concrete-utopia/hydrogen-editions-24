@@ -1,12 +1,12 @@
-import {useLocation} from '@remix-run/react';
-import {useMemo} from 'react';
+import { useLocation } from '@remix-run/react'
+import { useMemo } from 'react'
 
 /**
  * @param {string} handle
  * @param {SelectedOption[]} selectedOptions
  */
 export function useVariantUrl(handle, selectedOptions) {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation()
 
   return useMemo(() => {
     return getVariantUrl({
@@ -14,8 +14,8 @@ export function useVariantUrl(handle, selectedOptions) {
       pathname,
       searchParams: new URLSearchParams(),
       selectedOptions,
-    });
-  }, [handle, selectedOptions, pathname]);
+    })
+  }, [handle, selectedOptions, pathname])
 }
 
 /**
@@ -32,20 +32,25 @@ export function getVariantUrl({
   searchParams,
   selectedOptions,
 }) {
-  const match = /(\/[a-zA-Z]{2}-[a-zA-Z]{2}\/)/g.exec(pathname);
-  const isLocalePathname = match && match.length > 0;
+  const match = /(\/[a-zA-Z]{2}-[a-zA-Z]{2}\/)/g.exec(
+    pathname,
+  )
+  const isLocalePathname = match && match.length > 0
 
   const path = isLocalePathname
     ? `${match[0]}products/${handle}`
-    : `/products/${handle}`;
+    : `/products/${handle}`
 
   selectedOptions.forEach((option) => {
-    searchParams.set(option.name, option.value);
-  });
+    searchParams.set(option.name, option.value)
+  })
 
-  const searchString = searchParams.toString();
+  const searchString = searchParams.toString()
 
-  return path + (searchString ? '?' + searchParams.toString() : '');
+  return (
+    path +
+    (searchString ? '?' + searchParams.toString() : '')
+  )
 }
 
 /** @typedef {import('@shopify/hydrogen/storefront-api-types').SelectedOption} SelectedOption */
