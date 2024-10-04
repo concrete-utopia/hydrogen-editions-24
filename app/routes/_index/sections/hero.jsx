@@ -1,3 +1,4 @@
+import Link from '@h2/Link'
 import * as React from 'react'
 import { useLogRerender } from '~/helpers/logging'
 
@@ -13,10 +14,10 @@ export default function Hero() {
             top: 158,
             left: 96,
             width: 71,
-            height: 723,
           }}
         >
           <Counter />
+          <Link to='/products/builder-tote'>Totebag</Link>
         </div>
       </div>
     </section>
