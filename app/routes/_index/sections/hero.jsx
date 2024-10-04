@@ -41,25 +41,10 @@ export default function Hero() {
     <section className='w-full relative min-h-8 h-svh max-h-[64rem] bg-darkGray text-white'>
       <div className='min-h-inherit h-full mx-auto px-4 md:px-8 lg:px-10 w-full relative z-10 max-w-7xl pb-24 pt-36'>
         <div
-          className='w-auto h-auto gap-4 items-start justify-center flex flex-col pt-[10vh]'
-          style={{
-            top: 196,
-            left: 84,
-            position: 'absolute',
-            width: 309,
-            height: 324,
-          }}
-        >
-          <span>Summer 2024</span>
-          <span>Building</span>
-          <span style={{ height: 106 }}>Essentials</span>
-        </div>
-        <div
           className='w-auto min-h-inherit h-full items-start justify-between flex flex-col'
           style={{
             top: 158,
             left: 96,
-            position: 'absolute',
             width: 71,
             height: 723,
           }}
