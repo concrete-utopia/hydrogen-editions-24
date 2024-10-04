@@ -5,7 +5,7 @@ import Hero from './sections/hero'
 import { useLogRerender } from '~/helpers/logging'
 
 export default function Homepage() {
-  useLogRerender('Homepage')
+  useLogRerender('root route')
 
   // this seems to break inside Utopia:
   const [ID] = React.useState(
