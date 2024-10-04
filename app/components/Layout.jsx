@@ -9,6 +9,7 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search'
+import { useLogRerender } from '~/helpers/logging'
 
 /**
  * @param {LayoutProps}
@@ -20,6 +21,7 @@ export function Layout({
   header,
   isLoggedIn,
 }) {
+  useLogRerender('Layout')
   return (
     <div>
       <CartAside cart={cart} />

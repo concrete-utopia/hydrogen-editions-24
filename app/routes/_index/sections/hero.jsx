@@ -1,41 +1,8 @@
 import * as React from 'react'
+import { useLogRerender } from '~/helpers/logging'
 
 export default function Hero() {
-  const renderCount = React.useRef(Math.random())
-  renderCount.current = renderCount.current + 1
-  console.log('Hero render', renderCount.current)
-
-  if (
-    typeof performance !== 'undefined' &&
-    typeof performance.measure !== 'undefined'
-  ) {
-    performance.measure(
-      `Hero render ${renderCount.current}`,
-      {
-        start: performance.now(),
-        duration: 50,
-      },
-    )
-  }
-
-  React.useEffect(() => {
-    return function cleanup() {
-      // we are about to unmount!
-      console.log('Hero unmount', renderCount.current)
-      if (
-        typeof performance !== 'undefined' &&
-        typeof performance.measure !== 'undefined'
-      ) {
-        performance.measure(
-          `Hero unmount ${renderCount.current}`,
-          {
-            start: performance.now(),
-            duration: 50,
-          },
-        )
-      }
-    }
-  }, [])
+  useLogRerender('Hero')
 
   return (
     <section className='w-full relative min-h-8 h-svh max-h-[64rem] bg-darkGray text-white'>
@@ -58,43 +25,7 @@ export default function Hero() {
 
 function Counter() {
   const [clickCount, setClickCount] = React.useState(0)
-  const renderCount = React.useRef(0)
-  renderCount.current += 1
-
-  console.log('Counter render', renderCount.current)
-
-  if (
-    typeof performance !== 'undefined' &&
-    typeof performance.measure !== 'undefined'
-  ) {
-    performance.measure(
-      `Counter render ${renderCount.current}`,
-      {
-        start: performance.now(),
-        duration: 50,
-      },
-    )
-  }
-
-  React.useEffect(() => {
-    return function cleanup() {
-      // we are about to unmount!
-      console.log('Counter unmount', renderCount.current)
-
-      if (
-        typeof performance !== 'undefined' &&
-        typeof performance.measure !== 'undefined'
-      ) {
-        performance.measure(
-          `Counter unmount ${renderCount.current}`,
-          {
-            start: performance.now(),
-            duration: 50,
-          },
-        )
-      }
-    }
-  }, [])
+  const renderCount = useLogRerender('Counter')
 
   return (
     <div style={{ contain: 'layout' }}>
