@@ -35,11 +35,10 @@ export default function Hero() {
         </div>
       </div>
       <div
+        className='z-0 absolute inset-0 pointer-events-none'
         style={{
           display: 'grid',
-          position: 'absolute',
-          top: 0,
-          gridTemplateColumns: 'repeat(2, minmax(0, 1fr)',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
         }}
       >
         <div />
