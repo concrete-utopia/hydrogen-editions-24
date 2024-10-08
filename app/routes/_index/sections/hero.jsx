@@ -34,7 +34,14 @@ export default function Hero() {
           </Button>
         </div>
       </div>
-      <div className='grid absolute z-0 inset-0 pointer-events-none grid-cols-2'>
+      <div
+        style={{
+          display: 'grid',
+          position: 'absolute',
+          top: 0,
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr)',
+        }}
+      >
         <div />
         <div className='relative'>
           <div className='absolute inset-0 bg-gradient-to-r from-darkGray to-transparent to-50% z-0' />
