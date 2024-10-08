@@ -83,10 +83,14 @@ export default function OurPromise() {
         style={{
           display: 'grid',
           gridTemplateColumns:
-            'repeat(auto-fit, minmax(310px, 1fr)',
-          gap: 50,
+            'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: 30,
           justifyItems: 'center',
           paddingBottom: '9rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+          margin: '0 9rem',
         }}
       >
         <PromiseCard
@@ -97,19 +101,30 @@ export default function OurPromise() {
           borderRadius={0}
           rotation={0}
           offset={[0, 0]}
-          style={{ opacity: '100%' }}
+          style={{
+            alignSelf: 'stretch',
+            justifySelf: 'stretch',
+          }}
         />
         <PromiseCard
           heading='100 days to try'
           description='Try it out for 100 days. If you don’t love it, send it back.'
           color='gray'
           icon='trial'
+          style={{
+            alignSelf: 'stretch',
+            justifySelf: 'stretch',
+          }}
         />
         <PromiseCard
           heading='Free shipping'
           description='We’ll cover shipping on all orders to the contiguous US and Canada.'
           color='black'
           icon='shipping'
+          style={{
+            alignSelf: 'stretch',
+            justifySelf: 'stretch',
+          }}
         />
       </div>
     </section>
