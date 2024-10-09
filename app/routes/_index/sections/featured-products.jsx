@@ -1,12 +1,6 @@
 import { AddToCartButton } from '@h2/new/Button'
 import { Heading, Text } from '@h2/new/Text'
-import {
-  Background,
-  Column,
-  Grid,
-  Section,
-  HalfAndHalf,
-} from '@h2/new/Layout'
+import { Background, Column, Section } from '@h2/new/Layout'
 import { Image } from '@shopify/hydrogen'
 import { Price, PriceCompareAt } from '@h2/Price'
 import { cx } from '@h2/new/utils'
@@ -71,109 +65,105 @@ export function SaleBadge({ price, compareAtPrice }) {
 export default function FeaturedProducts() {
   return (
     <Section>
-      <HalfAndHalf
-        left={
-          <SaleCard className='bg-lightGray'>
-            <div className='relative'>
-              <SaleBadge
-                price={{
-                  amount: '39.00',
-                  currencyCode: 'CAD',
-                }}
-                compareAtPrice={{
-                  amount: '42.00',
-                  currencyCode: 'CAD',
-                }}
-              />
-              <Image
-                crop='center'
-                width={450}
-                height={380}
-                src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-DevMode-Buildertote_PDP_3_fa8b6520-484a-47e7-818d-b217b04d31e6.png'
-              />
-            </div>
-            <Column gap={4} align='center' justify='center'>
-              <Heading font='text' weight='medium' size='l'>
-                Builders Tote
-              </Heading>
-              <Text
-                width='narrow'
-                color='black'
-                className='opacity-60'
-              >
-                Sofie Pavitt Face is an intentional edit of
-                skincare essentials designed for acne-prone
-                skin.
-              </Text>
-            </Column>
-            <Column style={{ height: 120 }}>
-              <AddToCartButton color='accent'>
-                Add to cart
-              </AddToCartButton>
-            </Column>
-          </SaleCard>
-        }
-        right={
-          <Image
-            className='object-cover w-full h-full'
-            width={633}
-            height={555}
-            src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/spotlight-image-home-1.jpg?v=1716832099'
-          />
-        }
-      />
-      <HalfAndHalf
-        left={
-          <Image
-            className='object-cover w-full h-full'
-            width={633}
-            height={555}
-            src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/spotlight-image-home-2.jpg?v=1716832296'
-          />
-        }
-        right={
-          <SaleCard className='bg-accent'>
-            <div className='relative'>
-              <SaleBadge
-                price={{
-                  amount: '39.00',
-                  currencyCode: 'CAD',
-                }}
-                compareAtPrice={{
-                  amount: '42.00',
-                  currencyCode: 'CAD',
-                }}
-              />
-              <Image
-                crop='center'
-                width={450}
-                height={380}
-                className='translate-y-12'
-                src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-GSD-Hat-PDP.webp'
-              />
-            </div>
-            <Column gap={4} align='center' justify='center'>
-              <Heading font='text' weight='medium' size='l'>
-                Get Ship Done Hat 2.0
-              </Heading>
-              <Text
-                width='narrow'
-                color='black'
-                className='opacity-60'
-              >
-                Sofie Pavitt Face is an intentional edit of
-                skincare essentials designed for acne-prone
-                skin.
-              </Text>
-            </Column>
-            <Column style={{ height: 120 }}>
-              <AddToCartButton color='white'>
-                Add to cart
-              </AddToCartButton>
-            </Column>
-          </SaleCard>
-        }
-      />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateRows: 'repeat(2, 1fr)',
+        }}
+      >
+        <SaleCard className='bg-lightGray'>
+          <div className='relative'>
+            <SaleBadge
+              price={{
+                amount: '39.00',
+                currencyCode: 'CAD',
+              }}
+              compareAtPrice={{
+                amount: '42.00',
+                currencyCode: 'CAD',
+              }}
+            />
+            <Image
+              crop='center'
+              width={450}
+              height={380}
+              src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-DevMode-Buildertote_PDP_3_fa8b6520-484a-47e7-818d-b217b04d31e6.png'
+            />
+          </div>
+          <Column gap={4} align='center' justify='center'>
+            <Heading font='text' weight='medium' size='l'>
+              Builders Tote
+            </Heading>
+            <Text
+              width='narrow'
+              color='black'
+              className='opacity-60'
+            >
+              Sofie Pavitt Face is an intentional edit of
+              skincare essentials designed for acne-prone
+              skin.
+            </Text>
+          </Column>
+          <Column style={{ height: 120 }}>
+            <AddToCartButton color='accent'>
+              Add to cart
+            </AddToCartButton>
+          </Column>
+        </SaleCard>
+        <Image
+          className='object-cover w-full h-full'
+          width={633}
+          height={555}
+          src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/spotlight-image-home-1.jpg?v=1716832099'
+        />
+        <Image
+          className='object-cover w-full h-full'
+          width={633}
+          height={555}
+          src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/spotlight-image-home-2.jpg?v=1716832296'
+        />
+        <SaleCard className='bg-accent'>
+          <div className='relative'>
+            <SaleBadge
+              price={{
+                amount: '39.00',
+                currencyCode: 'CAD',
+              }}
+              compareAtPrice={{
+                amount: '42.00',
+                currencyCode: 'CAD',
+              }}
+            />
+            <Image
+              crop='center'
+              width={450}
+              height={380}
+              className='translate-y-12'
+              src='https://cdn.shopify.com/s/files/1/0657/3811/3197/files/01-GSD-Hat-PDP.webp'
+            />
+          </div>
+          <Column gap={4} align='center' justify='center'>
+            <Heading font='text' weight='medium' size='l'>
+              Get Ship Done Hat 2.0
+            </Heading>
+            <Text
+              width='narrow'
+              color='black'
+              className='opacity-60'
+            >
+              Sofie Pavitt Face is an intentional edit of
+              skincare essentials designed for acne-prone
+              skin.
+            </Text>
+          </Column>
+          <Column style={{ height: 120 }}>
+            <AddToCartButton color='white'>
+              Add to cart
+            </AddToCartButton>
+          </Column>
+        </SaleCard>
+      </div>
     </Section>
   )
 }
