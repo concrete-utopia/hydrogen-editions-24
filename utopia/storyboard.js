@@ -3,6 +3,11 @@ import { Storyboard, RemixScene } from 'utopia-api'
 
 import { getLoadContext } from '../server-context-getter'
 
+// this css is originally imported in root.jsx, but we have a bug which remounts the Remix scene and when that happens the css does not reload during interactions, leading to a white flash
+// by also importing it here, we prevent the blinking.
+// the real fix should be fixing the remount bug though
+import '../app/styles/app-generated.css'
+
 const contextGetter = getLoadContext(
   {
     PUBLIC_STORE_DOMAIN: '438c73-58.myshopify.com',
