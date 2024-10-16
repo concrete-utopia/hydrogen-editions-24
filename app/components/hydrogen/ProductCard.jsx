@@ -10,6 +10,7 @@ import Link from '@h2/Link'
 export function ProductCard({
   product,
   className,
+  style,
   loading,
   onClick,
   quickAdd,
@@ -56,6 +57,7 @@ export function ProductCard({
         'flex w-full flex-col gap-2',
         className,
       )}
+      style={style}
     >
       <Link
         onClick={onClick}
