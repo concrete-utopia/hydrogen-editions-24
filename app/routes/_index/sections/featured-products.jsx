@@ -68,7 +68,7 @@ export default function FeaturedProducts() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateColumns: 'repeat(2, 0.9fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
         }}
       >

@@ -94,13 +94,10 @@ export default function OurPromise() {
         }}
       >
         <PromiseCard
-          heading='Guaranteed For Life'
-          description='Every one of our products comes with a limited lifetime warranty.'
-          color='accent'
-          icon='guarantee'
-          borderRadius={0}
-          rotation={0}
-          offset={[0, 0]}
+          heading='Free shipping'
+          description='We’ll cover shipping on all orders to the contiguous US and Canada.'
+          color='black'
+          icon='shipping'
           style={{
             alignSelf: 'stretch',
             justifySelf: 'stretch',
@@ -117,10 +114,13 @@ export default function OurPromise() {
           }}
         />
         <PromiseCard
-          heading='Free shipping'
-          description='We’ll cover shipping on all orders to the contiguous US and Canada.'
-          color='black'
-          icon='shipping'
+          heading='Guaranteed For Life'
+          description='Every one of our products comes with a limited lifetime warranty.'
+          color='accent'
+          icon='guarantee'
+          borderRadius={0}
+          rotation={0}
+          offset={[0, 0]}
           style={{
             alignSelf: 'stretch',
             justifySelf: 'stretch',
