@@ -38,38 +38,64 @@ export default function BestSellers() {
         </Heading>
       </Container>
       <Container>
-        <Grid
-          columns={12}
-          rows={10}
-          gapY='xl'
-          gap='l'
-          className='aspect-[5/7]'
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns:
+              'repeat(12, minmax(0, 1fr))',
+            gridTemplateRows: 'repeat(10, minmax(0, 1fr))',
+            columnGap: 32,
+            rowGap: 48,
+            aspectRatio: '5/7',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+          }}
         >
           <ProductCard
             product={products[0]}
-            className='col-span-5 col-start-1 row-start-1 pr-12'
+            className='pr-12'
+            style={{
+              gridColumn: '1 / 6',
+              gridRow: '1',
+            }}
           />
           <ProductCard
             product={products[1]}
-            className='col-span-3 col-start-7 row-start-2'
+            style={{
+              gridColumn: '7 / 10',
+              gridRow: '2',
+            }}
           />
           <ProductCard
             product={products[2]}
-            className='col-span-3 col-start-10 row-start-1'
+            style={{
+              gridColumn: '10 / 13',
+              gridRow: '1',
+            }}
           />
           <ProductCard
             product={products[3]}
-            className='col-span-3 col-start-1 row-start-6'
+            style={{
+              gridColumn: '1 / 4',
+              gridRow: '6',
+            }}
           />
           <ProductCard
             product={products[4]}
-            className='col-span-3 col-start-4 row-start-5'
+            style={{
+              gridColumn: '4 / 7',
+              gridRow: '5',
+            }}
           />
           <ProductCard
             product={products[5]}
-            className='col-span-4 col-start-9 row-start-5 mt-8'
+            className='mt-8'
+            style={{
+              gridColumn: '9 / 13',
+              gridRow: '5',
+            }}
           />
-        </Grid>
+        </div>
       </Container>
     </Section>
   )
