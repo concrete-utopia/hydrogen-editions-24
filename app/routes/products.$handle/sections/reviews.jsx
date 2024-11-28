@@ -59,6 +59,7 @@ export default function Reviews() {
               return (
                 <Review
                   key={review.id}
+                  id={review.id}
                   quote={review.quote.value}
                   customer={review.customer.value}
                   background={review.background}
@@ -87,13 +88,29 @@ const review = cva({
 })
 
 export function Review({ className, ...props }) {
-  const { quote, customer, background } = props
+  const { quote, customer, background, id } = props
   const classes = cx(
     review({ ...props, background }),
     className,
   )
   const { firstSentence, remainingText } =
     splitTextIntoSentences(quote)
+
+  const updateReview = React.useCallback(() => {
+    const newReview = prompt('New review quote')
+    fetch(`/api/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        value: newReview,
+      }),
+    })
+      .then((res) => res.json())
+      .then((r) => console.log(r))
+  }, [id])
 
   return (
     <div style={{ contain: 'layout' }}>
@@ -139,6 +156,9 @@ export function Review({ className, ...props }) {
         >
           &mdash;{customer}
         </Text>
+        <button onClick={updateReview}>
+          Update review
+        </button>
       </Column>
     </div>
   )
